@@ -17,7 +17,8 @@ using TradeSave.ViewModels.JwtAuth;
 
 namespace TradeSave.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [AllowAnonymous]
+    //[Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
@@ -37,7 +38,7 @@ namespace TradeSave.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _db = db;
-        } 
+        }
         #endregion
 
 
@@ -48,7 +49,7 @@ namespace TradeSave.Controllers
         }
 
         #region 02.Login-Register
-        
+
         [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
@@ -118,7 +119,7 @@ namespace TradeSave.Controllers
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public async Task<string> CreateToken(IdentityUser user)
+        private async Task<string> CreateToken(IdentityUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
