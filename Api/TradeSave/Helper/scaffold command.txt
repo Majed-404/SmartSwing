@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Data Source=P3NWPLSK12SQL-v08.shr.prod.phx3.secureserver.net;Initial Catalog=TradeSave;Persist Security Info=True;User ID=TradeSave;password=Jd8kWVf7Mv4Rme6@#" Microsoft.EntityFrameworkCore.SqlServer -UseDatabaseNames -OutputDir Models
