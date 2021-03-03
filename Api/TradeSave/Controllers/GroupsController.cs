@@ -42,7 +42,7 @@ namespace TradeSave.Controllers
                     Name = model.Name
                 };
 
-                 await _db.AddAsync(model);
+                 await _db.groups.AddAsync(group);
                 await _db.SaveChangesAsync();
 
                 return Ok("Success !");
