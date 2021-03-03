@@ -11,10 +11,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  
   public registerForm: FormGroup;
   public hide = true; 
   public bgImage:any;
-  constructor(public fb: FormBuilder, public router:Router, public snackBar: MatSnackBar, private sanitizer:DomSanitizer) { }
+
+  constructor(public fb: FormBuilder,
+     public router:Router,
+      public snackBar: MatSnackBar,
+       private sanitizer:DomSanitizer,
+        ) { }
 
   ngOnInit() {
     this.bgImage = this.sanitizer.bypassSecurityTrustStyle('url(assets/images/others/register.jpg)');
@@ -31,6 +37,10 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);
       this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      
+      // this.registerServ.register(this.user).subscribe(user =>{
+      //   this.router.navigate(["./login"]);
+      //   });
     }
   }
 }
