@@ -9,6 +9,12 @@ export class User {
   settings: UserSettings;
 }
 
+export class AppUser {
+  id: number;
+  userName: string;
+  email: string;  
+}
+
 export class UserProfile {  
   name: string;
   surname: string;  
