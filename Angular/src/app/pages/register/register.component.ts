@@ -4,11 +4,16 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { matchingPasswords, emailValidator } from 'src/app/theme/utils/app-validators';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AppUsersService } from 'src/app/admin/users/_services/app.users.service';
+import { UserRegiste } from 'src/app/admin/users/user.model';
+import { UsersService } from 'src/app/admin/users/users.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [UsersService, AppUsersService]
 })
 export class RegisterComponent implements OnInit {
   
@@ -20,9 +25,11 @@ export class RegisterComponent implements OnInit {
      public router:Router,
       public snackBar: MatSnackBar,
        private sanitizer:DomSanitizer,
+       public appUsersService: AppUsersService
         ) { }
 
   ngOnInit() {
+    debugger;
     this.bgImage = this.sanitizer.bypassSecurityTrustStyle('url(assets/images/others/register.jpg)');
     this.registerForm = this.fb.group({ 
       username: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -34,13 +41,36 @@ export class RegisterComponent implements OnInit {
   }
 
   public onRegisterFormSubmit():void {
+    debugger;
+    let registerUser:UserRegiste={
+      userName:this.registerForm.value.username,
+      email:this.registerForm.value.email,
+      password:this.registerForm.value.password
+    }
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
       
-      // this.registerServ.register(this.user).subscribe(user =>{
-      //   this.router.navigate(["./login"]);
-      //   });
+      this.appUsersService.register(registerUser).subscribe((user:any) =>{
+        let xx=JSON.stringify({user});
+        console.log(xx);
+        this.router.navigate(["/login"]);
+        // },
+        // (error: any) => {
+        //   alert("some thing bad is happen");
+        //   console.log(error)
+      });
+      // this.appUsersService.register(registerUser)
+      // .pipe(first())
+      // .subscribe({ 
+      //   next: () => {
+      //     this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      //       this.router.navigate(['/login']);
+      //   },
+      //   error: error => {
+      //     alert("some thing bad is happen");
+      //     console.log(error);
+      //   }
+      // });
     }
   }
+  
 }

@@ -47,3 +47,14 @@ export class UserSettings{
   registrationDate: Date;
   joinedDate: Date;
 }
+
+export class UserRegiste {
+  userName: string;
+  email: string;
+  password: string;
+}
+
+export class UserLogin{
+  email: string;
+  password: string;
+}
