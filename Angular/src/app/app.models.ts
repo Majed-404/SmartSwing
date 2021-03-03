@@ -104,7 +104,10 @@ export class Category {
                 public name: string,
                 public description: string){ }
 }   
-
+export class Role {
+    constructor(public id: number,
+                public name: string){ }
+} 
 export class Pagination {
     constructor(public page: number,
                 public perPage: number,
