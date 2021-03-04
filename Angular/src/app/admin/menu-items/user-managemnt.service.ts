@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Role } from 'src/app/app.models';
+import { Group, Role } from 'src/app/app.models';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,5 +21,9 @@ export class UserManagemntService {
   }
   public getGroups(): Observable<any> {
     return this.http.get(this.apiUrl + "Groups/ListGroups");
+  }
+
+  public addGroup(group: Group){
+    return this.http.post(this.apiUrl + "Groups/ListGroups", group);
   }
 }
