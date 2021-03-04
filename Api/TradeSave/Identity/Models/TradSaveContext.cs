@@ -23,5 +23,6 @@ namespace TradeSave.Identity.Models
         }
         public DbSet <Group> groups { get; set; }
         public DbSet <UserGroup> Usergroups { get; set; }
+        public DbSet <AdminEmail> AdminEmails { get; set; }
     }
 }
