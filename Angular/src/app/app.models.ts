@@ -104,6 +104,21 @@ export class Category {
                 public name: string,
                 public description: string){ }
 }   
+export class Role {
+    constructor(public id: string,
+                public name: string){ }
+} 
+export class Group {
+    constructor(public id: number,
+                public name: string){ }
+} 
+
+export class UserGroup {
+    constructor(public userId: string,
+                public groupId: number){ }
+
+                
+}
 
 export class Pagination {
     constructor(public page: number,

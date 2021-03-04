@@ -29,6 +29,9 @@
   "ADMIN_NAV": {  
     "DASHBOARD": "Dashboard",  
     "MENU_ITEMS": "Menu Items", 
+    "USER_MANAGMENT":"User Management",
+    "ROLES":"Roles",
+    "GROUPS":"Groups",
     "CATEGORIES": "Categories",
     "MENU_ITEMS_LIST": "Menu Items List", 
     "MENU_ITEM_DETAIL": "Menu Item Detail",
