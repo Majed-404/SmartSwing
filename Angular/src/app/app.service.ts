@@ -45,9 +45,7 @@ export class AppService {
               public dialog: MatDialog,
               public appSettings:AppSettings,
               public translateService: TranslateService) { }  
- public getRolesList(): Observable<any> {
-    return this.http.get(this.apiUrl + "Auth/ListRoles");
-  }
+ 
   public getMenuItems(): Observable<MenuItem[]>{
     return this.http.get<MenuItem[]>(this.url + 'menu-items.json');
   } 

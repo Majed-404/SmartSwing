@@ -9,6 +9,8 @@ import { AddComponent } from './add/add.component';
 import { CategoryDialogComponent } from './categories/category-dialog/category-dialog.component';
 import { RolesComponent } from './roles/roles.component';
 import { GroupsComponent } from './groups/groups.component';
+import { RoleDialogComponent } from './roles/role-dialog/role-dialog.component';
+import { GroupDialogComponent } from './groups/group-dialog/group-dialog.component';
 
 export const routes = [ 
   { path: '', redirectTo: 'list', pathMatch: 'full'},
@@ -27,7 +29,7 @@ export const routes = [
     CategoriesComponent, 
     ListComponent, 
     DetailComponent, 
-    AddComponent, CategoryDialogComponent, RolesComponent, GroupsComponent
+    AddComponent, CategoryDialogComponent, RolesComponent, GroupsComponent, RoleDialogComponent, GroupDialogComponent
   ],
   imports: [
     CommonModule,

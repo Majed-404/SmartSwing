@@ -10,6 +10,8 @@ import { PipesModule } from '../../theme/pipes/pipes.module';
 import { UsersComponent } from './users.component';
 import { UsersData } from './users.data';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { UserRoleDialogComponent } from './user-role-dialog/user-role-dialog.component';
+import { UserGroupDialogComponent } from './user-group-dialog/user-group-dialog.component';
 
 export const routes = [
   { path: '', component: UsersComponent, pathMatch: 'full' }
@@ -29,7 +31,9 @@ export const routes = [
   ],
   declarations: [
     UsersComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    UserRoleDialogComponent,
+    UserGroupDialogComponent
   ] 
 })
 export class UsersModule { }
