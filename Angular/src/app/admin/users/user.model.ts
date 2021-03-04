@@ -10,9 +10,11 @@ export class User {
 }
 
 export class AppUser {
-  id: number;
+  id: string;
   userName: string;
-  email: string;  
+  email: string;
+  password: string;
+  phoneNumber: string;  
 }
 
 export class UserProfile {  

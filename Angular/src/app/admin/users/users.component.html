@@ -30,7 +30,7 @@
     <div *ngFor="let user of appUsers" fxFlex="100" fxFlex.gt-md="33.3" fxFlex.md="50" class="p-2"> 
         <mat-card class="p-0">  
             <div class="bg-primary" fxLayout="row" fxLayoutAlign="space-between center">
-                <h3 class="user-name">{{user.userName}}</h3> 
+                <h3 class="user-name">{{user.email}}</h3> 
                 
                 <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
                     <mat-icon>more_vert</mat-icon>
@@ -90,7 +90,7 @@
     <div *ngFor="let user of appUsers" fxFlex="100" class="p-2"> 
         <mat-card class="p-0">  
             <div class="bg-primary" fxLayout="row" fxLayoutAlign="space-between center">
-                <h3 class="user-name">{{user.userName}} </h3> 
+                <h3 class="user-name">{{user.email}} </h3> 
                 
                 <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
                     <mat-icon>more_vert</mat-icon>
@@ -157,19 +157,6 @@
                         </p>                        
                     </div>
                     <div fxFlex="40" fxFlex.xs="100" fxLayout="column">
-                        <!-- <p fxLayout="row" fxLayoutAlign="start center">
-                            <mat-icon class="text-muted">event_available</mat-icon>
-                            <span>Registration {{user.settings.registrationDate | date:"dd MMMM, yyyy 'at' HH:mm"}}</span>
-                        </p>
-                        <p fxLayout="row" fxLayoutAlign="start center">
-                            <mat-icon class="text-muted">date_range</mat-icon>
-                            <span>Joined {{user.settings.joinedDate | date:"dd MMMM, yyyy 'at' HH:mm"}}</span>
-                        </p> 
-                        <p fxLayout="row" fxLayoutAlign="start center">
-                            <mat-icon *ngIf="user.settings.isDeleted" class="text-muted">person_outline</mat-icon>
-                            <mat-icon *ngIf="!user.settings.isDeleted" class="text-muted">person</mat-icon>
-                            <span>{{ (user.settings.isDeleted) ? 'Blocked' : 'Active' }}</span>
-                        </p>                        -->
                     </div>
                 </div>
             </div>

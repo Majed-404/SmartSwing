@@ -1,3 +1,4 @@
+import { AppUserDialogComponent } from './app-user-dialog/app-user-dialog.component';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppSettings, Settings } from '../../app.settings';
@@ -5,6 +6,7 @@ import { User, AppUser, UserProfile, UserWork, UserContacts, UserSocial, UserSet
 import { UsersService } from './users.service';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { AppUsersService } from './_services/app.users.service';
+import { response } from 'express';
 
 @Component({
     selector: 'app-users',
@@ -33,35 +35,52 @@ export class UsersComponent implements OnInit {
     }
 
     public getUsersList(): void {
-       
+
         this.appUsers = null; //for show spinner each time
         this.appUsersService.getUsersList().subscribe(response => {
             this.appUsers = <AppUser[]>response;
-        }, 
-        error => {
-            alert("some thing bad is happen");
-            console.log(error);
-        });
+        },
+            error => {
+                alert("some thing bad is happen");
+                console.log(error);
+            });
     }
 
     public getUsers(): void {
         this.users = null; //for show spinner each time
         this.usersService.getUsers().subscribe(users => this.users = users);
     }
-    public addUser(user: User) {
-        this.usersService.addUser(user).subscribe(user => this.getUsers());
+    public addUser(user: AppUser) {
+        this.appUsersService.addUser(user).subscribe(response=>{
+            if(response){
+                this.getUsersList();
+            }
+        });
     }
-    public updateUser(user: User) {
-        this.usersService.updateUser(user).subscribe(user => this.getUsers());
+    public updateUser(user: AppUser) {
+        this.appUsersService.updateUser(user).subscribe(response=>{
+            if(response){
+                this.getUsersList();
+            }
+        });
     }
-    public deleteUser(user: User) {
-        this.usersService.deleteUser(user.id).subscribe(user => this.getUsers());
+    public deleteUser(user: AppUser) {
+        this.appUsersService.deleteUser(user.id).subscribe(response => {
+            if (response === true) {
+                const index = this.appUsers.indexOf(user, 0);
+                if (index > -1) {
+                    this.appUsers.splice(index, 1);
+                }
+            } else {
+                alert("Some Thing Bad Happen !");
+            }
+        });
     }
 
 
     public onPageChanged(event) {
         this.page = event;
-        this.getUsers();
+        this.getUsersList();
         window.scrollTo(0, 0);
         // if(this.settings.fixedHeader){      
         //     document.getElementById('main-content').scrollTop = 0;
@@ -72,15 +91,17 @@ export class UsersComponent implements OnInit {
     }
 
     public openUserDialog(user) {
-        let dialogRef = this.dialog.open(UserDialogComponent, {
+        let dialogRef = this.dialog.open(AppUserDialogComponent, {
             data: user
         });
 
         dialogRef.afterClosed().subscribe(user => {
+            
             if (user) {
                 (user.id) ? this.updateUser(user) : this.addUser(user);
             }
         });
+      
     }
 
 }

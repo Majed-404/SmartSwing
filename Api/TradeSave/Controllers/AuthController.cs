@@ -17,8 +17,8 @@ using TradeSave.ViewModels.JwtAuth;
 
 namespace TradeSave.Controllers
 {
-    [AllowAnonymous]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    //[AllowAnonymous]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
@@ -73,7 +73,7 @@ namespace TradeSave.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
 
-            return Ok(model);
+            return BadRequest(ModelState);
         }
 
 
@@ -98,7 +98,7 @@ namespace TradeSave.Controllers
                         // GENERATE TOKEN ...
                         var tokenResult = await CreateToken(user);
 
-                        return Ok(tokenResult);
+                        return Ok(new { token = tokenResult });
                     }
 
                     foreach (var error in result.Errors)
@@ -109,13 +109,13 @@ namespace TradeSave.Controllers
                 catch (Exception ex)
                 {
 
-                    return Ok("Exception:" + ex.Message);
+                    return BadRequest("Exception:" + ex.Message);
                 }
 
 
             }
 
-            return Ok(model);
+            return BadRequest(ModelState);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
@@ -239,29 +239,7 @@ namespace TradeSave.Controllers
 
         #region 04.User-Roles
 
-        [HttpPost("AddUserToRloe")]
-        public async Task<IActionResult> AddUserToRloe(UserRloeViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByIdAsync(model.UserId);
-                var role = await _roleManager.FindByIdAsync(model.RoleId);
-
-                IdentityResult result = null;
-
-                if (!await _userManager.IsInRoleAsync(user: user, role: role.Name))
-                {
-                    result = await _userManager.AddToRoleAsync(user: user, role: role.Name);
-                }
-
-                if (result.Succeeded)
-                {
-                    return Ok(true);
-                }
-            }
-
-            return Ok(false);
-        }
+        
 
         [HttpPost("RemoveUserFromRloe")]
         public async Task<IActionResult> RemoveUserFromRloe(UserRloeViewModel model)
