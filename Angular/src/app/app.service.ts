@@ -37,7 +37,7 @@ export class AppService {
   )  
   
   public url = environment.url + '/assets/data/'; 
-  
+  public apiUrl = "http://localhost:49974/api/"
   constructor(public http:HttpClient, 
               private datePipe:DatePipe,
               private bottomSheet: MatBottomSheet, 
@@ -45,7 +45,7 @@ export class AppService {
               public dialog: MatDialog,
               public appSettings:AppSettings,
               public translateService: TranslateService) { }  
-
+ 
   public getMenuItems(): Observable<MenuItem[]>{
     return this.http.get<MenuItem[]>(this.url + 'menu-items.json');
   } 

@@ -8,6 +8,10 @@ namespace TradeSave.ViewModels.Account
 {
     public class RegisterViewModel
     {
+
+        [Required]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         public string Email { get; set; }

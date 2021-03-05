@@ -13,7 +13,7 @@ export const routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
   ]
 })
 export class RegisterModule { }

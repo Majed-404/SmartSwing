@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User, AppUser } from './user.model';
+import { User, AppUser, UserRegiste } from './user.model';
 
 @Injectable()
 export class UsersService {
@@ -28,4 +28,9 @@ export class UsersService {
     deleteUser(id: number) {
         return this.http.delete(this.url + "/" + id);
     }
+    // register(user: UserRegiste): Observable<any>{
+    //     return this.http.post(this.apiUrl+"Register", user);
+    //  }
+
+     
 } 

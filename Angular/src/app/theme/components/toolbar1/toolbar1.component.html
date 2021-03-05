@@ -22,7 +22,7 @@
         <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
     </div> 
     <div fxLayout="row" fxLayoutAlign="start center">
-      <button (click)="reservation()" mat-icon-button [matTooltip]="'RESERVATION' | translate" fxShow="false" fxShow.gt-xs="true">
+      <!-- <button (click)="reservation()" mat-icon-button [matTooltip]="'RESERVATION' | translate" fxShow="false" fxShow.gt-xs="true">
         <mat-icon>book_online</mat-icon>
       </button> 
       <a routerLink="/account/favorites" mat-icon-button matTooltip="Favorites" class="mx-2"  fxShow="false" fxShow.gt-xs="true">
@@ -36,7 +36,30 @@
                   [matBadgeHidden]="appService.Data.totalCartCount == 0" 
                   matBadgeSize="small" 
                   matBadgeColor="warn">shopping_cart</mat-icon>
-      </button>  
+      </button>   -->
+
+      <form method="get">
+        <mat-form-field>
+          <input type="text" 
+            [matAutocomplete]="auto"
+            class="mat-elevation-z3" 
+            [formControl]="myControl"
+            matInput
+            [class.show]="toggleSearchBar"
+            [(ngModel)] = "listFilter"
+            >
+
+            <mat-autocomplete style="background-color: aliceblue;" #auto="matAutocomplete"  >
+              <mat-option *ngFor="let option of filterData" [value]="option">
+                {{option.username}}</mat-option>
+            </mat-autocomplete>
+        </mat-form-field> 
+
+        <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button">
+          <mat-icon>search</mat-icon>
+      </button>
+      </form>
+      
     </div>   
   </div>     
 </mat-toolbar>

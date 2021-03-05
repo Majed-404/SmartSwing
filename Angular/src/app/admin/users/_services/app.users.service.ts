@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserLogin, UserRegiste } from '../user.model';
 
 @Injectable()
 export class AppUsersService {
@@ -31,6 +32,15 @@ export class AppUsersService {
 
     updateUser(user: AppUser): Observable<any>{
         return this.http.put(this.apiUrl + "update/"+ user.id, user, this.httpOptions);
+    }
+
+    register(user: UserRegiste): Observable<any>{
+       return this.http.post(this.apiUrl+"Register", user);
+    }
+
+    login(user: UserLogin){
+
+        return this.http.get(this.apiUrl+ "login")
     }
 
     addUser(user: AppUser): Observable<any>{

@@ -58,7 +58,8 @@ namespace TradeSave
 
             services.AddDbContext<SecurityContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddDbContext<TradSaveContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<SecurityContext>();
 
