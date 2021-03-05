@@ -68,6 +68,9 @@ namespace TradeSave
                 options.Password.RequiredLength = 2;
                 options.Password.RequiredUniqueChars = 0;
                 options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
             });
 
             // Register the Swagger generator, defining 1 or more Swagger documents

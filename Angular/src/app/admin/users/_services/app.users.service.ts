@@ -8,11 +8,12 @@ import { UserLogin, UserRegiste } from '../user.model';
 @Injectable()
 export class AppUsersService {
     public apiUrl = environment.apiUrl + "user/"
+    public authApiUrl = environment.apiUrl + "auth/"
 
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOlsibWFqZWQyQGdtYWlsLmNvbSIsIm1hamVkMkBnbWFpbC5jb20iXSwianRpIjoiYzUzYzE3MzUtZWQ5MC00Nzc5LWI4YjQtMDk4MDhhMzgyNmYyIiwiZXhwIjoxNjE0OTYzNDQ5LCJpc3MiOiJNYWplZCIsImF1ZCI6Ik1hamVkIn0.smaBGDnhp78awWmgIZpLkNqynvIvb8O2kXXh8WjVGV4'
+            'Authorization': localStorage.getItem('token')
         })
     };
 
@@ -22,28 +23,28 @@ export class AppUsersService {
         return this.http.get(this.apiUrl + "get", this.httpOptions);
     }
 
-    getUser(id: string): Observable<any>{
+    getUser(id: string): Observable<any> {
         return this.http.get(this.apiUrl + "get/" + id, this.httpOptions);
     }
 
-    deleteUser(id: string): Observable<any>{
+    deleteUser(id: string): Observable<any> {
         return this.http.delete(this.apiUrl + "delete/" + id, this.httpOptions);
     }
 
-    updateUser(user: AppUser): Observable<any>{
-        return this.http.put(this.apiUrl + "update/"+ user.id, user, this.httpOptions);
+    updateUser(user: AppUser): Observable<any> {
+        return this.http.put(this.apiUrl + "update/" + user.id, user, this.httpOptions);
     }
 
-    register(user: UserRegiste): Observable<any>{
-       return this.http.post(this.apiUrl+"Register", user);
-    }
-
-    login(user: UserLogin){
-
-        return this.http.get(this.apiUrl+ "login")
-    }
-
-    addUser(user: AppUser): Observable<any>{
+    addUser(user: AppUser): Observable<any> {
         return this.http.post(this.apiUrl + "create", user, this.httpOptions);
     }
-} 
+
+
+    register(user: UserRegiste): Observable<any> {
+        return this.http.post(this.authApiUrl + "register", user);
+    }
+
+    login(user: UserLogin): Observable<any> {
+        return this.http.post(this.authApiUrl + "login", user);
+    }
+}

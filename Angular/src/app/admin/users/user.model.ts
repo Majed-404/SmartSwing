@@ -60,3 +60,7 @@ export class UserLogin{
   email: string;
   password: string;
 }
+
+export class UserToken{
+  token: string;
+}
