@@ -39,7 +39,8 @@ namespace TradeSave.Controllers
                     CreateDate=model.CreateDate,
                     Ispublic=model.Ispublic,
                     IsSent=model.IsSent,
-                    SendDate=model.SendDate
+                    SendDate=model.SendDate,
+                    GroupId=model.GroupId
                 };
 
                 await _db.AdminEmails.AddAsync(adminMail);
@@ -69,7 +70,8 @@ namespace TradeSave.Controllers
                 CreateDate = model.CreateDate,
                 Ispublic = model.Ispublic,
                 IsSent = model.IsSent,
-                SendDate = model.SendDate
+                SendDate = model.SendDate,
+                GroupId = model.GroupId
             };
 
             return Ok(AdminMailModel);
@@ -94,6 +96,7 @@ namespace TradeSave.Controllers
                     AdminMail.SendDate = model.SendDate;
                     AdminMail.IsSent = model.IsSent;
                     AdminMail.Ispublic = model.Ispublic;
+                    AdminMail.GroupId = model.GroupId;
                     _db.AdminEmails.Update(AdminMail);
                     await _db.SaveChangesAsync();
                     return Ok("Success");

@@ -18,5 +18,6 @@ namespace TradeSave.ViewModels.AdminMails
         public string SendDate { get; set; }
         public bool Ispublic { get; set; }
         public string attachment { get; set; }
+        public int? GroupId { get; set; }
     }
 }
