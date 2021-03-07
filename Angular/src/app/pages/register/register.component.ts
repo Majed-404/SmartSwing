@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
         if (response) {
           localStorage.clear();
           localStorage.setItem('token', 'Bearer ' + (response as UserToken).token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         }
 
         // },

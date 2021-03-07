@@ -1,66 +1,62 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2">
+    <div></div>
+    <button mat-raised-button color="primary" (click)="openGroupDialog()">
+        <mat-icon>add</mat-icon>
+        Add New Mail
+    </button>
+</div>
 <mat-card class="m-2 p-0">  
     <div class="table-wrapper"> 
         <table mat-table [dataSource]="dataSource" matSort class="w-100"> 
 
-            <!-- StatusId Column -->
-            <ng-container matColumnDef="statusId">
-                <th mat-header-cell *matHeaderCellDef> </th>
-                <td mat-cell *matCellDef="let review">
-                    <mat-icon [color]="(review.statusId == 1) ? 'primary' : 'warn'" [matTooltip]="( statuses | filterById : review.statusId )?.name">{{ (review.statusId == 1) ? 'check_circle' : 'access_time' }}</mat-icon>
-                </td>
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+                <td mat-cell *matCellDef="let mail">{{mail.id}}</td>
             </ng-container> 
             
-            <!-- Image Column -->
-            <ng-container matColumnDef="image">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
-                <td mat-cell *matCellDef="let review"> <img [src]="review.image" alt="user" width="60" class="d-block"> </td>
+            <!-- subject Column -->
+            <ng-container matColumnDef="subject">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Subject </th>
+                <td mat-cell *matCellDef="let mail"> {{mail.subject} </td>
             </ng-container> 
 
-            <!-- Author Column -->
-            <ng-container matColumnDef="author">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
-                <td mat-cell *matCellDef="let review"> {{ review.author}} </td>
+            <!-- Create Date Column -->
+            <ng-container matColumnDef="createDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Created </th>
+                <td mat-cell *matCellDef="let mail"> {{ mail.createDate}} </td>
             </ng-container> 
 
-            <!-- Menu Item Column -->
-            <ng-container matColumnDef="menuItem">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Menu Item </th>
-                <td mat-cell *matCellDef="let review"> for <span class="fw-500">{{review.menuItem}}</span> </td>
+            <!-- Is Sent? Column -->
+            <ng-container matColumnDef="isSent">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Is Sent? </th>
+                <td mat-cell *matCellDef="let mail"> for <span class="fw-500">{{mail.isSent}}</span> </td>
             </ng-container>  
 
-            <!-- Comment Column -->
-            <ng-container matColumnDef="comment">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
-                <td mat-cell *matCellDef="let review"> {{ review.comment}} </td>
+            <!-- send Date Column -->
+            <ng-container matColumnDef="sendDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Sent</th>
+                <td mat-cell *matCellDef="let mail"> {{ mail.sendDate}} </td>
             </ng-container> 
 
-            <!-- Raiting Column -->
-            <ng-container matColumnDef="rating">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
-                <td mat-cell *matCellDef="let review">  <app-rating [ratingsCount]="review?.ratingsCount" [ratingsValue]="review?.ratingsValue" [showText]="false" [direction]="'row'"></app-rating> </td>
-            </ng-container> 
-
-            <!-- Date Column -->
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-                <td mat-cell *matCellDef="let review">{{review.date | date:"dd MMMM, yyyy 'at' HH:mm" }}</td>
+            <!-- is public Column -->
+            <ng-container matColumnDef="ispublic">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> public? </th>
+                <td mat-cell *matCellDef="let mail"> {{mail.ispublic} </td>
             </ng-container> 
 
             <!-- Actions Column -->
-            <ng-container matColumnDef="actions">
+            <ng-container matColumnDef="remove">
                 <th mat-header-cell *matHeaderCellDef> Remove </th>
-                <td mat-cell *matCellDef="let review"> 
-                    <button *ngIf="review.statusId == 1" mat-icon-button color="primary" matTooltip="UnApprove" (click)="unApprove(review)">
-                        <mat-icon>undo</mat-icon>
-                    </button> 
-                    <button mat-icon-button color="warn" (click)="remove(review)" matTooltip="Remove">
+                <td mat-cell *matCellDef="let mail"> 
+                    <!-- <button mat-icon-button color="warn" (click)="remove(mail)" matTooltip="Remove">
                         <mat-icon>delete</mat-icon>
-                    </button>   
+                    </button>  -->
                 </td>
-            </ng-container>  
+            </ng-container> 
         
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let review; columns: displayedColumns;"></tr>
+            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+            <tr mat-row *matRowDef="let mail; columns: displayedColumns;"></tr>
         </table> 
         <p *ngIf="dataSource?.data.length === 0" class="py-5 mb-0 text-center">No data available</p> 
     </div>

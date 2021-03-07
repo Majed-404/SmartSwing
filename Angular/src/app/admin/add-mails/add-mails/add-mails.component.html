@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="theme-container"> 
+            <mat-card class="p-4">
+                <div class="frame-box mt-0 pt-0">
+                        <div class="top-mask"></div>
+                        <div class="bottom-mask"></div>
+                        <div class="content-wrapper">
+                            <div class="content">  
+                                <!--   -->
+                                <form [formGroup]="mailsForm" (ngSubmit)="onSubmit()"> 
+                                    <mat-label>Subject</mat-label> 
+                                    <mat-form-field  appearance="outline" class="w-100 mt-2">
+                                        <!-- <mat-icon matPrefix class="mr-1 text-muted">person</mat-icon> -->
+                                        <input matInput formControlName="subject" required>
+                                        <!-- <mat-error *ngIf="registerForm.controls.username.errors?.required">Username is required</mat-error> -->
+                                        <!-- <mat-error *ngIf="registerForm.controls.username.hasError('minlength')">Username isn't long enough, minimum of 6 characters</mat-error> -->
+                                    </mat-form-field>
+    
+                                    <mat-label>Attachment</mat-label>
+    
+                                    <div><mat-card>  
+                                        <mat-card-content>  
+                                            <!-- <ul>  
+                                                <li *ngFor="let file of files">  
+                                                    <mat-progress-bar [value]="file.progress"></mat-progress-bar>  
+                                                    <span id="file-label">  
+                                
+                                                    </span>  
+                                                </li>  
+                                            </ul>   -->
+                                        </mat-card-content>  
+                                        
+                                    </mat-card><input type="file" #fileInput id="fileUpload" name="fileUpload"  accept="image/*" style="display:none;" /></div>
+                                
+    
+                                    <!-- <div fxFlex="40">  
+                                    <app-image-upload [fileSize]="400"></app-image-upload> 
+                                    </div> -->
+                                    <!-- <mat-form-field  appearance="outline" class="w-100 mt-1"> -->
+                                        <!-- <mat-icon matPrefix class="mr-1 text-muted">email</mat-icon> -->
+                
+                                        <!-- <input matInput   formControlName="attachment" required> -->
+                                        <!-- <mat-error *ngIf="registerForm.controls.email.errors?.required">Email is required</mat-error> -->
+                                        <!-- <mat-error *ngIf="registerForm.controls.email.hasError('invalidEmail')">Invalid email address</mat-error> -->
+                                    <!-- </mat-form-field> -->
+    
+                                    <div class="container">
+                                        <div class="row pt-5">
+                                          <div class="col-md-8">
+                                              <div class="form-group">
+                                                <label for="editor">
+                                                  <h3>Body</h3>
+                                                </label>
+                                                <quill-editor [styles]="{'height': '300px'}" formControlName="body"></quill-editor>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <mat-label>Group</mat-label> 
+                                    <mat-form-field  appearance="outline" class="w-100 mt-1">
+                                        <mat-select formControlName="groupId">
+                                            <mat-option *ngFor="let grp of groups" [value]="grp.id">
+                                                {{grp.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field> 
+                                    <mat-card-actions>  
+                                        <input mat-button type="button" value="Upload" color="warn" >  
+                                            <mat-icon>file_upload</mat-icon>  
+                                    </mat-card-actions>  
+                                    <div class="text-center mt-2"> 
+                                        <button mat-raised-button color="accent" class="uppercase" type="submit">
+                                            Save
+                                        </button>
+                                    </div> 
+                                </form>
+                                
+                            </div>
+                        </div> 
+                </div> 
+            </mat-card> 
+        </div>
+        
+    </div>
+    
+</div>
+   

@@ -6,4 +6,17 @@ export const reviews = [
     { id: 5, statusId: 2, image: 'assets/images/profile/bruno.jpg', author: 'Bruno Vespa', menuItem: 'Ice Cream', comment: 'lorem ipsum', ratingsCount: 3, ratingsValue: 300, date: new Date(2020,5,5,16,25) },
     { id: 6, statusId: 1, image: 'assets/images/profile/ashley.jpg', author: 'Ashley Ahlberg', menuItem: 'Coctails', comment: 'lorem ipsum', ratingsCount: 5, ratingsValue: 300, date: new Date(2020,6,18,12,30) },
     { id: 7, statusId: 1, image: 'assets/images/avatars/avatar-5.png', author: 'Michelle Ormond', menuItem: 'Chicken Languet With Potato', comment: 'lorem ipsum', ratingsCount: 4, ratingsValue: 300, date: new Date(2020,6,28,17,23) }
-];
+] ;
+
+export class AdminMails{
+    constructor(public id  :number ,
+        public subject :string , 
+        public createDate:string ,   
+        public isSent  :boolean ,
+        public sendDate  :string,
+        public ispublic  :boolean ,
+        public attachment :string , 
+        public groupId  :string
+        ){}
+    
+}

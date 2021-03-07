@@ -5,7 +5,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { ReviewsComponent } from './reviews.component';
 
 export const routes = [
-  { path: '', component: ReviewsComponent, pathMatch: 'full' }
+  { path: '', component: ReviewsComponent, pathMatch: 'full' },
+  //{ path: 'addMail', component: AddMailComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -2,8 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator'; 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table'; 
+import { Router } from '@angular/router';
+import { response } from 'express';
 import { AppService } from 'src/app/app.service'; 
-import { reviews } from './reviews';
+import { UserManagemntService } from '../menu-items/user-managemnt.service';
+import { AdminMails, reviews } from './reviews';
 
 @Component({
   selector: 'app-reviews',
@@ -11,47 +14,35 @@ import { reviews } from './reviews';
   styleUrls: ['./reviews.component.scss']
 })
 export class ReviewsComponent implements OnInit {
-  displayedColumns: string[] = ['statusId', 'image', 'author', 'menuItem', 'comment', 'rating', 'date', 'actions'];
+  displayedColumns: string[] = ['id', 'subject', 'createDate', 'isSent', 'sendDate', 'ispublic', 'actions'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  public statuses = [ 
-    { id: 1, name: 'Approved' },
-    { id: 2, name: 'Pending' }
-  ];
-
-  constructor(public appService:AppService) { }
+  
+public adminMails:AdminMails[];
+  constructor(public appService:AppService,public router: Router,
+    public userManagement:UserManagemntService) { }
 
   ngOnInit(): void { 
-    this.initDataSource(reviews);  
+    this.getMailsList(); 
   }
-
+  getMailsList(){
+    debugger
+    this.userManagement.getAdminMails().subscribe(response=>{
+      this.adminMails=<AdminMails[]>response;
+      this.initDataSource(this.adminMails); 
+    })
+  }
+public openGroupDialog(){
+this.router.navigate(['admin/addMails'])
+}
   public initDataSource(data:any){
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort; 
   } 
 
-  public unApprove(review:any){  
-    const index: number = this.dataSource.data.findIndex(x => x.id == review.id); 
-    if(index !== -1){
-      review.statusId = 2; 
-      this.dataSource.data[index] = review;
-    } 
-  }
 
-  public remove(review:any) {
-    const index: number = this.dataSource.data.indexOf(review);    
-    if (index !== -1) {
-      const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
-			let dialogRef = this.appService.openConfirmDialog(null, message);
-			dialogRef.afterClosed().subscribe(dialogResult => {
-				if(dialogResult){ 
-          this.dataSource.data.splice(index,1);
-          this.initDataSource(this.dataSource.data); 
-				}
-			});  
-    } 
-  } 
+  
 
 }
