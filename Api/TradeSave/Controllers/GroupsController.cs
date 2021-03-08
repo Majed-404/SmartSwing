@@ -94,11 +94,11 @@ namespace TradeSave.Controllers
             return Ok("Failed");
         }
 
-        [HttpPost("Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteGroup(int Id)
         {
             var Group = await _db.groups.FindAsync(Id);
-            var UserGroup = await _db.Usergroups.FindAsync(Id);
+            var UserGroup = _db.Usergroups.FirstOrDefault(a=>a.GroupId==Id);
             if (Group == null)
             {
                 return Ok($"Group with Id = {Id} cannot be found");
@@ -106,11 +106,17 @@ namespace TradeSave.Controllers
             else if(UserGroup!=null)
             {
                     _db.groups.Remove(Group);
+                   _db.Usergroups.Remove(UserGroup);
                     await _db.SaveChangesAsync();
                     return Ok("Success");
             }
-
-            return Ok("Failed");
+            else
+            {
+                _db.groups.Remove(Group);
+                await _db.SaveChangesAsync();
+                return Ok("Success");
+            }
+            
         }
 
         [HttpPost("AddUserToGroup")]

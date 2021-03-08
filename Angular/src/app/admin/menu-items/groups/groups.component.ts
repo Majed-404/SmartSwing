@@ -31,7 +31,7 @@ export class GroupsComponent implements OnInit {
   ngOnInit(): void {
     this.getGroupList();
   }
-getGroupList(){
+public getGroupList(){
   debugger
   this.userManagemntService.getGroups().subscribe(response => {
     this.groups=<Group[]>response;
@@ -46,16 +46,12 @@ getGroupList(){
   } 
  
   public addGroup(group: Group) {
-    this.userManagemntService.addGroup(group).subscribe(response=>{
-        //if(response){
-            this.getGroupList();
-       // }
-    });
+    this.userManagemntService.addGroup(group).subscribe();
 }
 public updateGroup(group: Group) {
     this.userManagemntService.updateGroup(group).subscribe(response=>{
         //if(response){
-          this.getGroupList();
+          //this.getGroupList();
         //}
     });
 }
@@ -86,6 +82,20 @@ public updateGroup(group: Group) {
     });
   
 }
+
+public deleteGroup(group: Group){
+debugger
+  this.userManagemntService.deleteGroup(group.id).subscribe((response) => {
+    if(response === true){
+      const index = this.groups.indexOf(group, 0);
+      if(index > -1){
+        this.groups.splice(index, 1);
+      }
+    } else { alert("Som Thing Bad Happen !");}
+  })
+}
+
+
   // public openGroupDialog(group:Group){
   //   const dialogRef = this.appService.openDialog(GroupDialogComponent, group, 'theme-dialog');
   //   dialogRef.afterClosed().subscribe(grp => {  

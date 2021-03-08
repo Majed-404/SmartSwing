@@ -14,7 +14,7 @@ import { AdminMails, reviews } from './reviews';
   styleUrls: ['./reviews.component.scss']
 })
 export class ReviewsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'subject', 'createDate', 'isSent', 'sendDate', 'ispublic', 'actions'];
+  displayedColumns: string[] = ['id', 'subject', 'createDate', 'isSent', 'sendDate', 'ispublic'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
