@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,12 @@ namespace TradeSave.Controllers
     public class AdminMailsController : ControllerBase
     {
         private readonly TradSaveContext _db;
+        private readonly SecurityContext _dbSecurity;
 
-        public AdminMailsController(TradSaveContext db)
+        public AdminMailsController(TradSaveContext db, SecurityContext dbSecurity)
         {
             _db = db;
+            _dbSecurity = dbSecurity;
         }
 
         [HttpGet("ListAdminMails")]
@@ -124,5 +128,54 @@ namespace TradeSave.Controllers
 
             return Ok("Failed");
         }
+
+        private static MimeEntity CreateMailBody(string body)
+        {
+            BodyBuilder bodyBuilder = new BodyBuilder();
+            bodyBuilder.TextBody = body;
+            return bodyBuilder.ToMessageBody();
+        }
+
+        [HttpPost("SendMail")]
+        public async Task<IActionResult> SendMail(CreateAdminMailsViewModel createAdminMailsViewModel)
+        {
+            MimeMessage message = new MimeMessage();
+            MailboxAddress from = new MailboxAddress("eng.samarnasr@gmail.com", "eng.samarnasr@gmail.com");
+            message.From.Add(from);
+            
+            List<string> usersId = _db.Usergroups.Where(a => a.GroupId == createAdminMailsViewModel.GroupId)
+                .Select(a=>a.UserId).ToList();
+            foreach (var item in usersId)
+            {
+                List<string> usersMails = new List<string>();
+                string userMail = _dbSecurity.Users.FirstOrDefault(async => async.Id == item).Email;
+                usersMails.Add(userMail);
+                MailboxAddress to = new MailboxAddress(userMail, userMail);
+                message.To.Add(to);
+            }
+
+            message.Subject = createAdminMailsViewModel.Subject;
+
+            message.Body = CreateMailBody(createAdminMailsViewModel.body);
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                                   //host              port
+                client.Connect("smpt-relay.gmail.com", 25, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
+                client.AuthenticationMechanisms.Remove("XQAUTH2");
+                await client.SendAsync(message);
+                client.Disconnect(true);
+                client.Dispose();
+                return Ok("Success"); 
+            }
+            catch(Exception ex)
+            {
+                return Ok("faild");
+            }
+
+            
+        }
     }
+    
+
 }

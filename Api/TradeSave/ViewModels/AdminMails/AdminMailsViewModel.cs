@@ -9,6 +9,7 @@ namespace TradeSave.ViewModels.AdminMails
     {
         public int Id { get; set; }
         public string Subject { get; set; }
+        public string body { get; set; }
         public string CreateDate { get; set; }
         public bool IsSent { get; set; }
         public string SendDate { get; set; }

@@ -31,9 +31,9 @@ public adminMails:AdminMails[];
     this.userManagement.getAdminMails().subscribe(response=>{
       this.adminMails=<AdminMails[]>response;
       this.initDataSource(this.adminMails); 
-    })
+    });
   }
-public openGroupDialog(){
+public openCreateMail(){
 this.router.navigate(['admin/addMails'])
 }
   public initDataSource(data:any){
