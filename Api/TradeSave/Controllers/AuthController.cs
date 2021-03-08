@@ -182,10 +182,10 @@ namespace TradeSave.Controllers
                 IdentityResult result = await _roleManager.CreateAsync(identityRole);
                 if (result.Succeeded)
                 {
-                    return Ok("Success !");
+                    return Ok(true);
                 }
             }
-            return Ok("Failed !");
+            return Ok(false);
         }
 
         [HttpGet("GetRoleById")]
@@ -226,11 +226,11 @@ namespace TradeSave.Controllers
 
                 if (result.Succeeded)
                 {
-                    return Ok("Success");
+                    return Ok(true);
                 }
             }
 
-            return Ok("Failed");
+            return Ok(false);
         }
 
 

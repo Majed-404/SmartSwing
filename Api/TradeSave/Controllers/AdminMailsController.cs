@@ -50,10 +50,10 @@ namespace TradeSave.Controllers
                 await _db.AdminEmails.AddAsync(adminMail);
                 await _db.SaveChangesAsync();
 
-                return Ok("Success !");
+                return Ok(true);
 
             }
-            return Ok("Failed !");
+            return Ok(false);
         }
 
         [HttpGet("GetAdminMailById")]
@@ -103,12 +103,12 @@ namespace TradeSave.Controllers
                     AdminMail.GroupId = model.GroupId;
                     _db.AdminEmails.Update(AdminMail);
                     await _db.SaveChangesAsync();
-                    return Ok("Success");
+                    return Ok(true);
                 }
 
             }
 
-            return Ok("Failed");
+            return Ok(false);
         }
 
         [HttpPost("Delete")]
@@ -123,10 +123,10 @@ namespace TradeSave.Controllers
             {
                 _db.AdminEmails.Remove(AdminMail);
                 await _db.SaveChangesAsync();
-                return Ok("Success");
+                return Ok(true);
             }
 
-            return Ok("Failed");
+            return Ok(false);
         }
 
         private static MimeEntity CreateMailBody(string body)
@@ -140,7 +140,7 @@ namespace TradeSave.Controllers
         public async Task<IActionResult> SendMail(CreateAdminMailsViewModel createAdminMailsViewModel)
         {
             MimeMessage message = new MimeMessage();
-            MailboxAddress from = new MailboxAddress("eng.samarnasr@gmail.com", "eng.samarnasr@gmail.com");
+            MailboxAddress from = new MailboxAddress("notificationservice@Smart-Swing.com", "www.Smart-Swing.com");
             message.From.Add(from);
             
             List<string> usersId = _db.Usergroups.Where(a => a.GroupId == createAdminMailsViewModel.GroupId)
@@ -161,16 +161,17 @@ namespace TradeSave.Controllers
             {
                 SmtpClient client = new SmtpClient();
                                    //host              port
-                client.Connect("smpt-relay.gmail.com", 25, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
+                client.Connect("relay-hosting.secureserver.net", 25, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
+                client.Authenticate("AKIAJNMMSQPOKISDZKPA", "AssxZzfyl1CRV4PvNJsy1oef7XHCF4CtTVteDxXygNE7");
                 client.AuthenticationMechanisms.Remove("XQAUTH2");
                 await client.SendAsync(message);
                 client.Disconnect(true);
                 client.Dispose();
-                return Ok("Success"); 
+                return Ok(true); 
             }
             catch(Exception ex)
             {
-                return Ok("faild");
+                return Ok(false);
             }
 
             

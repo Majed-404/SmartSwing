@@ -46,7 +46,11 @@ public getGroupList(){
   } 
  
   public addGroup(group: Group) {
-    this.userManagemntService.addGroup(group).subscribe();
+    this.userManagemntService.addGroup(group).subscribe(response=>{
+        if(response){
+            this.getGroupList();
+       }
+    });
 }
 public updateGroup(group: Group) {
     this.userManagemntService.updateGroup(group).subscribe(response=>{

@@ -45,10 +45,10 @@ namespace TradeSave.Controllers
                  await _db.groups.AddAsync(group);
                 await _db.SaveChangesAsync();
 
-                return Ok("Success !");
+                return Ok(true);
                 
             }
-            return Ok("Failed !");
+            return Ok(false);
         }
 
         [HttpGet("GetGroupById")]
@@ -86,12 +86,12 @@ namespace TradeSave.Controllers
                     Group.Name = model.Name;
                     _db.groups.Update(Group);
                     await _db.SaveChangesAsync();
-                    return Ok("Success");
+                    return Ok(true);
                 }
                 
             }
 
-            return Ok("Failed");
+            return Ok(false);
         }
 
         [HttpDelete("Delete")]
@@ -108,13 +108,13 @@ namespace TradeSave.Controllers
                     _db.groups.Remove(Group);
                    _db.Usergroups.Remove(UserGroup);
                     await _db.SaveChangesAsync();
-                    return Ok("Success");
+                    return Ok(true);
             }
             else
             {
                 _db.groups.Remove(Group);
                 await _db.SaveChangesAsync();
-                return Ok("Success");
+                return Ok(true);
             }
             
         }
