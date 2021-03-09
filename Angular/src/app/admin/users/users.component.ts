@@ -9,7 +9,8 @@ import { AppUsersService } from './_services/app.users.service';
 import { response } from 'express';
 import { UserGroupDialogComponent } from './user-group-dialog/user-group-dialog.component';
 import { UserManagemntService } from '../menu-items/user-managemnt.service';
-import { UserGroup } from 'src/app/app.models';
+import { UserGroup, UserRole } from 'src/app/app.models';
+import { UserRoleDialogComponent } from './user-role-dialog/user-role-dialog.component';
 
 @Component({
     selector: 'app-users',
@@ -103,7 +104,14 @@ export class UsersComponent implements OnInit {
             }
         });
     }
+    public addUserRole(userRole: UserRole){
+        this.usersService.addUserToRole(userRole).subscribe(response => {
 
+            if(response){
+                this.getUsersList();
+            }
+        });
+    }
     public openUserDialog(user) {
         let dialogRef = this.dialog.open(AppUserDialogComponent, {
             data: user
@@ -130,5 +138,16 @@ export class UsersComponent implements OnInit {
             
         });
     }
+    public openUserRoleDialog(user){
 
+        let dialogRef = this.dialog.open(UserRoleDialogComponent, {
+            data: user
+        });
+
+        dialogRef.afterClosed().subscribe(userRole=> {
+            
+                this.addUserRole(userRole);
+            
+        });
+    }
 }

@@ -22,7 +22,7 @@ export class UserGroupDialogComponent implements OnInit {
               public fb: FormBuilder, 
               @Inject(MAT_DIALOG_DATA) public userId: string,
               public userManagementService: UserManagemntService,
-              public usersService: UsersService,) { }
+              public usersService: UsersService) { }
 
   ngOnInit(): void { 
     debugger

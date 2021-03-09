@@ -1,1 +1,30 @@
-<p>user-role-dialog works!</p>
+<div class="header bg-primary">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <h2 class="fw-500 secondary-font">Add User to Role</h2>
+        <app-dialog-header-controls [dialogRef]="dialogRef"></app-dialog-header-controls> 
+    </div>   
+</div>  
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off" class="pt-3">
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            <div fxFlex="100">
+                <mat-label>Role</mat-label> 
+                <mat-form-field  appearance="outline" class="w-100 mt-1">
+                    <mat-select formControlName="roleId">
+                        <mat-option *ngFor="let role of userRole" [value]="role.id">
+                            {{role.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field> 
+            </div> 
+               
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100"> 
+            <button mat-raised-button color="warn" type="button" mat-dialog-close>Close</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+        </div> 
+    </div>
+</form> 
+ 

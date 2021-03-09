@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, AppUser, UserRegiste } from './user.model';
-import { UserGroup } from 'src/app/app.models';
+import { UserGroup, UserRole } from 'src/app/app.models';
 
 @Injectable()
 export class UsersService {
@@ -37,6 +37,8 @@ export class UsersService {
     // register(user: UserRegiste): Observable<any>{
     //     return this.http.post(this.apiUrl+"Register", user);
     //  }
-
+    public addUserToRole(userRole: UserRole){
+        return this.http.post(this.groupApiUrl+"User/AddUserToRloe", userRole)
+      }
      
 } 

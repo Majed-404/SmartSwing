@@ -24,7 +24,7 @@ export class UserManagemntService {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
     })
-};
+ };
 
   constructor(public http:HttpClient) { }
 
@@ -35,7 +35,8 @@ export class UserManagemntService {
     return this.http.get(this.apiUrl + "Auth/ListRoles", this.httpOptions);
   }
   public createRole(role:Role): Observable<any> {
-    return this.http.post(this.apiUrl + "Auth/CreateRole", role, this.httpOptions);
+    
+    return this.http.post(this.apiUrl + "Auth/CreateRole", role,this.httpOptions);
   }
 
   public editRole(role:Role): Observable<any> {

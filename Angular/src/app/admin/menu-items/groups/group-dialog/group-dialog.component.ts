@@ -29,6 +29,7 @@ export class GroupDialogComponent implements OnInit {
   }
 
   public onSubmit(){ 
+
     if(this.form.valid){
       this.userMangmentService.addGroup(this.form.value);
       this.dialogRef.close(this.form.value);

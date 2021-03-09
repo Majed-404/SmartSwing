@@ -121,6 +121,14 @@ export class UserGroup {
 
                 
 }
+export class UserRole {
+    constructor(
+        //public id: number,
+                public userId: string,
+                public roleId: string){ }
+
+                
+}
 
 export class Pagination {
     constructor(public page: number,

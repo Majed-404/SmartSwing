@@ -29,6 +29,7 @@ export class RoleDialogComponent implements OnInit {
   }
 
   public onSubmit(){ 
+    
     if(this.form.valid){
       this.userManagementService.createRole(this.form.value);
       this.dialogRef.close(this.form.value);

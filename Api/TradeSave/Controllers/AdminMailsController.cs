@@ -161,8 +161,10 @@ namespace TradeSave.Controllers
             {
                 SmtpClient client = new SmtpClient();
                                    //host              port
-                client.Connect("relay-hosting.secureserver.net", 25, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
+                
+                client.Connect("email-smtp.us-west-2.amazonaws.com", 587, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
                 client.Authenticate("AKIAJNMMSQPOKISDZKPA", "AssxZzfyl1CRV4PvNJsy1oef7XHCF4CtTVteDxXygNE7");
+                
                 client.AuthenticationMechanisms.Remove("XQAUTH2");
                 await client.SendAsync(message);
                 client.Disconnect(true);
