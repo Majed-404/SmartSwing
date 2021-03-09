@@ -54,9 +54,9 @@ public getGroupList(){
 }
 public updateGroup(group: Group) {
     this.userManagemntService.updateGroup(group).subscribe(response=>{
-        //if(response){
-          //this.getGroupList();
-        //}
+        if(response){
+          this.getGroupList();
+        }
     });
 }
 

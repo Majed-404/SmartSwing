@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, AppUser, UserRegiste } from './user.model';
+import { UserGroup } from 'src/app/app.models';
 
 @Injectable()
 export class UsersService {
     public url = "api/users";
-    public apiUrl = "http://localhost:49974/api/Auth/"
+    public apiUrl = "http://localhost:49974/api/Auth/";
+    public groupApiUrl = "http://localhost:49974/api/"
     constructor(public http: HttpClient) { }
 
     getUsers(): Observable<User[]> {
@@ -28,6 +30,10 @@ export class UsersService {
     deleteUser(id: number) {
         return this.http.delete(this.url + "/" + id);
     }
+
+    public addUserToGroup(userGroup: UserGroup){
+        return this.http.post(this.groupApiUrl+"Groups/AddUserToGroup", userGroup)
+      }
     // register(user: UserRegiste): Observable<any>{
     //     return this.http.post(this.apiUrl+"Register", user);
     //  }

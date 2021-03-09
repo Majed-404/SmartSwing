@@ -7,6 +7,9 @@ import { UsersService } from './users.service';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { AppUsersService } from './_services/app.users.service';
 import { response } from 'express';
+import { UserGroupDialogComponent } from './user-group-dialog/user-group-dialog.component';
+import { UserManagemntService } from '../menu-items/user-managemnt.service';
+import { UserGroup } from 'src/app/app.models';
 
 @Component({
     selector: 'app-users',
@@ -50,6 +53,7 @@ export class UsersComponent implements OnInit {
         this.users = null; //for show spinner each time
         this.usersService.getUsers().subscribe(users => this.users = users);
     }
+
     public addUser(user: AppUser) {
         this.appUsersService.addUser(user).subscribe(response=>{
             if(response){
@@ -57,6 +61,7 @@ export class UsersComponent implements OnInit {
             }
         });
     }
+
     public updateUser(user: AppUser) {
         this.appUsersService.updateUser(user).subscribe(response=>{
             if(response){
@@ -90,6 +95,15 @@ export class UsersComponent implements OnInit {
         // }
     }
 
+    public addUserGroup(usergroup: UserGroup){
+        this.usersService.addUserToGroup(usergroup).subscribe(response => {
+
+            if(response){
+                this.getUsersList();
+            }
+        });
+    }
+
     public openUserDialog(user) {
         let dialogRef = this.dialog.open(AppUserDialogComponent, {
             data: user
@@ -102,6 +116,19 @@ export class UsersComponent implements OnInit {
             }
         });
       
+    }
+
+    public openUserGroupDialog(user){
+
+        let dialogRef = this.dialog.open(UserGroupDialogComponent, {
+            data: user
+        });
+
+        dialogRef.afterClosed().subscribe(userGroup=> {
+            
+                this.addUserGroup(userGroup);
+            
+        });
     }
 
 }

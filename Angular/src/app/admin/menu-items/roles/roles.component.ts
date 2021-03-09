@@ -16,11 +16,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RolesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'edit', 'remove'];
+  displayedColumns: string[] = ['id', 'name', 'edit'];
   dataSource: MatTableDataSource<Role>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  public role : Role;
+  public roles : Role[];
 
   constructor(public appService:AppService,
     public userManagemntService:UserManagemntService,
@@ -30,11 +30,14 @@ export class RolesComponent implements OnInit {
   ngOnInit(): void {
     this.getRolesList();
   }
+
   getRolesList(){
-  this.userManagemntService.getRolesList().subscribe((roles:Role[]) => {
-    this.initDataSource(roles); 
+  this.userManagemntService.getRolesList().subscribe((response) => {
+   this.roles = <Role[]>response;
+    this.initDataSource(this.roles); 
   })
-}
+ }
+
   public initDataSource(data:any){
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
@@ -42,41 +45,46 @@ export class RolesComponent implements OnInit {
   } 
 
   public addRole(role: Role){
+    debugger;
     this.userManagemntService.createRole(role).subscribe( response => {
-      this.getRolesList();
-    })
+      if(response){
+        this.getRolesList();
+      }
+    });
   }
 
   public updataRole(role){
     this.userManagemntService.editRole(role).subscribe(response => {
-      this.getRolesList();
+      if(response){
+        this.getRolesList();
+      }
     })
   }
 
-  public remove(role:Role) {
-    // const index: number = this.dataSource.data.indexOf(Role);    
-    // if (index !== -1) {
-    //   const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
-		// 	let dialogRef = this.appService.openConfirmDialog(null, message);
-		// 	dialogRef.afterClosed().subscribe(dialogResult => {
-		// 		if(dialogResult){ 
-    //       this.dataSource.data.splice(index,1);
-    //       this.initDataSource(this.dataSource.data); 
-		// 		}
-		// 	});  
-    } 
+  // public remove(role:Role) {
+  //   // this.userManagemntService.deleteGroup(role.id).subscribe((response) => {
+  //   //   if(response === true){
+  //   //     const index = this.groups.indexOf(group, 0);
+  //   //     if(index > -1){
+  //   //       this.groups.splice(index, 1);
+  //   //     }
+  //   //   } else { alert("Som Thing Bad Happen !");}
+  //   // }) 
+  // }
     
-    public openRoleDialog(role:Role){
+  public openRoleDialog(role:Role){
       let dialogRef = this.dialog.open(RoleDialogComponent, {
         data: role
       });
+
       dialogRef.afterClosed().subscribe(role => {
+        
         if(role){
           (role.id) ? this.updataRole(role) : this.addRole(role);
         }
-      })
-    }
-
+      });
+  }
+  
 
   // public openRoleDialog(role:Role){
   //   debugger

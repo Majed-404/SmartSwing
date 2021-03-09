@@ -114,7 +114,9 @@ export class Group {
 } 
 
 export class UserGroup {
-    constructor(public userId: string,
+    constructor(
+        //public id: number,
+                public userId: string,
                 public groupId: number){ }
 
                 

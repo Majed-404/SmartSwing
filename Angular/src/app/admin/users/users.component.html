@@ -40,11 +40,11 @@
                 <span (mouseleave)="menuTrigger.closeMenu()">
                     <button mat-menu-item (click)="openUserDialog(user)">
                         <mat-icon>mode_edit</mat-icon>
-                        <span>Assign To Group</span>
-                    </button>
-                    <button mat-menu-item (click)="openUserDialog(user)">
-                        <mat-icon>mode_edit</mat-icon>
                         <span>Assign To Role</span>
+                    </button>
+                    <button mat-menu-item (click)="openUserGroupDialog(user.id)">
+                        <mat-icon>add_to_queue</mat-icon>
+                        <span>Assign To Group</span>
                     </button>
                     <button mat-menu-item (click)="openUserDialog(user)">
                         <mat-icon>mode_edit</mat-icon>
