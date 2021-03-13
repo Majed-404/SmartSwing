@@ -19,8 +19,8 @@ export class RoleDialogComponent implements OnInit {
 
   ngOnInit(): void { 
     this.form = this.fb.group({
-      id: null,
-      name: [null, Validators.required]
+      // id: null,
+      roleName: [null, Validators.required]
     }); 
 
     if(this.role){

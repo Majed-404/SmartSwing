@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AppService } from 'src/app/app.service'; 
+import { AppSettings, Settings } from 'src/app/app.settings';
 import { CartOverviewComponent } from 'src/app/shared/cart-overview/cart-overview.component'; 
 import { ReservationDialogComponent } from 'src/app/shared/reservation-dialog/reservation-dialog.component';
 import { HomebarService } from './_services/homebar.service';
@@ -13,6 +14,7 @@ import { HomebarService } from './_services/homebar.service';
 export class Toolbar1Component implements OnInit {
 
   @Output() onMenuIconClick: EventEmitter<any> = new EventEmitter<any>(); 
+  
 
   public toggleSearchBar:boolean = false;
   
@@ -34,7 +36,10 @@ export class Toolbar1Component implements OnInit {
   apiData: Users[];
   filterData: Users[]=[];
 
-  constructor(public appService:AppService,public homebar:HomebarService ) { }
+  public settings:Settings;
+
+  constructor(public appService:AppService,public homebar:HomebarService,
+    public appSettings:AppSettings, ) {this.settings = this.appSettings.settings; }
 
   performData(filterBy: string): Users[] {
     filterBy = filterBy.toLocaleLowerCase();

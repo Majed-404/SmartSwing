@@ -35,7 +35,7 @@ export class AddMailsComponent implements OnInit {
   
 
   onSubmit(){
-
+    debugger
     console.log(this.mailsForm.value)
     if(this.mailsForm.valid){
        this.userManagementService.addAdminMails(this.mailsForm.value).subscribe(response=>{

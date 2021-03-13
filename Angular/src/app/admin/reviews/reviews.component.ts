@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service'; 
 import { UserManagemntService } from '../menu-items/user-managemnt.service';
 import { AdminMails, reviews } from './reviews';
+import { AdminMailService } from './_services/admin-mail.service';
 
 @Component({
   selector: 'app-reviews',
@@ -21,7 +22,8 @@ export class ReviewsComponent implements OnInit {
   public adminMails:AdminMails[];
 
   constructor(public appService:AppService,public router: Router,
-    public userManagement:UserManagemntService) { }
+    public userManagement:UserManagemntService,
+    public adminMailService: AdminMailService) { }
 
   ngOnInit(): void { 
     this.getMailsList(); 
@@ -44,15 +46,23 @@ export class ReviewsComponent implements OnInit {
 
 
   public remove(email:any) {
-    debugger
+   
     const index: number = this.dataSource.data.indexOf(email);    
     if (index !== -1) {
       const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
 			let dialogRef = this.appService.openConfirmDialog(null, message);
 			dialogRef.afterClosed().subscribe(dialogResult => {
 				if(dialogResult){ 
-          this.adminMails.splice(index,1);
-          this.initDataSource(this.dataSource.data); 
+
+          this.adminMailService.deleteMail(email.id).subscribe(response => {
+            if(response){
+              
+              this.getMailsList();
+            }
+            else {
+              alert("something bad happened ")
+            }
+          });
 				}
 			});  
     } 

@@ -34,6 +34,7 @@ export class UserManagemntService {
   public getRolesList(): Observable<any> {
     return this.http.get(this.apiUrl + "Auth/ListRoles", this.httpOptions);
   }
+
   public createRole(role:Role): Observable<any> {
     
     return this.http.post(this.apiUrl + "Auth/CreateRole", role,this.httpOptions);
@@ -56,6 +57,14 @@ export class UserManagemntService {
     return this.http.put(this.apiUrl + "Groups/EditGroup", group, this.httpOptions);
   }
 
+  public deleteGroup(id: number){
+  return this.http.delete(this.apiUrl+"Groups/Delete?Id="+id, this.httpOptions)
+  }
+
+  public editGroup(group: Group){
+  return this.http.put(this.apiUrl+"Groups/EditGroup", group, this.httpOptions)
+  }
+  
   public getAdminMails(): Observable<any> {
   return this.http.get(this.apiUrl + "AdminMails/ListAdminMails", this.httpOptions);
   }
@@ -64,13 +73,7 @@ export class UserManagemntService {
   return this.http.post(this.apiUrl + "AdminMails/CreateAdminMail", mail , this.httpOptions);
   }
 
-  public deleteGroup(id: number){
-  return this.http.delete(this.apiUrl+"Groups/Delete?Id="+id, this.httpOptions)
-  }
 
-  public editGroup(group: Group){
-  return this.http.put(this.apiUrl+"Groups/EditGroup", group, this.httpOptions)
-  }
 
   
 }
