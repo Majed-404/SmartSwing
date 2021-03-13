@@ -17,23 +17,6 @@
                                         <!-- <mat-error *ngIf="registerForm.controls.username.hasError('minlength')">Username isn't long enough, minimum of 6 characters</mat-error> -->
                                     </mat-form-field>
     
-                                    <mat-label>Attachment</mat-label>
-    
-                                    <div><mat-card>  
-                                        <mat-card-content>  
-                                            <!-- <ul>  
-                                                <li *ngFor="let file of files">  
-                                                    <mat-progress-bar [value]="file.progress"></mat-progress-bar>  
-                                                    <span id="file-label">  
-                                
-                                                    </span>  
-                                                </li>  
-                                            </ul>   -->
-                                        </mat-card-content>  
-                                        
-                                    </mat-card><input type="file" #fileInput id="fileUpload" name="fileUpload"  accept="image/*" style="display:none;" /></div>
-                                
-    
                                     <!-- <div fxFlex="40">  
                                     <app-image-upload [fileSize]="400"></app-image-upload> 
                                     </div> -->
@@ -46,14 +29,14 @@
                                     <!-- </mat-form-field> -->
     
                                     <div class="container">
-                                        <div class="row pt-5">
+                                        <div class="row editor">
                                           <div class="col-md-8">
                                               <div class="form-group">
-                                                <label for="editor">
-                                                  <h3>Body</h3>
-                                                </label>
-                                                <quill-editor [styles]="{'height': '300px'}" formControlName="body"></quill-editor>
-                                              </div>
+                                                 <label for="editor">
+                                                   <h3>Body</h3>
+                                                 </label>
+                                                 <quill-editor [styles]="{'height': '300px'}" formControlName="body"></quill-editor>
+                                               </div>
                                           </div>
                                         </div>
                                     </div>
@@ -65,15 +48,23 @@
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field> 
-                                    <mat-card-actions>  
-                                        <input mat-button type="button" value="Upload" color="warn" >  
-                                            <mat-icon>file_upload</mat-icon>  
-                                    </mat-card-actions>  
-                                    <div class="text-center mt-2"> 
+
+                                    <mat-card-actions>
+
+                                        <mat-form-field >
+                                            <mat-label>send test email to</mat-label>
+                                            <input matInput >
+                                          </mat-form-field>
+                                     
                                         <button mat-raised-button color="accent" class="uppercase" type="submit">
                                             Save
                                         </button>
-                                    </div> 
+
+                                        <button mat-raised-button color="primary" class="uppercase" type="submit">
+                                            Save Copy
+                                        </button>
+                                    </mat-card-actions>
+                                     
                                 </form>
                                 
                             </div>
