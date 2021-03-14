@@ -140,6 +140,30 @@ namespace TradeSave.Controllers
             return Ok(false);
         }
 
+        [HttpGet("ListUserGroups")]
+        public IActionResult ListUserGroups()
+        {
+            var groups = _db.Usergroups.ToList();
+            List<UserGroupListViewModel> listUserGroups=new List<UserGroupListViewModel>();
+            if (groups != null)
+            {
+                foreach (var item in groups)
+                {
+                    listUserGroups = new List<UserGroupListViewModel>();
+                    UserGroupListViewModel userGroupVm = new UserGroupListViewModel();
+                    userGroupVm.Id = item.Id;
+                    userGroupVm.Name = _db.groups.FirstOrDefault(a => a.Id == item.GroupId).Name;
+                    listUserGroups.Add(userGroupVm);
+                }
+                return Ok(listUserGroups);
+            }
+            else
+            {
+                return Ok("Groups is empty");
+            }
+            
+        }
+
         //[HttpPost("RemoveUserFromRloe")]
         //public async Task<IActionResult> RemoveUserFromGroup(UserGroupViewModel model)
         //{

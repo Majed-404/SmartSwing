@@ -141,6 +141,7 @@ namespace TradeSave.Controllers
         {
             MimeMessage message = new MimeMessage();
             MailboxAddress from = new MailboxAddress("notificationservice@Smart-Swing.com", "www.Smart-Swing.com");
+            //MailboxAddress from = new MailboxAddress("mahmoudaltayyeb1@gmail.com", "mahmoudaltayyeb1@gmail.com");
             message.From.Add(from);
             
             List<string> usersId = _db.Usergroups.Where(a => a.GroupId == createAdminMailsViewModel.GroupId)
@@ -160,9 +161,9 @@ namespace TradeSave.Controllers
             try
             {
                 SmtpClient client = new SmtpClient();
-                                   //host              port
-                
-                client.Connect("email-smtp.us-west-2.amazonaws.com", 587, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
+                //host              port 
+                client.CheckCertificateRevocation = false;
+                client.Connect("email-smtp.us-west-2.amazonaws.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
                 client.Authenticate("AKIAJNMMSQPOKISDZKPA", "AssxZzfyl1CRV4PvNJsy1oef7XHCF4CtTVteDxXygNE7");
                 
                 client.AuthenticationMechanisms.Remove("XQAUTH2");
