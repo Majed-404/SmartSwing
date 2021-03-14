@@ -28,7 +28,27 @@ namespace TradeSave.Controllers
         public IActionResult ListAdminMails()
         {
             var AdminMails = _db.AdminEmails.ToList();
-            return Ok(AdminMails);
+            List<AdminMailsViewModel> mailList = new List<AdminMailsViewModel>();
+            foreach (var item in AdminMails)
+            {
+                var mailsVm =(AdminMailsViewModel) (from g in _db.groups
+                              join gu in _db.Usergroups on g.Id equals gu.GroupId
+                              where gu.Id == item.Id
+                              select new AdminMailsViewModel()
+                              {
+                                  Id=item.Id,
+                                  attachment=item.attachment,
+                                  body=item.body,
+                                   CreateDate=item.CreateDate,
+                                   GroupName=g.Name,
+                                   Ispublic=item.Ispublic,
+                                   IsSent=item.IsSent,
+                                   SendDate=item.SendDate,
+                                   Subject=item.Subject
+                              }).FirstOrDefault();
+                mailList.Add(mailsVm);
+            }
+            return Ok(mailList);
         }
 
         [HttpPost("CreateAdminMail")]
@@ -48,7 +68,8 @@ namespace TradeSave.Controllers
                         Ispublic = model.Ispublic,
                         IsSent = model.IsSent,
                         SendDate = model.SendDate,
-                        GroupId = model.GroupId
+                        GroupId = model.GroupId,
+                        testMail=model.testMail
                     };
 
                     await _db.AdminEmails.AddAsync(adminMail);
@@ -90,7 +111,8 @@ namespace TradeSave.Controllers
                 Ispublic = model.Ispublic,
                 IsSent = model.IsSent,
                 SendDate = model.SendDate,
-                GroupId=model.GroupId
+                GroupId=model.GroupId,
+                testMail=model.testMail
             };
 
             return Ok(AdminMailModel);
@@ -116,6 +138,7 @@ namespace TradeSave.Controllers
                     AdminMail.IsSent = model.IsSent;
                     AdminMail.Ispublic = model.Ispublic;
                     AdminMail.GroupId = model.GroupId;
+                    AdminMail.testMail = model.testMail;
                     _db.AdminEmails.Update(AdminMail);
                     await _db.SaveChangesAsync();
                     return Ok(true);
@@ -152,27 +175,36 @@ namespace TradeSave.Controllers
         }
 
         [HttpPost("SendMail")]
-        public async Task<IActionResult> SendMail(CreateAdminMailsViewModel createAdminMailsViewModel)
+        public async Task<IActionResult> SendMail(int id, bool isTest)
         {
             MimeMessage message = new MimeMessage();
             MailboxAddress from = new MailboxAddress("notificationservice@Smart-Swing.com", "www.Smart-Swing.com");
             //MailboxAddress from = new MailboxAddress("mahmoudaltayyeb1@gmail.com", "mahmoudaltayyeb1@gmail.com");
             message.From.Add(from);
-            
-            List<string> usersId = _db.Usergroups.Where(a => a.GroupId == createAdminMailsViewModel.GroupId)
+            AdminEmail adminEmail = _db.AdminEmails.Find(id);
+            List<string> usersId = _db.Usergroups.Where(a => a.Id == adminEmail.GroupId)
                 .Select(a=>a.UserId).ToList();
-            foreach (var item in usersId)
+            if (isTest && adminEmail.testMail!=null)
             {
-                List<string> usersMails = new List<string>();
-                string userMail = _dbSecurity.Users.FirstOrDefault(async => async.Id == item).Email;
-                usersMails.Add(userMail);
-                MailboxAddress to = new MailboxAddress(userMail, userMail);
+                MailboxAddress to = new MailboxAddress(adminEmail.testMail, adminEmail.testMail);
                 message.To.Add(to);
             }
+            else
+            {
+                foreach (var item in usersId)
+                {
+                    List<string> usersMails = new List<string>();
+                    string userMail = _dbSecurity.Users.FirstOrDefault(async => async.Id == item).Email;
+                    usersMails.Add(userMail);
+                    MailboxAddress to = new MailboxAddress(userMail, userMail);
+                    message.To.Add(to);
+                }
+            }
+            
 
-            message.Subject = createAdminMailsViewModel.Subject;
+            message.Subject = adminEmail.Subject;
 
-            message.Body = CreateMailBody(createAdminMailsViewModel.body);
+            message.Body = CreateMailBody(adminEmail.body);
             try
             {
                 SmtpClient client = new SmtpClient();
