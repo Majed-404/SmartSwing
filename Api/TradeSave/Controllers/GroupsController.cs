@@ -149,7 +149,6 @@ namespace TradeSave.Controllers
             {
                 foreach (var item in groups)
                 {
-                    listUserGroups = new List<UserGroupListViewModel>();
                     UserGroupListViewModel userGroupVm = new UserGroupListViewModel();
                     userGroupVm.Id = item.Id;
                     userGroupVm.Name = _db.groups.FirstOrDefault(a => a.Id == item.GroupId).Name;

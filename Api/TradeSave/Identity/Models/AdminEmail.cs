@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace TradeSave.Identity.Models
         public string SendDate { get; set; }
         public bool Ispublic { get; set; }
         public string attachment { get; set; }
+
+        [EmailAddress]
+        public string testMail { get; set; }
 
         [ForeignKey("UserGroup")]
         public int? GroupId { get; set; }
