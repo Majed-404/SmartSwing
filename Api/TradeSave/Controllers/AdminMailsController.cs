@@ -34,27 +34,42 @@ namespace TradeSave.Controllers
         [HttpPost("CreateAdminMail")]
         public async Task<IActionResult> CreateAdminMail(CreateAdminMailsViewModel model)
         {
+
             if (ModelState.IsValid)
             {
-                AdminEmail adminMail = new AdminEmail
+                try
                 {
-                    Subject=model.Subject,
-                    attachment=model.attachment,
-                    CreateDate=model.CreateDate,
-                    Ispublic=model.Ispublic,
-                    IsSent=model.IsSent,
-                    SendDate=model.SendDate,
-                    GroupId=model.GroupId
-                };
+                    AdminEmail adminMail = new AdminEmail
+                    {
+                        Subject = model.Subject,
+                        body = model.body,
+                        attachment = model.attachment,
+                        CreateDate = model.CreateDate,
+                        Ispublic = model.Ispublic,
+                        IsSent = model.IsSent,
+                        SendDate = model.SendDate,
+                        GroupId = model.GroupId
+                    };
 
-                await _db.AdminEmails.AddAsync(adminMail);
-                await _db.SaveChangesAsync();
+                    await _db.AdminEmails.AddAsync(adminMail);
+                    await _db.SaveChangesAsync();
 
-                return Ok(true);
+                    return Ok(true);
 
+                }
+                catch (Exception ex)
+                {
+                    return Ok(false);
+                }
             }
-            return Ok(false);
+            else
+            {
+                return Ok(false);
+            }
         }
+            
+            
+            
 
         [HttpGet("GetAdminMailById")]
         public async Task<IActionResult> GetAdminMailById([FromBody] int id)
@@ -111,7 +126,7 @@ namespace TradeSave.Controllers
             return Ok(false);
         }
 
-        [HttpPost("Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteAdminMail(int Id)
         {
             var AdminMail = await _db.AdminEmails.FindAsync(Id);
