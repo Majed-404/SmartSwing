@@ -11,6 +11,7 @@ import { UserGroupDialogComponent } from './user-group-dialog/user-group-dialog.
 import { UserManagemntService } from '../menu-items/user-managemnt.service';
 import { UserGroup, UserRole } from 'src/app/app.models';
 import { UserRoleDialogComponent } from './user-role-dialog/user-role-dialog.component';
+import { AppService } from 'src/app/app.service';
 
 @Component({
     selector: 'app-users',
@@ -29,7 +30,8 @@ export class UsersComponent implements OnInit {
     constructor(public appSettings: AppSettings,
         public dialog: MatDialog,
         public usersService: UsersService,
-        public appUsersService: AppUsersService) {
+        public appUsersService: AppUsersService,
+        public appService: AppService) {
         this.settings = this.appSettings.settings;
     }
 
@@ -71,16 +73,37 @@ export class UsersComponent implements OnInit {
         });
     }
     public deleteUser(user: AppUser) {
-        this.appUsersService.deleteUser(user.id).subscribe(response => {
-            if (response === true) {
-                const index = this.appUsers.indexOf(user, 0);
-                if (index > -1) {
-                    this.appUsers.splice(index, 1);
+
+        const index: number = this.appUsers.indexOf(user);    
+        if (index !== -1) {
+        const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
+                let dialogRef = this.appService.openConfirmDialog(null, message);
+                dialogRef.afterClosed().subscribe(dialogResult => {
+                    if(dialogResult){ 
+
+                        this.appUsersService.deleteUser(user.id).subscribe(response => {
+                if(response){
+                
+                 this.appUsers.splice(index, 1);
                 }
-            } else {
-                alert("Some Thing Bad Happen !");
-            }
-        });
+                else {
+                alert("something bad happened ")
+                }
+            });
+                    }
+                });  
+        } 
+
+        // this.appUsersService.deleteUser(user.id).subscribe(response => {
+        //     if (response === true) {
+        //         const index = this.appUsers.indexOf(user, 0);
+        //         if (index > -1) {
+        //             this.appUsers.splice(index, 1);
+        //         }
+        //     } else {
+        //         alert("Some Thing Bad Happen !");
+        //     }
+        // });
     }
 
 

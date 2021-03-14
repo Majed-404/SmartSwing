@@ -105,8 +105,9 @@ export class Category {
                 public description: string){ }
 }   
 export class Role {
-    constructor(public id: string,
-                public name: string){ }
+    constructor(
+        // public id: string,
+                public roleName: string){ }
 } 
 export class Group {
     constructor(public id: number,

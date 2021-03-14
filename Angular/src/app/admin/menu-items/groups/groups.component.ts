@@ -88,15 +88,35 @@ public updateGroup(group: Group) {
 }
 
 public deleteGroup(group: Group){
-debugger
-  this.userManagemntService.deleteGroup(group.id).subscribe((response) => {
-    if(response === true){
-      const index = this.groups.indexOf(group, 0);
-      if(index > -1){
-        this.groups.splice(index, 1);
-      }
-    } else { alert("Som Thing Bad Happen !");}
-  })
+
+  const index: number = this.groups.indexOf(group);    
+        if (index !== -1) {
+        const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
+                let dialogRef = this.appService.openConfirmDialog(null, message);
+                dialogRef.afterClosed().subscribe(dialogResult => {
+                    if(dialogResult){ 
+
+                        this.userManagemntService.deleteGroup(group.id).subscribe(response => {
+                if(response){
+                
+                  this.getGroupList();
+                }
+                else {
+                alert("something bad happened ")
+                }
+            });
+                    }
+                });  
+        } 
+
+
+  // this.userManagemntService.deleteGroup(group.id).subscribe((response) => {
+  //   if(response === true){
+  //     const index = this.groups.indexOf(group, 0);
+  //     if(index > -1){
+  //       this.getGroupList();      }
+  //   } else { alert("Som Thing Bad Happen !");}
+  // })
 }
 
 

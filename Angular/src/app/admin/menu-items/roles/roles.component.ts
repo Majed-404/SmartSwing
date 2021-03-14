@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RolesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'edit'];
+  displayedColumns: string[] = ['name', 'edit'];
   dataSource: MatTableDataSource<Role>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -46,6 +46,7 @@ export class RolesComponent implements OnInit {
 
   public addRole(role: Role){
     debugger;
+    console.log(role);
     this.userManagemntService.createRole(role).subscribe( response => {
       if(response){
         this.getRolesList();
