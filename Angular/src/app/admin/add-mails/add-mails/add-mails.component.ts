@@ -12,6 +12,7 @@ import { UserManagemntService } from '../../menu-items/user-managemnt.service';
 export class AddMailsComponent implements OnInit {
   public mailsForm: FormGroup;
   public groups:Group[];
+  public listGroups: Group[];
 
   constructor(public userManagementService:UserManagemntService,
     public fb: FormBuilder,
@@ -19,17 +20,18 @@ export class AddMailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userManagementService.getGroups().subscribe(response=>{
-      this.groups=<Group[]>response;
+      this.groups=<Group[]>response;});
 
-    });
     this.mailsForm = this.fb.group({
       id: 0,
       subject: [null, Validators.required],
       attachment:[null],
       body:[null],
-      groupId:[null],
+      groupId:[null],});
 
-    });
+    this.userManagementService.getListUserGroups().subscribe(response => {
+      this.listGroups = <Group[]>response;});  
+      
   }
 
   

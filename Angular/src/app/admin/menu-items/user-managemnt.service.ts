@@ -73,7 +73,9 @@ export class UserManagemntService {
   return this.http.post(this.apiUrl + "AdminMails/CreateAdminMail", mail , this.httpOptions);
   }
 
-
+ public getListUserGroups(){
+   return this.http.get(this.apiUrl+"Groups/ListUserGroups", this.httpOptions)
+ }
 
   
 }

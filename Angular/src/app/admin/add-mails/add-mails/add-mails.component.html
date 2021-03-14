@@ -43,7 +43,7 @@
                                     <mat-label>Group</mat-label> 
                                     <mat-form-field  appearance="outline" class="w-100 mt-1">
                                         <mat-select formControlName="groupId">
-                                            <mat-option *ngFor="let grp of groups" [value]="grp.id">
+                                            <mat-option *ngFor="let grp of listGroups" [value]="grp.id">
                                                 {{grp.name}}
                                             </mat-option>
                                         </mat-select>
