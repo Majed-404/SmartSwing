@@ -56,15 +56,15 @@
                         </button>
                         <mat-menu #menu="matMenu" xPosition="before" overlapTrigger="true">
                             <span (mouseleave)="menuTrigger.closeMenu()">
-                                <button mat-menu-item >
+                                <button mat-menu-item (click)="sendToAll(mail.id)">
                                     <mat-icon>send</mat-icon>
                                     <span>Send To All</span>
                                 </button>
-                                <button mat-menu-item >
+                                <button mat-menu-item (click)="sendTestMail(mail.id )">
                                     <mat-icon>file_copy</mat-icon>
                                     <span>Send Test</span>
                                 </button>
-                                <button mat-menu-item >
+                                <button mat-menu-item  (click)="editMail(mail)">
                                     <mat-icon>mode_edit</mat-icon>
                                     <span>Edit</span>
                                 </button>

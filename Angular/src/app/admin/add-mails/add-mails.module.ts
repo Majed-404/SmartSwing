@@ -10,7 +10,8 @@ import { PipesModule } from 'src/app/theme/pipes/pipes.module';
 import { QuillModule } from 'ngx-quill';
 
 export const routes = [
-  { path: '', component: AddMailsComponent, pathMatch: 'full' }
+  { path: '', component: AddMailsComponent, pathMatch: 'full' },
+  //{ path: 'addMails/:id', component: AddMailsComponent }
 ];
 
 @NgModule({

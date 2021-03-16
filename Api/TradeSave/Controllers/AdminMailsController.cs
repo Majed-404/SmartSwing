@@ -33,7 +33,7 @@ namespace TradeSave.Controllers
             {
                 var mailsVm =(AdminMailsViewModel) (from g in _db.groups
                               join gu in _db.Usergroups on g.Id equals gu.GroupId
-                              where gu.Id == item.Id
+                              where gu.Id == item.GroupId
                               select new AdminMailsViewModel()
                               {
                                   Id=item.Id,
@@ -92,8 +92,9 @@ namespace TradeSave.Controllers
             
             
 
-        [HttpGet("GetAdminMailById")]
-        public async Task<IActionResult> GetAdminMailById([FromBody] int id)
+        [HttpGet]
+        [Route("GetAdminMailById/{id}")]
+        public async Task<IActionResult> GetAdminMailById( int id)
         {
             // Find the AdminMail by AdminMail ID
             var model = await _db.AdminEmails.FindAsync(id);
@@ -107,6 +108,7 @@ namespace TradeSave.Controllers
             {
                 Subject = model.Subject,
                 attachment = model.attachment,
+                body = model.body,
                 CreateDate = model.CreateDate,
                 Ispublic = model.Ispublic,
                 IsSent = model.IsSent,
@@ -118,14 +120,15 @@ namespace TradeSave.Controllers
             return Ok(AdminMailModel);
         }
 
-        [HttpPut("EditAdminMail")]
-        public async Task<IActionResult> EditAdminMail(EditAdminMailViewModel model)
+        [HttpPut]
+        [Route("EditAdminMail/{Id}")]
+        public async Task<IActionResult> EditAdminMail(int Id,[FromBody] EditAdminMailViewModel model)
         {
-            var AdminMail = await _db.AdminEmails.FindAsync(model.Id);
+            var AdminMail = await _db.AdminEmails.FindAsync(Id);
 
             if (AdminMail == null)
             {
-                return Ok($"AdminMail with Id = {model.Id} cannot be found");
+                return Ok($"AdminMail with Id = {Id} cannot be found");
             }
             else
             {

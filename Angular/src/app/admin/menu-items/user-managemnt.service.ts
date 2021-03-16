@@ -68,11 +68,15 @@ export class UserManagemntService {
   public getAdminMails(): Observable<any> {
   return this.http.get(this.apiUrl + "AdminMails/ListAdminMails", this.httpOptions);
   }
-
+  public getAdminMailsById(id): Observable<any> {
+    return this.http.get(this.apiUrl + "AdminMails/GetAdminMailById/"+id, this.httpOptions);
+    }
   public addAdminMails(mail:AdminMails): Observable<any> {
   return this.http.post(this.apiUrl + "AdminMails/CreateAdminMail", mail , this.httpOptions);
   }
-
+  public editAdminMails(id:number,mail:AdminMails): Observable<any> {
+    return this.http.post(this.apiUrl + "AdminMails/EditAdminMail/"+id, mail , this.httpOptions);
+    }
  public getListUserGroups(){
    return this.http.get(this.apiUrl+"Groups/ListUserGroups", this.httpOptions)
  }

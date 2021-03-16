@@ -53,14 +53,17 @@
 
                                         <mat-form-field >
                                             <mat-label>send test email to</mat-label>
-                                            <input matInput >
+                                            <input matInput formControlName="testMail">
                                         </mat-form-field>
                                      
-                                        <button mat-raised-button color="accent" class="uppercase" type="submit">
+                                        <button mat-raised-button color="accent" class="uppercase" type="submit"  *ngIf="isAddMode">
+                                            Add
+                                        </button>
+                                        <button mat-raised-button color="accent" class="uppercase" type="button" (click)="editMail()" *ngIf="!isAddMode">
                                             Save
                                         </button>
 
-                                        <button mat-raised-button color="primary" class="uppercase" type="submit">
+                                        <button mat-raised-button color="primary" class="uppercase" type="button" (click)="saveCopy()" *ngIf="!isAddMode">
                                             Save Copy
                                         </button>
                                     </mat-card-actions>

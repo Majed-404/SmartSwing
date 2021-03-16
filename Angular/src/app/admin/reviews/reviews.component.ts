@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator'; 
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table'; 
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service'; 
 import { UserManagemntService } from '../menu-items/user-managemnt.service';
-import { AdminMails, reviews } from './reviews';
+import { AdminListMails, AdminMails, reviews } from './reviews';
 import { AdminMailService } from './_services/admin-mail.service';
 
 @Component({
@@ -19,25 +20,28 @@ export class ReviewsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  public adminMails:AdminMails[];
+  public adminListMails:AdminListMails[];
 
   constructor(public appService:AppService,public router: Router,
-    public userManagement:UserManagemntService,
+    public userManagement:UserManagemntService,public snackBar: MatSnackBar,
     public adminMailService: AdminMailService) { }
 
   ngOnInit(): void { 
     this.getMailsList(); 
   }
+
   public getMailsList(){
     debugger
     this.userManagement.getAdminMails().subscribe(response=>{
-      this.adminMails=<AdminMails[]>response;
-      this.initDataSource(this.adminMails); 
+      this.adminListMails=<AdminListMails[]>response;
+      this.initDataSource(this.adminListMails); 
     });
   }
+
   public openCreateMail(){
   this.router.navigate(['admin/addMails'])
   }
+
   public initDataSource(data:any){
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
@@ -67,5 +71,42 @@ export class ReviewsComponent implements OnInit {
 			});  
     } 
   }  
+
+  public editMail(mail: AdminMails){
+
+    this.router.navigate(['admin/addMails' , mail])
+  }
+
+  public sendTestMail(id: number){
+
+    this.adminMailService.sendMail(id, true).subscribe(response => {
+      
+      let message = "";
+
+      if(response){
+        message = " Email Sent successfully!"; 
+        this.snackBar.open(message, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      } else {
+        message = " >> Send failed "
+        this.snackBar.open(message, '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      }
+    });
+  }
+
+  public sendToAll(id: number){
+
+    this.adminMailService.sendMail(id, false).subscribe(response => {
+      
+      let message = "";
+
+      if(response){
+        message = " Email Sent successfully!"; 
+        this.snackBar.open(message, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      } else {
+        message = " >> Send failed "
+        this.snackBar.open(message, '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      }
+    });
+  }
 
 }

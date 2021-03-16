@@ -16,7 +16,21 @@ export class AdminMails{
         public sendDate  :string,
         public ispublic  :boolean ,
         public attachment :string , 
-        public groupId  :string
+        public groupId  :string,
+        public testMail:string
         ){}
     
+}
+
+
+export class AdminListMails{
+    constructor(public id  :number ,
+        public subject :string , 
+        public createDate:string ,   
+        public isSent  :boolean ,
+        public sendDate  :string,
+        public ispublic  :boolean ,
+        public attachment :string ,
+        public testMail : string , 
+        public groupName  :string){}
 }
