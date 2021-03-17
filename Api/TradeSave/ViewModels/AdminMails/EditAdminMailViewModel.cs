@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace TradeSave.ViewModels.AdminMails
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class EditAdminMailViewModel : ControllerBase
+    
+    public class EditAdminMailViewModel 
     {
         public int Id { get; set; }
         public string Subject { get; set; }
