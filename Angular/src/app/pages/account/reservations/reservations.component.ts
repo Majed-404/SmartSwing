@@ -11,7 +11,7 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./reservations.component.scss']
 })
 export class ReservationsComponent implements OnInit { 
-  displayedColumns: string[] = ['id', 'date', 'time', 'guests', 'tableNumber', 'status.name', 'actions'];
+  displayedColumns: string[] = ['id', 'market', 'startDate', 'endDate', 'information'];
   dataSource: MatTableDataSource<Reservation>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort ) sort: MatSort;
@@ -36,18 +36,6 @@ export class ReservationsComponent implements OnInit {
     return pathString.split('.').reduce((o, i) => o[i], obj);
   }
 
-  public remove(reservation:Reservation) {
-    const index: number = this.dataSource.data.indexOf(reservation);    
-    if (index !== -1) {
-      const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
-			let dialogRef = this.appService.openConfirmDialog(null, message);
-			dialogRef.afterClosed().subscribe(dialogResult => {
-				if(dialogResult){ 
-          this.dataSource.data.splice(index,1);
-          this.initDataSource(this.dataSource.data); 
-				}
-			});  
-    } 
-  } 
+  
 
 }

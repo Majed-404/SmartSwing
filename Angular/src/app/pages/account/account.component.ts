@@ -14,14 +14,15 @@ export class AccountComponent implements OnInit {
   @ViewChild('sidenav') sidenav: any;
   public sidenavOpen:boolean = true;
   public links = [ 
-    { name: 'Dashboard', href: 'dashboard', icon: 'dashboard' }, 
+    // { name: 'Dashboard', href: 'dashboard', icon: 'dashboard' }, 
+    { name: 'Markets', href: 'markets', icon: 'store' }, 
+    { name: 'Add Subscription', href: 'favorites', icon: 'subscriptions' }, 
+    { name: 'Payment History', href: 'reservations', icon: 'history' },
+    { name: 'Payment Status', href: 'orders', icon: 'payment' },  
     { name: 'Profile', href: 'profile', icon: 'person' },
     { name: 'Password Change', href: 'password-change', icon: 'vpn_key' },  
-    { name: 'Addresses', href: 'addresses', icon: 'location_on' }, 
-    { name: 'Favorites', href: 'favorites', icon: 'favorite' }, 
-    { name: 'Reservations', href: 'reservations', icon: 'book_online' },
-    { name: 'Orders', href: 'orders', icon: 'list_alt' },  
     { name: 'Logout', href: '/login', icon: 'power_settings_new' },    
+    // { name: 'Addresses', href: 'addresses', icon: 'location_on' }, 
   ]; 
   constructor(public router:Router) { }
 

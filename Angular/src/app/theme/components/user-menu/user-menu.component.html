@@ -1,3 +1,4 @@
+
 <a mat-button [matMenuTriggerFor]="userMenu" #userMenuTrigger="matMenuTrigger">
     <mat-icon class="mat-icon-sm">person</mat-icon>
     <span fxShow="false" fxShow.gt-sm class="mx-1 uppercase">{{ 'ACCOUNT' | translate }}</span> 
@@ -10,7 +11,7 @@
             <p class="m-0">Emilio Verdines <br> <small><i>emilio_v</i></small></p>
         </div>
         <div class="divider"></div>
-        <a mat-menu-item routerLink="/account/dashboard"> 
+        <a mat-menu-item routerLink="/account/markets"> 
             <mat-icon class="mat-icon-sm">settings</mat-icon>
             <span>Account Settings</span> 
         </a>
@@ -19,12 +20,12 @@
             <span>My Properties</span> 
         </a> -->
         <a mat-menu-item routerLink="/account/favorites"> 
-            <mat-icon class="mat-icon-sm">favorite_border</mat-icon>
+            <mat-icon class="mat-icon-sm">subscriptions</mat-icon>
             <span [matBadge]="appService.Data.favorites.length" 
                   [matBadgeHidden]="appService.Data.favorites.length == 0"
                   matBadgeSize="small" 
                   matBadgeColor="warn" 
-                  matBadgeOverlap="false">Favorites</span> 
+                  matBadgeOverlap="false">Add Subscription</span> 
         </a>
         <!-- <a mat-menu-item routerLink="/compare"> 
             <mat-icon class="mat-icon-sm">compare_arrows</mat-icon> 

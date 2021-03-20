@@ -75,7 +75,7 @@ export class UserManagemntService {
   return this.http.post(this.apiUrl + "AdminMails/CreateAdminMail", mail , this.httpOptions);
   }
   public editAdminMails(id:number,mail:AdminMails): Observable<any> {
-    return this.http.post(this.apiUrl + "AdminMails/EditAdminMail/"+id, mail , this.httpOptions);
+    return this.http.put(this.apiUrl + "AdminMails/EditAdminMail/"+id, mail , this.httpOptions);
     }
  public getListUserGroups(){
    return this.http.get(this.apiUrl+"Groups/ListUserGroups", this.httpOptions)

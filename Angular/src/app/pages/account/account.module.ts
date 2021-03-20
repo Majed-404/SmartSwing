@@ -11,6 +11,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
+import { MarketsComponent } from './markets/markets.component';
 
 
 export const routes = [
@@ -25,7 +26,8 @@ export const routes = [
       { path: 'favorites', component: FavoritesComponent },
       { path: 'reservations', component: ReservationsComponent },
       { path: 'orders', component: OrdersComponent },
-      { path: 'orders/:id', component: OrderComponent } 
+      { path: 'orders/:id', component: OrderComponent }, 
+      { path: 'markets', component: MarketsComponent }, 
     ]
   }
 ];
@@ -41,7 +43,8 @@ export const routes = [
     FavoritesComponent,
     ReservationsComponent,
     OrdersComponent,
-    OrderComponent 
+    OrderComponent,
+    MarketsComponent 
   ],
   imports: [
     CommonModule,

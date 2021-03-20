@@ -4,6 +4,7 @@ import { MenuItem } from 'src/app/app.models';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-favorites',
@@ -11,39 +12,29 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'image', 'name', 'actions' ];
-  dataSource: MatTableDataSource<MenuItem>;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
   
-  constructor(public appService:AppService) { }
+  public paymentMethod: FormGroup;
+  public months = [];
+  public years = [];
+  constructor(public appService:AppService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.appService.Data.favorites);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
+    this.months = this.appService.getMonths();
+    this.years = this.appService.getYears();
+
+    this.paymentMethod = this.fb.group({
+      'cardHolderName': [null, Validators.required],
+      'cardNumber': [null, Validators.required],
+      'expiredMonth': [null, Validators.required],
+      'expiredYear': [null, Validators.required],
+      'cvv': [null, Validators.compose([Validators.required, Validators.minLength(3)])]
+    });
   }
 
-  public remove(menuItem:MenuItem) {
-    const index: number = this.dataSource.data.indexOf(menuItem);    
-    if (index !== -1) { 
-      const message = this.appService.getTranslateValue('MESSAGE.SURE_DELETE');
-			let dialogRef = this.appService.openConfirmDialog(null, message);
-			dialogRef.afterClosed().subscribe(dialogResult => {
-				if(dialogResult){ 
-          this.dataSource.data.splice(index,1);
-          this.dataSource = new MatTableDataSource<MenuItem>(this.dataSource.data);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-				}
-			}); 
-    } 
+  onSubmitForm(paymentMethod){
+    
   }
+  
 
-  public applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
 }

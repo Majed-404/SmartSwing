@@ -1,51 +1,46 @@
+
+<div _ngcontent-serverapp-c382="" fxflex="100" class="px-3 mb-4" ng-reflect-fx-flex="100" style="flex: 1 1 100%; box-sizing: border-box; max-width: 100%;">
+    <h1 _ngcontent-serverapp-c382="" class="fw-500 text-center secondary-font">Payment history</h1>
+</div>
+
 <div class="table-wrapper"> 
     <table mat-table [dataSource]="dataSource" matSort class="w-100">
     
         <!-- ID Column -->
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > <strong>ID</strong> </th>
             <td mat-cell *matCellDef="let reservation"> {{reservation.id}} </td>
         </ng-container>  
   
         <!-- Date Column -->
-        <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <ng-container matColumnDef="market">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+                	<strong style="color:green ">Market</strong> </th>
             <td mat-cell *matCellDef="let reservation"> {{reservation.date}}</td>
         </ng-container> 
     
         <!-- Time Column -->
-        <ng-container matColumnDef="time">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+        <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+                	<strong style="color:green ">Paid On</strong> </th>
             <td mat-cell *matCellDef="let reservation"> {{reservation.time}}</td>
         </ng-container>  
 
         <!-- Guests Column -->
-        <ng-container matColumnDef="guests">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Guests </th>
+        <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                 <strong style="color:green ">Expiration Date </strong></th>
             <td mat-cell *matCellDef="let reservation"> {{reservation.guests}}</td>
         </ng-container> 
 
         <!-- Table Number Column -->
-        <ng-container matColumnDef="tableNumber">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Table Number </th>
+        <ng-container matColumnDef="information">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+                <strong style="color:green ">Payment Info</strong> </th>
             <td mat-cell *matCellDef="let reservation"> {{reservation.tableNumber}}</td>
         </ng-container> 
 
-        <!-- Status Column -->
-        <ng-container matColumnDef="status.name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header="status.name"> Status </th>
-            <td mat-cell *matCellDef="let reservation"> {{reservation.status.name}}</td>
-        </ng-container> 
-  
-        <!-- Actions Column -->
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef> Remove </th>
-            <td mat-cell *matCellDef="let reservation"> 
-                <button mat-icon-button color="warn" (click)="remove(reservation)" matTooltip="Remove">
-                    <mat-icon>delete</mat-icon>
-                </button> 
-            </td>
-        </ng-container> 
+       
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let reservation; columns: displayedColumns;"></tr>

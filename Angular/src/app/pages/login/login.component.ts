@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     };
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+
       this.appUsersService.login(loginUser).subscribe(response => {
         if (response) {
           localStorage.clear();
           localStorage.setItem('token', 'Bearer ' + (response as UserToken).token);
           this.router.navigate(['/']);
         }
-      })
+      });
 
     }
   }
