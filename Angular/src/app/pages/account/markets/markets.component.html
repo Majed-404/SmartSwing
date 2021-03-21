@@ -20,12 +20,12 @@
             <div class="user-content" fxLayout="row" fxLayoutAlign="space-around center">
                 <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center">
 
-                    <img [src]="market.name" alt="user" width="60" class="d-block">                                           
-                    
+                    <img src="assets/images/flags/flags/{{market.imgName}}" alt="user" width="30" class="d-block">                                           
+               <!-- <img src="assets/images/flags/flags/ad.png" alt="user" width="60" class="d-block">  -->
                 </div>
                 <div fxFlex="30" fxFlex.xs="100" fxLayout="column">
                     <p fxLayout="row" fxLayoutAlign="start center">
-                        <strong style="color: navy;">{{market.name}}</strong>
+                        <strong style="color: navy;">{{market.mDesc}}</strong>
                     </p> 
                 </div>    
                 
@@ -42,18 +42,19 @@
             
             <div class="user-content" fxLayout="row" fxLayoutAlign="space-around center">
                 <div fxFlex="20" fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center">
+                    <img src="assets/images/flags/flags/{{market.imgName}}" alt="user" width="30" class="d-block">                                           
                     
-                    <img [src]="market.name" alt="user" width="60" class="d-block">
+                    <!-- <img [src]="market.name" alt="user" width="60" class="d-block"> -->
                 </div>
                 <div fxFlex="30" fxFlex.xs="100" fxLayout="column" >
                     <p fxLayout="row" fxLayoutAlign="start center">
-                        <strong style="color: navy;">{{market.name}}</strong>
+                        <strong style="color: navy;">{{market.mDesc}}</strong>
                     </p> 
                 </div> 
             </div>
         </mat-card>
     </div>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator> -->
 
 </div> 
 
