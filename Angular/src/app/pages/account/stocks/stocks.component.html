@@ -1,16 +1,16 @@
 
     <div >
-        <div class="search-bar" fxLayout="row" fxLayoutAlign="start center">
+        <div class="search-bar" fxLayout="row" fxLayoutAlign="center">
             <form method="get">
-                <mat-form-field *ngIf="toggleSearchBar">
+                <mat-form-field style="width: 400px;" >
                 <input type="text" 
                     style="background-color: azure;"
                     aria-label="Search"
                     [matAutocomplete]="auto"
                     class="mat-elevation-z3" 
+                    placeholder="Search for Stocks"
                     [formControl]="myControl"
                     matInput
-                    [class.show]="toggleSearchBar"
                     [(ngModel)] = "listFilter"
                     >
         
@@ -20,8 +20,8 @@
                     </mat-autocomplete>
                 </mat-form-field> 
         
-                <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button">
-                <mat-icon>search</mat-icon>
+                <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button" style="margin-left: 10px;">
+                <mat-icon >search</mat-icon>
                 </button>
             </form>
         </div>
