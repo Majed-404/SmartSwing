@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MarketsComponent implements OnInit {
 
+  
   markets: Markets[]= [{name: 'Reyad'},{name: "cairo"},{name: "dubai"},{name: "amman"},{name: "kwite"},{ name:"iraq"}];
 
   displayedColumns: string[] = ['image', 'name'];
@@ -25,6 +26,8 @@ export class MarketsComponent implements OnInit {
     this.initDataSource(this.markets)
   }
 
+ 
+
   onPageChanged($event){
 
   }
@@ -36,7 +39,7 @@ export class MarketsComponent implements OnInit {
   } 
 
   onClick(){
-    this.router.navigate(["/"]);
+    this.router.navigate(["/account/stocks"]);
   }
 
 }

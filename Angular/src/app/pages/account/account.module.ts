@@ -12,6 +12,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { MarketsComponent } from './markets/markets.component';
+import { StocksComponent } from './stocks/stocks.component';
 
 
 export const routes = [
@@ -28,6 +29,7 @@ export const routes = [
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/:id', component: OrderComponent }, 
       { path: 'markets', component: MarketsComponent }, 
+      { path: 'stocks', component: StocksComponent }, 
     ]
   }
 ];
@@ -44,7 +46,8 @@ export const routes = [
     ReservationsComponent,
     OrdersComponent,
     OrderComponent,
-    MarketsComponent 
+    MarketsComponent,
+    StocksComponent 
   ],
   imports: [
     CommonModule,
