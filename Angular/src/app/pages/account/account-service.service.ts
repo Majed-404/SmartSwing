@@ -19,4 +19,8 @@ export class AccountService {
     return this.http.get(this.apiUrl + "Markets/MarketList", this.httpOptions);
   }
 
+  public getStocksList(id): Observable<any> {
+    return this.http.get(this.apiUrl + "Markets/StockList/"+id, this.httpOptions);
+  }
+
 }

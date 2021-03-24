@@ -17,7 +17,7 @@ export class AppComponent {
               @Inject(PLATFORM_ID) private platformId: Object,
               public translate: TranslateService){
     this.settings = this.appSettings.settings;
-    translate.addLangs(['en','de','fr','ru','tr']);
+    translate.addLangs(['en','ar','de','fr','ru','tr']);
     translate.setDefaultLang('en'); 
     translate.use('en');
   }

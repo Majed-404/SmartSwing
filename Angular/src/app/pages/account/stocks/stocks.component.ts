@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { AccountService } from '../account-service.service';
 import { Stocks } from './stockes.model';
 
 @Component({
@@ -28,15 +29,21 @@ export class StocksComponent implements OnInit {
       console.log("set"+this.filterData.length);
   }
 
-  constructor() { }
+  constructor(public accountService:AccountService) { }
 
   ngOnInit(): void {
+    this.accountService.getStocksList(2).subscribe(data => {
+      this.stocks=data;
+      this.filterData=this.stocks;
+    });
   }
 
   public performData(filterBy: string): Stocks[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.stocks.filter((product: Stocks) =>
-      product.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    return this.stocks.filter((stck: Stocks) =>
+    stck.nmEnName.toLocaleLowerCase().indexOf(filterBy) !== -1
+    ||stck.nmSymbol.toLocaleLowerCase().indexOf(filterBy) !== -1
+    );
   }
 
 }
