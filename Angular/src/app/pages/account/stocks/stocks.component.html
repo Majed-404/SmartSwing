@@ -1,28 +1,133 @@
 
-    <div >
-        <div class="search-bar" fxLayout="row" fxLayoutAlign="center">
-            <form method="get">
-                <mat-form-field style="width: 400px;" >
-                <input type="text" 
-                    style="background-color: azure;"
-                    aria-label="Search"
-                    [matAutocomplete]="auto"
-                    class="mat-elevation-z3" 
-                    placeholder="Search for Stocks"
-                    [formControl]="myControl"
-                    matInput
-                    [(ngModel)] = "listFilter"
-                    >
+<div class="search-bar" fxLayout="row "  style="margin:0 15rem 2rem 15rem;">
+    <form method="get">
+        <!-- <mat-form-field style="width: 500px;" >
+            <input type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
+                class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
+                matInput [(ngModel)] = "listFilter" >
+
+            <mat-autocomplete  #auto="matAutocomplete" >
+                <mat-option *ngFor="let option of filterData" [value]="option">
+                {{option.name}}</mat-option>
+            </mat-autocomplete>
+        </mat-form-field>  -->
+        <ng-container>
+            <input  type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
+            class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
+            matInput [(ngModel)] = "listFilter" >
+
+        <mat-autocomplete  #auto="matAutocomplete" >
+            <mat-option *ngFor="let option of filterData" [value]="option">
+            {{option.name}}</mat-option>
+        </mat-autocomplete>
+        </ng-container>
+
+        <!-- <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button" style="margin-left: 10px;">
+            <mat-icon >search</mat-icon>
+        </button> -->
+    </form>
+</div>
+
+<mat-card class="menu-single ">
+    <div  fxLayout="row wrap" class="flex-wrapper">
         
-                    <mat-autocomplete  #auto="matAutocomplete" >
-                    <mat-option *ngFor="let option of filterData" [value]="option">
-                        {{option.name}}</mat-option>
-                    </mat-autocomplete>
-                </mat-form-field> 
-        
-                <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button" style="margin-left: 10px;">
-                <mat-icon >search</mat-icon>
-                </button>
-            </form>
-        </div>
+
+        <div fxFlex="100" class="px-3 mt-3">
+
+            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
+                <mat-tab  label="GENERAL">
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0" style="font-weight: 800; font-size: medium;">
+                        <mat-tab label="Overviow" >
+                            <div class="full-desc">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id nulla metus. Maecenas commodo turpis dui, porttitor tincidunt enim mollis a. Curabitur eu velit mi. Nullam congue turpis id metus sollicitudin, id cursus nulla laoreet. Proin commodo eu felis at malesuada. Nulla ac facilisis justo, eget vulputate ex. Nulla nec laoreet nulla. Cras auctor leo at diam congue, quis convallis urna pulvinar. Nunc ut mi nulla. Nunc ligula massa, vulputate sed scelerisque sit amet, dapibus semper est. Sed sed blandit turpis. Vestibulum id porttitor ligula, at iaculis ligula. Pellentesque vel tellus sit amet mauris aliquet bibendum id et lorem.</p>
+                                <ul class="px-2 mt-1">
+                                    <li>Phasellus eu justo dictum, varius eros ut, posuere sapien.</li>
+                                    <li>Nulla eu erat sit amet enim lobortis rhoncus.</li>
+                                    <li>Etiam eu mauris in massa convallis ornare non id ex.</li>
+                                    <li>Nam sagittis augue at pretium pharetra.</li>
+                                    <li>Sed a sem id massa egestas porta a sit amet felis.</li>
+                                    <li>Duis aliquam urna in sapien cursus consequat.</li>
+                                </ul>
+                                <p class="mt-1">Duis eu felis ultricies urna pharetra efficitur nec non elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur posuere eu justo eget mollis. Sed semper accumsan urna vel rutrum. Nulla condimentum quis lacus ut semper. Quisque at massa pretium, porta ligula ut, rutrum elit. Pellentesque et orci sit amet dolor laoreet tempor sed eu sem. Morbi lacinia pellentesque tellus euismod eleifend.</p>
+                                <p class="mt-1">Quisque fringilla eros id ligula luctus, a gravida augue sodales. Sed eget augue ut lectus condimentum volutpat. Morbi quis nunc viverra, gravida arcu quis, varius metus. Praesent tincidunt ipsum est, quis molestie ligula efficitur ut. Nunc interdum erat eu tortor maximus suscipit. Vivamus nec laoreet dui. Nullam dignissim laoreet metus quis pretium.</p>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Profile">
+                            <h1></h1>
+                            <div class="styled-table">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>الصناعة</th>
+                                            <th>القطاع</th>
+                                            <th>العمال</th>
+                                            <th>نوع سوق الأسهم</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>التصنيع الكيميائي</td>
+                                            <td>المواد الأساسية</td>
+                                            <td>33000</td>
+                                            <td>ORD</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p style="text-align: right; padding: 1rem;">
+                                الشركة السعودية للصناعات الأساسية مساهمة سعودية يقع مقرها في المملكة العربية السعودية. تعمل مع شركاتها التابعة في صناعة وتسويق و توزيع المواد الكيميائية؛ المغذيات الزراعية و المنتجات المعدنية في الاسواق العالمية. وتمارس الشركة أعمالها في القطاعات التالية: القطاع الكيميائي ويشمل الكيماويات والبوليمرات والكيماويات والمنتجات البلاستيكية ؛ قطاع المغذيات الزراعية ويشمل منتجات الأسمدة؛ قطاع المعادن ويشمل منتجات الصلب؛ قطاع الشركات ويشمل عمليات الشركات ومراكز التكنولوجيا والابتكار وأنشطة الاستثمار وأنشطة الشركة التابعة، شركة سابك للاستثمارات الصناعية (SIIC). وتشمل شركاتها التابعة الشركة السعودية الأوروبية ، الشركة العربية للبتروكيماويات شركة فيبر رينفورس ثيرموبلاستيك وغيرها.
+                            </p>
+                        </mat-tab>
+                        <mat-tab label="Historical Data">
+
+                        </mat-tab>
+                        <mat-tab label="Index Component">
+
+                        </mat-tab>
+                        
+                    </mat-tab-group>
+                </mat-tab>
+                <mat-tab label="CHART">
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                        <mat-tab label="Streaming Chart">
+                            <app-info-cards></app-info-cards>
+                        </mat-tab>
+                        <mat-tab label="Interactive Chart"></mat-tab>
+                    </mat-tab-group>
+                </mat-tab>
+                <mat-tab label="NEWS & ANALYSIS ">
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                        <mat-tab label="Analysis Opinion"></mat-tab>
+                        <mat-tab label="News"></mat-tab>
+                    </mat-tab-group>
+                </mat-tab>
+                <mat-tab label="FINANCIAL">
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                        <mat-tab label=" Financial Summary "></mat-tab>
+                        <mat-tab label="Income Statement"></mat-tab>
+                        <mat-tab label="Balance Sheet"></mat-tab>
+                        <mat-tab label="Cash Flow"></mat-tab>
+                        <mat-tab label="Ratio"></mat-tab>
+                        <mat-tab label="dividends"></mat-tab>
+                        <mat-tab label="Earning"></mat-tab>
+                    </mat-tab-group>
+                </mat-tab>
+                <mat-tab label="TECHNICAL  ">
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                        <mat-tab label="Technical Analysis "></mat-tab>
+                        <mat-tab label="Candlestick Patterns"></mat-tab>
+                        <mat-tab label="Consensus Estimates"></mat-tab>
+                    </mat-tab-group>
+                </mat-tab>
+                <mat-tab label="Reviews">
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                        <mat-tab label=""></mat-tab>
+                        <mat-tab label=""></mat-tab>
+                        <mat-tab label=""></mat-tab>
+                    </mat-tab-group>
+                </mat-tab>
+            </mat-tab-group>
+            
+        </div> 
     </div>
+</mat-card>

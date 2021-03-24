@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { InfoCardsComponent } from 'src/app/admin/dashboard/info-cards/info-cards.component';
 import { Stocks } from './stockes.model';
+
 
 @Component({
   selector: 'app-stocks',
@@ -9,6 +11,8 @@ import { Stocks } from './stockes.model';
   styleUrls: ['./stocks.component.scss']
 })
 export class StocksComponent implements OnInit {
+
+  public infocards : InfoCardsComponent
 
   public stocks : Stocks[] ;
   public filteredOptions: Observable<string[]>;
