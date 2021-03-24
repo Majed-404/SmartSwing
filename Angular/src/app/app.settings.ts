@@ -21,7 +21,7 @@ export class Settings {
 @Injectable()
 export class AppSettings {
     public settings = new Settings(
-        'Popina',    // theme name
+        'Smart Swing',    // theme name
         'red',       // red, green, blue, pink, purple, grey, orange-dark, custom
         1,           // 1 or 2  
         true,        // true = sticky, false = not sticky

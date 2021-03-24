@@ -13,6 +13,10 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { MarketsComponent } from './markets/markets.component';
 import { StocksComponent } from './stocks/stocks.component';
+import { InfoCardsComponent } from 'src/app/admin/dashboard/info-cards/info-cards.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardModule } from 'src/app/admin/dashboard/dashboard.module';
+
 
 
 export const routes = [
@@ -53,6 +57,9 @@ export const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
+    NgxChartsModule,
+    DashboardModule
+
   ]
 })
 export class AccountModule { }
