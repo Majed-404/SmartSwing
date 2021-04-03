@@ -1,32 +1,5 @@
 
-<div class="search-bar" fxLayout="row "  style="margin:0 15rem 2rem 15rem;">
-    <form method="get">
-        <!-- <mat-form-field style="width: 500px;" >
-            <input type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
-                class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
-                matInput [(ngModel)] = "listFilter" >
 
-            <mat-autocomplete  #auto="matAutocomplete" >
-                <mat-option *ngFor="let option of filterData" [value]="option">
-                {{option.name}}</mat-option>
-            </mat-autocomplete>
-        </mat-form-field>  -->
-        <ng-container>
-            <input  type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
-            class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
-            matInput [(ngModel)] = "listFilter" >
-
-        <mat-autocomplete  #auto="matAutocomplete" >
-            <mat-option *ngFor="let option of filterData" [value]="option">
-            {{option.name}}</mat-option>
-        </mat-autocomplete>
-        </ng-container>
-
-        <!-- <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button" style="margin-left: 10px;">
-            <mat-icon >search</mat-icon>
-        </button> -->
-    </form>
-</div>
 
 <mat-card class="menu-single ">
     <div  fxLayout="row wrap" class="flex-wrapper">

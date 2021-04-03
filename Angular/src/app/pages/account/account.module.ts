@@ -13,9 +13,9 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { MarketsComponent } from './markets/markets.component';
 import { StocksComponent } from './stocks/stocks.component';
-import { InfoCardsComponent } from 'src/app/admin/dashboard/info-cards/info-cards.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardModule } from 'src/app/admin/dashboard/dashboard.module';
+import { StocksMarketComponent } from './stocks-market/stocks-market.component';
 
 
 
@@ -34,6 +34,7 @@ export const routes = [
       { path: 'orders/:id', component: OrderComponent }, 
       { path: 'markets', component: MarketsComponent }, 
       { path: 'stocks', component: StocksComponent }, 
+      { path: 'stocksmarket', component: StocksMarketComponent }, 
     ]
   }
 ];
@@ -51,7 +52,8 @@ export const routes = [
     OrdersComponent,
     OrderComponent,
     MarketsComponent,
-    StocksComponent 
+    StocksComponent,
+    StocksMarketComponent 
   ],
   imports: [
     CommonModule,

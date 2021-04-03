@@ -46,7 +46,7 @@ export class MarketsComponent implements OnInit {
   } 
 
   onClick(){
-    this.router.navigate(["/account/stocks"]);
+    this.router.navigate(["/account/stocksmarket"]);
   }
 
 }
