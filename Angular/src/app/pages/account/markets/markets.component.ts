@@ -45,8 +45,9 @@ export class MarketsComponent implements OnInit {
     this.dataSource.sort = this.sort;  
   } 
 
-  onClick(){
-    this.router.navigate(["/account/stocks"]);
+  onClick(id){
+    debugger
+    this.router.navigate(["/account/stocks",id]);
   }
 
 }

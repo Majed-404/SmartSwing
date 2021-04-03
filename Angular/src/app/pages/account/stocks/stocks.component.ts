@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { InfoCardsComponent } from 'src/app/admin/dashboard/info-cards/info-cards.component';
 import { AccountService } from '../account-service.service';
@@ -21,6 +22,7 @@ export class StocksComponent implements OnInit {
   public _listFilter: string ;
   public toggleSearchBar:boolean = false;
   myControl = new FormControl();
+  public id:number;
 
   get listFilter(): string{
     return this._listFilter;
@@ -33,9 +35,11 @@ export class StocksComponent implements OnInit {
       console.log("set"+this.filterData.length);
   }
 
-  constructor(public accountService:AccountService) { }
+  constructor(public accountService:AccountService,public router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    debugger
+    this.id = this.route.snapshot.params['id'];
     this.accountService.getStocksList(2).subscribe(data => {
       this.stocks=data;
       this.filterData=this.stocks;
