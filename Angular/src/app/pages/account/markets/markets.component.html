@@ -14,7 +14,7 @@
 
 <div *ngIf="viewType.value == 'grid'" fxLayout="row wrap">    
     <div *ngFor="let market of markets" fxFlex="100" fxFlex.gt-md="20" fxFlex.md="50" class="p-2"> 
-        <mat-card class="p-0" (click)="onClick()" style="cursor: pointer;">  
+        <mat-card class="p-0" (click)="onClick(market.id)" style="cursor: pointer;">  
             
            
             <div class="user-content" fxLayout="row" fxLayoutAlign="space-around center">
@@ -37,7 +37,7 @@
 
 <div *ngIf="viewType.value == 'list'" fxLayout="row wrap">
     <div *ngFor="let market of markets" fxFlex="100" class="p-2"> 
-        <mat-card class="p-0" (click)="onClick()" style="cursor: pointer;">  
+        <mat-card class="p-0" (click)="onClick(market.id)" style="cursor: pointer;">  
             
             
             <div class="user-content" fxLayout="row" fxLayoutAlign="space-around center">

@@ -1,3 +1,8 @@
 export class Stocks {
-    name: string;
+    nmId: number;
+    nmSymbol: string;
+    nmEnName: string;
+    nmArName: string;
+    nmMktId: string;
+    nmStopFlag: boolean
 }
