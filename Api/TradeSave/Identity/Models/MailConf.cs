@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace TradeSave.Identity.Models
 {
-    public partial class Group
+    public partial class MailConf
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string Ldt { get; set; }
+        public string Mt { get; set; }
     }
 }

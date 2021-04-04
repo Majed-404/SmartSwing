@@ -27,17 +27,19 @@ namespace TradeSave.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SecurityContext _db;
+        private readonly TradeSaveContext _dbContext;
         #endregion
 
         #region 01.Constructor
         public AuthController(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            SecurityContext db)
+            SecurityContext db, TradeSaveContext dbContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _db = db;
+            _dbContext = dbContext;
         }
         #endregion
 
@@ -87,7 +89,7 @@ namespace TradeSave.Controllers
                 {
                     var user = new IdentityUser
                     {
-                        
+
                         UserName = model.UserName,
                         Email = model.Email
                     };

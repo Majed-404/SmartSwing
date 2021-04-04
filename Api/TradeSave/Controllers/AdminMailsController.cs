@@ -15,10 +15,10 @@ namespace TradeSave.Controllers
     [ApiController]
     public class AdminMailsController : ControllerBase
     {
-        private readonly TradSaveContext _db;
+        private readonly TradeSaveContext _db;
         private readonly SecurityContext _dbSecurity;
 
-        public AdminMailsController(TradSaveContext db, SecurityContext dbSecurity)
+        public AdminMailsController(TradeSaveContext db, SecurityContext dbSecurity)
         {
             _db = db;
             _dbSecurity = dbSecurity;
@@ -31,14 +31,14 @@ namespace TradeSave.Controllers
             List<AdminMailsViewModel> mailList = new List<AdminMailsViewModel>();
             foreach (var item in AdminMails)
             {
-                var mailsVm =(AdminMailsViewModel) (from g in _db.groups
-                              join gu in _db.Usergroups on g.Id equals gu.GroupId
+                var mailsVm =(AdminMailsViewModel) (from g in _db.Groups
+                                                    join gu in _db.Usergroups on g.Id equals gu.GroupId
                               where gu.Id == item.GroupId
                               select new AdminMailsViewModel()
                               {
                                   Id=item.Id,
-                                  attachment=item.attachment,
-                                  body=item.body,
+                                  attachment=item.Attachment,
+                                  body=item.Body,
                                    CreateDate=item.CreateDate,
                                    GroupName=g.Name,
                                    Ispublic=item.Ispublic,
@@ -62,14 +62,14 @@ namespace TradeSave.Controllers
                     AdminEmail adminMail = new AdminEmail
                     {
                         Subject = model.Subject,
-                        body = model.body,
-                        attachment = model.attachment,
+                        Body = model.body,
+                        Attachment = model.attachment,
                         CreateDate = model.CreateDate,
                         Ispublic = model.Ispublic,
                         IsSent = model.IsSent,
                         SendDate = model.SendDate,
                         GroupId = model.GroupId,
-                        testMail=model.testMail
+                        TestMail=model.testMail
                     };
 
                     await _db.AdminEmails.AddAsync(adminMail);
@@ -107,14 +107,14 @@ namespace TradeSave.Controllers
             var AdminMailModel = new CreateAdminMailsViewModel
             {
                 Subject = model.Subject,
-                attachment = model.attachment,
-                body = model.body,
+                attachment = model.Attachment,
+                body = model.Body,
                 CreateDate = model.CreateDate,
                 Ispublic = model.Ispublic,
                 IsSent = model.IsSent,
                 SendDate = model.SendDate,
                 GroupId=model.GroupId,
-                testMail=model.testMail
+                testMail=model.TestMail
             };
 
             return Ok(AdminMailModel);
@@ -135,13 +135,13 @@ namespace TradeSave.Controllers
                 if (ModelState.IsValid)
                 {
                     AdminMail.Subject = model.Subject;
-                    AdminMail.attachment = model.attachment;
+                    AdminMail.Attachment = model.attachment;
                     AdminMail.CreateDate = model.CreateDate;
                     AdminMail.SendDate = model.SendDate;
                     AdminMail.IsSent = model.IsSent;
                     AdminMail.Ispublic = model.Ispublic;
                     AdminMail.GroupId = model.GroupId;
-                    AdminMail.testMail = model.testMail;
+                    AdminMail.TestMail = model.testMail;
                     _db.AdminEmails.Update(AdminMail);
                     await _db.SaveChangesAsync();
                     return Ok(true);
@@ -187,9 +187,9 @@ namespace TradeSave.Controllers
             AdminEmail adminEmail = _db.AdminEmails.Find(id);
             List<string> usersId = _db.Usergroups.Where(a => a.Id == adminEmail.GroupId)
                 .Select(a=>a.UserId).ToList();
-            if (isTest && adminEmail.testMail!=null)
+            if (isTest && adminEmail.TestMail!=null)
             {
-                MailboxAddress to = new MailboxAddress(adminEmail.testMail, adminEmail.testMail);
+                MailboxAddress to = new MailboxAddress(adminEmail.TestMail, adminEmail.TestMail);
                 message.To.Add(to);
             }
             else
@@ -207,7 +207,7 @@ namespace TradeSave.Controllers
 
             message.Subject = adminEmail.Subject;
 
-            message.Body = CreateMailBody(adminEmail.body);
+            message.Body = CreateMailBody(adminEmail.Body);
             try
             {
                 SmtpClient client = new SmtpClient();

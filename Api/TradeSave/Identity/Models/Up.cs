@@ -5,9 +5,8 @@ using System.Collections.Generic;
 
 namespace TradeSave.Identity.Models
 {
-    public partial class Group
+    public partial class Up
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public short Up1 { get; set; }
     }
 }
