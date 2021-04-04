@@ -12,6 +12,11 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { MarketsComponent } from './markets/markets.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardModule } from 'src/app/admin/dashboard/dashboard.module';
+import { StocksMarketComponent } from './stocks-market/stocks-market.component';
+
 
 
 export const routes = [
@@ -28,6 +33,9 @@ export const routes = [
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/:id', component: OrderComponent }, 
       { path: 'markets', component: MarketsComponent }, 
+      { path: 'stocks', component: StocksComponent }, 
+      { path: 'stocksmarket/:id', component: StocksMarketComponent }, 
+      { path: 'stocks/:id', component: StocksComponent }, 
     ]
   }
 ];
@@ -44,12 +52,17 @@ export const routes = [
     ReservationsComponent,
     OrdersComponent,
     OrderComponent,
-    MarketsComponent 
+    MarketsComponent,
+    StocksComponent,
+    StocksMarketComponent 
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
+    NgxChartsModule,
+    DashboardModule
+
   ]
 })
 export class AccountModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppService } from 'src/app/app.service'; 
 import { AppSettings, Settings } from 'src/app/app.settings';
@@ -38,8 +39,10 @@ export class Toolbar1Component implements OnInit {
 
   public settings:Settings;
 
+
   constructor(public appService:AppService,public homebar:HomebarService,
-    public appSettings:AppSettings, ) {this.settings = this.appSettings.settings; }
+    public appSettings:AppSettings, public router: Router ) {this.settings = this.appSettings.settings; }
+
 
   performData(filterBy: string): Users[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -66,6 +69,8 @@ export class Toolbar1Component implements OnInit {
   public reservation(){ 
     this.appService.makeReservation(ReservationDialogComponent, null, true);   
   }
+
+  
 }
 
 

@@ -181,8 +181,8 @@ namespace TradeSave.Controllers
         public async Task<IActionResult> SendMail(int id, bool isTest)
         {
             MimeMessage message = new MimeMessage();
+            //root@support@mydomain.com
             MailboxAddress from = new MailboxAddress("notificationservice@Smart-Swing.com", "www.Smart-Swing.com");
-            //MailboxAddress from = new MailboxAddress("mahmoudaltayyeb1@gmail.com", "mahmoudaltayyeb1@gmail.com");
             message.From.Add(from);
             AdminEmail adminEmail = _db.AdminEmails.Find(id);
             List<string> usersId = _db.Usergroups.Where(a => a.Id == adminEmail.GroupId)

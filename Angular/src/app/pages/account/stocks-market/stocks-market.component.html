@@ -1,0 +1,18 @@
+
+<div class="search-bar" fxLayout="row "  style="margin:0 15rem 2rem 15rem;">
+    <form method="get">
+       
+        <ng-container>
+            <input  type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
+            class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
+            matInput [(ngModel)] = "listFilter" >
+
+        <mat-autocomplete  #auto="matAutocomplete" >
+            <mat-option *ngFor="let option of filterData" [value]="option.nmEnName" (onSelectionChange)="Change(option.nmId)">
+            {{option.nmSymbol}} &nbsp; &nbsp; {{option.nmEnName}}</mat-option>
+        </mat-autocomplete>
+        </ng-container>
+
+        
+    </form>
+</div>
