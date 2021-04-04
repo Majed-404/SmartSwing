@@ -28,10 +28,7 @@ export class StocksComponent implements OnInit {
   ngOnInit(): void {
     debugger
     this.id = this.route.snapshot.params['id'];
-    // this.accountService.getStocksList(2).subscribe(data => {
-    //   this.stocks=data;
-    //   this.filterData=this.stocks;
-    // });
+    
   }
 
   

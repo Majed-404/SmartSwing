@@ -34,7 +34,7 @@ export const routes = [
       { path: 'orders/:id', component: OrderComponent }, 
       { path: 'markets', component: MarketsComponent }, 
       { path: 'stocks', component: StocksComponent }, 
-      { path: 'stocksmarket', component: StocksMarketComponent }, 
+      { path: 'stocksmarket/:id', component: StocksMarketComponent }, 
       { path: 'stocks/:id', component: StocksComponent }, 
     ]
   }

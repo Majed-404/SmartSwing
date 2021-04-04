@@ -47,7 +47,7 @@ export class MarketsComponent implements OnInit {
 
   onClick(id){
     debugger
-    this.router.navigate(["/account/stocks",id]);
+    this.router.navigate(["/account/stocksmarket",id]);
   }
 
 }

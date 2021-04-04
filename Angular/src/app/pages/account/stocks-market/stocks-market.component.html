@@ -8,8 +8,8 @@
             matInput [(ngModel)] = "listFilter" >
 
         <mat-autocomplete  #auto="matAutocomplete" >
-            <mat-option *ngFor="let option of filterData" [value]="option">
-            {{option.name}}</mat-option>
+            <mat-option *ngFor="let option of filterData" [value]="option.nmEnName" (onSelectionChange)="Change(option.nmId)">
+            {{option.nmSymbol}} &nbsp; &nbsp; {{option.nmEnName}}</mat-option>
         </mat-autocomplete>
         </ng-container>
 
