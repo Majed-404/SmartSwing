@@ -1,0 +1,100 @@
+<!-- <ngx-charts-advanced-legend></ngx-charts-advanced-legend>
+<ngx-charts-advanced-pie-chart></ngx-charts-advanced-pie-chart>
+<ngx-charts-area-chart></ngx-charts-area-chart>
+<ngx-charts-area-chart-normalized></ngx-charts-area-chart-normalized>
+<ngx-charts-area-chart-stacked></ngx-charts-area-chart-stacked>
+<ngx-charts-bar-horizontal></ngx-charts-bar-horizontal>
+<ngx-charts-bar-horizontal></ngx-charts-bar-horizontal>
+<ngx-charts-bar-horizontal-2d></ngx-charts-bar-horizontal-2d>
+<ngx-charts-bar-horizontal-normalized></ngx-charts-bar-horizontal-normalized>
+<ngx-charts-bar-horizontal-stacked></ngx-charts-bar-horizontal-stacked>
+<ngx-charts-bar-vertical-2d></ngx-charts-bar-vertical-2d>
+<ngx-charts-bar-vertical-normalized></ngx-charts-bar-vertical-normalized>
+<ngx-charts-bar-vertical-stacked></ngx-charts-bar-vertical-stacked>
+<ngx-charts-bubble-chart></ngx-charts-bubble-chart>
+<ngx-charts-chart></ngx-charts-chart>
+<ngx-charts-gauge></ngx-charts-gauge>
+<ngx-charts-heat-map></ngx-charts-heat-map>
+<ngx-charts-legend></ngx-charts-legend>
+<ngx-charts-legend-entry></ngx-charts-legend-entry>
+<ngx-charts-line-chart></ngx-charts-line-chart>
+<ngx-charts-linear-gauge></ngx-charts-linear-gauge>
+<ngx-charts-number-card></ngx-charts-number-card>
+<ngx-charts-scale-legend></ngx-charts-scale-legend>
+<ngx-charts-tree-map></ngx-charts-tree-map>
+<ngx-tooltip-content></ngx-tooltip-content> -->
+
+<!-- <div fxLayout="row wrap" > -->
+
+    <mat-card class="p-0 gradient-orange">
+        <div class="p-2" fxLayoutAlign="space-between center">
+            <p class="mb-0">Products profit</p>
+            <div fxLayoutAlign="center center">
+                <mat-icon class="icon-sm px-1">trending_up</mat-icon>
+                <span>38%</span>
+            </div>
+        </div>         
+        <div class="w-100 h-100p">
+            <ngx-charts-bar-vertical 
+                [view]="[1000,400]"
+                [results]="saleData"
+                [xAxisLabel]="'Products'"
+                [legendTitle]="'Product Sale Chart'"
+                [yAxisLabel]="'Sale'"
+                [legend]="true"
+                [showXAxisLabel]="true"
+                [showYAxisLabel]="true"
+                [xAxis]="true"
+                [yAxis]="true"
+                [gradient]="true">
+            </ngx-charts-bar-vertical>
+                             
+        </div>
+    </mat-card>
+
+    <!-- <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-2"> 
+    </div> -->
+
+    <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-2"> 
+        <mat-card class="p-0 gradient-teal">
+            <div class="p-2" fxLayoutAlign="space-between center">
+                <p class="mb-0">Total orders</p>
+                <div fxLayoutAlign="center center">
+                    <mat-icon class="icon-sm px-1">trending_up</mat-icon>
+                    <span>16%</span>
+                </div>
+            </div>          
+            <div class="w-100 h-100p">
+                                 
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-2"> 
+        <mat-card class="p-0 gradient-indigo">
+            <div class="p-2" fxLayoutAlign="space-between center">
+                <p class="mb-0">Refunds</p>
+                <div fxLayoutAlign="center center">
+                    <mat-icon class="icon-sm px-1">trending_down</mat-icon>
+                    <span>-11%</span>
+                </div>
+            </div>          
+            <div class="w-100 h-100p">
+                                  
+            </div>
+        </mat-card>
+    </div>    
+    <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-2"> 
+        <mat-card class="p-0 gradient-amber">
+            <div class="p-2" fxLayoutAlign="space-between center">
+                <p class="mb-0">Customers</p>
+                <div fxLayoutAlign="center center">
+                    <mat-icon class="icon-sm px-1">trending_up</mat-icon>
+                    <span>17%</span>
+                </div>
+            </div>         
+            <div class="w-100 h-100p">
+                
+                                   
+            </div>
+        </mat-card>
+    </div>    
