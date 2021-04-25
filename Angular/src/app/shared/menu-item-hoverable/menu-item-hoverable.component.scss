@@ -4,9 +4,10 @@
     position: relative;
     overflow: hidden;
     img{
-        width: 100%;
+        width: 60%;
         display: block;
         transition: 0.2s;
+        padding:0 15%;
     } 
     .title{
         position: absolute;
@@ -19,6 +20,7 @@
         opacity: 0;
         transition: 0.2s;
         font-family: $secondary-font-family; 
+        font-size: medium !important;
     }
     .bottom-section{
         position: absolute;

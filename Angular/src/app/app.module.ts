@@ -71,7 +71,7 @@ import { LockScreenComponent } from './pages/lock-screen/lock-screen.component';
       }
     }),
     AppRoutingModule,
-    SharedModule,
+    SharedModule
     
   ],
   providers: [ 

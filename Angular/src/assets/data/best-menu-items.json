@@ -1,14 +1,10 @@
 [         
     {
         "id": 20,
-        "name": "Beef Languet With Potato", 
-        "description": "Beef tenderloin, butter, black pepper, tomatoes, potato.",
+        "name": "Trading System That works", 
+        "description": "Right timely decisions to enter and exit the market without any loss. Well-tested strategy that works in bear market, bull market, sideways market, and all market conditions. Power of secrets of successful traders. Incredible profit mid-term trading advisor..",
         "price": 18.50,
-        "image": {
-            "small": "assets/images/foods/meat-courses/1/small.jpg",
-            "medium": "assets/images/foods/meat-courses/1/medium.jpg",
-            "big": "assets/images/foods/meat-courses/1/big.jpg"
-        },
+        "image": "assets/images/why-to-choose/1.jpg",
         "discount": 0,
         "ratingsCount": 4,
         "ratingsValue": 480, 
@@ -20,14 +16,10 @@
     },
     {
         "id": 26,
-        "name": "Chick Saj", 
-        "description": "Chick, onion, tomatoes, bell pepper, eggplants, potato, lavash.",
+        "name": "Incredible Profit", 
+        "description": "We are proud to show you the real and live data for incredible profit achieved by our members and market leaders in the last 9 years in more than 25 markets around the world. If you believe in reality, we invite you to start membership and maximize your profit in the next few months.",
         "price": 18.50,
-        "image": {
-            "small": "assets/images/foods/chicken-courses/3/small.jpg",
-            "medium": "assets/images/foods/chicken-courses/3/medium.jpg",
-            "big": "assets/images/foods/chicken-courses/3/big.jpg"
-        },
+        "image": "assets/images/why-to-choose/2.jpg",
         "discount": 0,
         "ratingsCount": 4,
         "ratingsValue": 480, 
@@ -39,14 +31,10 @@
     }, 
     {
         "id": 25,
-        "name": "Chicken Languet With Potato", 
-        "description": "Chicken fillet, potato, tomatoes",
+        "name": "Focused on trading only", 
+        "description": "Online Trading Advisor, Use it anywhere,No software download, No plug-in or any download required,No Need to update your data every day,Simple and Easy! Our trading engine Advisor makes it easy! ,.",
         "price": 12.50,
-        "image": {
-            "small": "assets/images/foods/chicken-courses/2/small.jpg",
-            "medium": "assets/images/foods/chicken-courses/2/medium.jpg",
-            "big": "assets/images/foods/chicken-courses/2/big.jpg"
-        },
+        "image": "assets/images/why-to-choose/3.jpg",
         "discount": 0,
         "ratingsCount": 4,
         "ratingsValue": 480, 
@@ -58,14 +46,10 @@
     },
     {
         "id": 12,
-        "name": "Tomatoes Marinated in Vinegar", 
-        "description": "Tomatoes, grape vinegar, parsley, pumpkin seeds, olive oil, garlic.",
+        "name": "Top 5 stocks Buy", 
+        "description": "System is given daily stocks that are expected to better deals marked with great potential for success and a detailed analysis of each share.",
         "price": 3.90,
-        "image": {
-            "small": "assets/images/foods/appetizers/5/small.jpg",
-            "medium": "assets/images/foods/appetizers/5/medium.jpg",
-            "big": "assets/images/foods/appetizers/5/big.jpg"
-        },
+        "image": "assets/images/why-to-choose/4.jpg",
         "discount": 0,
         "ratingsCount": 3,
         "ratingsValue": 280, 
@@ -77,14 +61,10 @@
     },
     {
         "id": 14,
-        "name": "Barbecue Salad", 
-        "description": "Eggplants, tomatoes, bell pepper, red pepper, corn oil, garlic, fresh greens.",
+        "name": "Daily Message", 
+        "description": "Daily email message with top stocks to buy, notification of all actions that are taken for each stock from the opening to the close, including sale orders for both profit taking and risk minimization.",
         "price": 7.50,
-        "image": {
-            "small": "assets/images/foods/salads/1/small.jpg",
-            "medium": "assets/images/foods/salads/1/medium.jpg",
-            "big": "assets/images/foods/salads/1/big.jpg"
-        },
+        "image": "assets/images/why-to-choose/5.jpg",
         "discount": 0,
         "ratingsCount": 3,
         "ratingsValue": 280, 
@@ -96,14 +76,55 @@
     },
     {
         "id": 18,
-        "name": "Noodle Soup With Meatballs", 
-        "description": "Homemade noodles, veal, meat broth, onion, carrot, turmeric, mung beans.",
+        "name": "Accurate Ternd Analysis", 
+        "description": "You do not need to experience in the analysis do not download or upload data systems and can be used from anywhere.",
         "price": 11.50,
-        "image": {
-            "small": "assets/images/foods/soups/2/small.jpg",
-            "medium": "assets/images/foods/soups/2/medium.jpg",
-            "big": "assets/images/foods/soups/2/big.jpg"
-        },
+        "image": "assets/images/why-to-choose/6.jpg",
+        "discount": 0,
+        "ratingsCount": 4,
+        "ratingsValue": 480, 
+        "availibilityCount": 5,
+        "cartCount": 0,
+        "weight": 180,
+        "isVegetarian": false,
+        "categoryId": 4
+    },
+    {
+        "id": 18,
+        "name": "Advanced Stock Analysis", 
+        "description": "Daily accurate analysis for every share determines the Wave , Strength and Trend ( Long , Medium and short Trend ) without any technical background.",
+        "price": 11.50,
+        "image": "assets/images/why-to-choose/7.jpg",
+        "discount": 0,
+        "ratingsCount": 4,
+        "ratingsValue": 480, 
+        "availibilityCount": 5,
+        "cartCount": 0,
+        "weight": 180,
+        "isVegetarian": false,
+        "categoryId": 4
+    },
+    {
+        "id": 18,
+        "name": "Credibility & Reliability", 
+        "description": "High-accuracy forecasting and advising with backward testing & reliability. Complete Swing Trading History which is the power to show real and high-quality signals to prove your real success..",
+        "price": 11.50,
+        "image": "assets/images/why-to-choose/8.jpg",
+        "discount": 0,
+        "ratingsCount": 4,
+        "ratingsValue": 480, 
+        "availibilityCount": 5,
+        "cartCount": 0,
+        "weight": 180,
+        "isVegetarian": false,
+        "categoryId": 4
+    },
+    {
+        "id": 18,
+        "name": "Emotion and Pressure", 
+        "description": "Smart Swing allows you to control the emotional roller coaster, that is the stock market. No more emotional decisions!.",
+        "price": 11.50,
+        "image": "assets/images/why-to-choose/9.jpg",
         "discount": 0,
         "ratingsCount": 4,
         "ratingsValue": 480, 
@@ -113,4 +134,5 @@
         "isVegetarian": false,
         "categoryId": 4
     }
+    
 ]
