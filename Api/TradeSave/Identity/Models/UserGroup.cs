@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace TradeSave.Identity.Models
 {
-    public class UserGroup
+    public partial class Usergroup
     {
+        public Usergroup()
+        {
+            AdminEmails = new HashSet<AdminEmail>();
+        }
+
         public int Id { get; set; }
         public int GroupId { get; set; }
         public string UserId { get; set; }
+
+        public virtual ICollection<AdminEmail> AdminEmails { get; set; }
     }
 }

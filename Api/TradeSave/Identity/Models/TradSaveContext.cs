@@ -21,8 +21,8 @@ namespace TradeSave.Identity.Models
         {
             base.OnModelCreating(builder);
         }
-        public DbSet <Group> groups { get; set; }
-        public DbSet <UserGroup> Usergroups { get; set; }
-        public DbSet <AdminEmail> AdminEmails { get; set; }
+        //public DbSet <Group> groups { get; set; }
+        //public DbSet <UserGroup> Usergroups { get; set; }
+        //public DbSet <AdminEmail> AdminEmails { get; set; }
     }
 }

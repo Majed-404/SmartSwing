@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace TradeSave.Identity.Models
 {
-    public partial class Group
+    public partial class TrendDic
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public byte TrendId { get; set; }
+        public string TrendDesc { get; set; }
     }
 }

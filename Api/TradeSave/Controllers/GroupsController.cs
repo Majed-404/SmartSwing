@@ -17,9 +17,9 @@ namespace TradeSave.Controllers
     public class GroupsController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly TradSaveContext _db;
+        private readonly TradeSaveContext _db;
 
-        public GroupsController(TradSaveContext db, UserManager<IdentityUser> userManager)
+        public GroupsController(TradeSaveContext db, UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
             _db = db;
@@ -28,7 +28,7 @@ namespace TradeSave.Controllers
         [HttpGet("ListGroups")]
         public IActionResult ListGroups()
         {
-             var groups =_db.groups.ToList();
+             var groups =_db.Groups.ToList();
             return Ok(groups);
         }
 
@@ -42,7 +42,7 @@ namespace TradeSave.Controllers
                     Name = model.Name
                 };
 
-                 await _db.groups.AddAsync(group);
+                 await _db.Groups.AddAsync(group);
                 await _db.SaveChangesAsync();
 
                 return Ok(true);
@@ -55,7 +55,7 @@ namespace TradeSave.Controllers
         public async Task<IActionResult> GetGroupById([FromBody] int id)
         {
             // Find the Group by Group ID
-            var Group = await _db.groups.FindAsync(id);
+            var Group = await _db.Groups.FindAsync(id);
 
             if (Group == null)
             {
@@ -73,7 +73,7 @@ namespace TradeSave.Controllers
         [HttpPut("EditGroup")]
         public async Task<IActionResult> EditGroup(EditGroupViewModel model)
         {
-            var Group = await _db.groups.FindAsync(model.Id);
+            var Group = await _db.Groups.FindAsync(model.Id);
 
             if (Group == null)
             {
@@ -84,7 +84,7 @@ namespace TradeSave.Controllers
                 if (ModelState.IsValid)
                 {
                     Group.Name = model.Name;
-                    _db.groups.Update(Group);
+                    _db.Groups.Update(Group);
                     await _db.SaveChangesAsync();
                     return Ok(true);
                 }
@@ -97,7 +97,7 @@ namespace TradeSave.Controllers
         [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteGroup(int Id)
         {
-            var Group = await _db.groups.FindAsync(Id);
+            var Group = await _db.Groups.FindAsync(Id);
             var UserGroup = _db.Usergroups.FirstOrDefault(a=>a.GroupId==Id);
             if (Group == null)
             {
@@ -105,14 +105,14 @@ namespace TradeSave.Controllers
             }
             else if(UserGroup!=null)
             {
-                    _db.groups.Remove(Group);
+                    _db.Groups.Remove(Group);
                    _db.Usergroups.Remove(UserGroup);
                     await _db.SaveChangesAsync();
                     return Ok(true);
             }
             else
             {
-                _db.groups.Remove(Group);
+                _db.Groups.Remove(Group);
                 await _db.SaveChangesAsync();
                 return Ok(true);
             }
@@ -125,8 +125,8 @@ namespace TradeSave.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByIdAsync(model.UserId);
-                var Group = await _db.groups.FindAsync(model.GroupId);
-                UserGroup userGroup = new UserGroup()
+                var Group = await _db.Groups.FindAsync(model.GroupId);
+                Usergroup userGroup = new Usergroup()
                 {
                     GroupId=model.GroupId,
                     UserId=model.UserId
@@ -151,7 +151,7 @@ namespace TradeSave.Controllers
                 {
                     UserGroupListViewModel userGroupVm = new UserGroupListViewModel();
                     userGroupVm.Id = item.Id;
-                    userGroupVm.Name = _db.groups.FirstOrDefault(a => a.Id == item.GroupId).Name;
+                    userGroupVm.Name = _db.Groups.FirstOrDefault(a => a.Id == item.GroupId).Name;
                     listUserGroups.Add(userGroupVm);
                 }
                 return Ok(listUserGroups);
@@ -169,7 +169,7 @@ namespace TradeSave.Controllers
         //    if (ModelState.IsValid)
         //    {
         //        var user = await _userManager.FindByIdAsync(model.UserId);
-        //        var Group = await _db.groups.FindAsync(model.GroupId);
+        //        var Group = await _db.Groups.FindAsync(model.GroupId);
 
         //        IdentityResult result = null;
 
