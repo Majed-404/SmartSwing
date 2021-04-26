@@ -32,14 +32,13 @@ export class GroupsComponent implements OnInit {
     this.getGroupList();
   }
 public getGroupList(){
-  debugger
   this.userManagemntService.getGroups().subscribe(response => {
     this.groups=<Group[]>response;
     this.initDataSource(this.groups); 
   })
 }
   public initDataSource(data:any){
-    debugger
+    
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort; 

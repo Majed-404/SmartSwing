@@ -13,7 +13,7 @@ export class MenuItemComponent implements OnInit {
   @Input() lazyLoad: boolean = false;
   @Input() viewType: string = "grid";
   @Input() viewColChanged: boolean = false; 
-  public column:number = 4;
+  public column:number = 6;
   constructor(public appService:AppService) { }
 
   ngOnInit(): void {
@@ -27,13 +27,13 @@ export class MenuItemComponent implements OnInit {
 
   public getColumnCount(value){
     if(value == 25){
-      this.column = 4;
+      this.column = 6;
     }
     else if(value == 33.3){
-      this.column = 3;
+      this.column = 4;
     }
     else if(value == 50){
-      this.column = 2
+      this.column = 3
     }
     else{
       this.column = 1;

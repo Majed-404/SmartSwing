@@ -29,7 +29,7 @@ export class OurAwardsComponent implements OnInit {
       preloadImages: false,
       lazy: true,  
       autoplay: {
-        delay: 6000,
+        delay: 4000,
         disableOnInteraction: false
       },
       speed: 500,

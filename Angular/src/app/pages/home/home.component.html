@@ -2,8 +2,8 @@
                 [backgroundImage]="'assets/images/others/homepage.jpg'"
                 [bgImageAnimate]="true"
                 [contentOffsetToTop]="true"
-                [title]="'Welcome to Smart Swing'"
-                [desc]="'Booking a table online is easy'"
+                [title]="title"
+                [desc]="desc"
                 [isHomePage]="true"
                 [fullscreen]="true">
 </app-header-image> 
@@ -13,7 +13,30 @@
                     [contentOffsetToTop]="false"
                     [fullscreen]="true">
 </app-header-carousel>
-  
+
+<div class="section default mt-3" id="markets">
+    <div class="px-3">
+        <div class="theme-container">
+            <h1 class="section-title">Stocks Markets</h1>
+            <p class="section-desc text-muted">stocks prices Riyadh market for today</p> 
+            <!-- <app-menu-items-carousel [menuItems]="specialMenuItems"></app-menu-items-carousel> -->
+            <app-visitors-markets></app-visitors-markets>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <a mat-raised-button routerLink="/menu" color="primary" class="uppercase">View all menu</a>
+            </div>  
+        </div>
+    </div>   
+</div> 
+
+<div class="section mt-3 pb-0">
+    <h1 class="section-title">Why to Choose Smart Swing</h1>
+    <p class="section-desc text-muted" >Smart Swing will improve your decision-making skills by finding when to buy and when to sell, with accurate trading signals. Smart Swing is designed to build your profits as well as eliminate frustrating (and costly) trader mistakes.</p> 
+    <div fxLayout="row wrap">
+        <div *ngFor="let menuItem of bestMenuItems" fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50">
+            <app-menu-item-hoverable [menuItem]="menuItem"></app-menu-item-hoverable> 
+        </div> 
+    </div> 
+</div> 
 
 
 <div class="section mt-3">
@@ -39,28 +62,8 @@
     </div>   
 </div>
 
-<div class="section default mt-3">
-    <div class="px-3">
-        <div class="theme-container">
-            <h1 class="section-title">Special menu</h1>
-            <p class="section-desc text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> 
-            <app-menu-items-carousel [menuItems]="specialMenuItems"></app-menu-items-carousel>
-            <div fxLayout="row" fxLayoutAlign="center center">
-                <a mat-raised-button routerLink="/menu" color="primary" class="uppercase">View all menu</a>
-            </div>  
-        </div>
-    </div>   
-</div> 
 
-<div class="section mt-3 pb-0">
-    <h1 class="section-title">Our best dishes</h1>
-    <p class="section-desc text-muted">The best dishes of the city for our clients.</p> 
-    <div fxLayout="row wrap">
-        <div *ngFor="let menuItem of bestMenuItems" fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50">
-            <app-menu-item-hoverable [menuItem]="menuItem"></app-menu-item-hoverable> 
-        </div> 
-    </div> 
-</div> 
+
 
 <div class="section">
     <div class="px-3">
