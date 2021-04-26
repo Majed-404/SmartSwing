@@ -97,6 +97,7 @@ namespace TradeSave.Identity.Models
         public virtual DbSet<SpMoneyManagmentSumNew> SpMoneyManagmentSumNews { get; set; }
         public virtual DbSet<SpMoneyManagmentSumNg> SpMoneyManagmentSumNgs { get; set; }
         public virtual DbSet<SpMoneyManagmentSumNgSammaryView> SpMoneyManagmentSumNgSammaryViews { get; set; }
+        public virtual DbSet<StockExchange> StockExchanges { get; set; }
         public virtual DbSet<Table1> Table1s { get; set; }
         public virtual DbSet<TickInfo> TickInfos { get; set; }
         public virtual DbSet<TrendDic> TrendDics { get; set; }
@@ -2702,7 +2703,61 @@ namespace TradeSave.Identity.Models
                     .HasMaxLength(50)
                     .HasColumnName("awwwqeqweqw");
             });
+            modelBuilder.Entity<StockExchange>(entity =>
+            {
+                entity.HasNoKey();
 
+                entity.ToView("Stock_Exchanges");
+
+                entity.Property(e => e.DtClose).HasColumnName("DT_Close");
+
+                entity.Property(e => e.DtDt)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("DT_Dt");
+
+                entity.Property(e => e.DtHigh).HasColumnName("DT_High");
+
+                entity.Property(e => e.DtLow).HasColumnName("DT_Low");
+
+                entity.Property(e => e.DtMktId).HasColumnName("DT_MKT_ID");
+
+                entity.Property(e => e.DtNmId).HasColumnName("DT_NM_ID");
+
+                entity.Property(e => e.DtNvalue).HasColumnName("DT_NValue");
+
+                entity.Property(e => e.DtOpen).HasColumnName("DT_Open");
+
+                entity.Property(e => e.DtValue).HasColumnName("DT_Value");
+
+                entity.Property(e => e.DtVol).HasColumnName("DT_Vol");
+
+                entity.Property(e => e.NmArName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("NM_AR_NAME");
+
+                entity.Property(e => e.NmEnName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("NM_EN_NAME");
+
+                entity.Property(e => e.NmId).HasColumnName("NM_ID");
+
+                entity.Property(e => e.NmMktId)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .HasColumnName("NM_MKT_ID")
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.NmStopFlag).HasColumnName("NM_StopFlag");
+
+                entity.Property(e => e.NmSymbol)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("NM_Symbol");
+            });
             modelBuilder.Entity<TickInfo>(entity =>
             {
                 entity.HasKey(e => e.TickId);
