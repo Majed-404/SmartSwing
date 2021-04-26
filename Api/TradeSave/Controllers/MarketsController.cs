@@ -73,7 +73,7 @@ namespace TradeSave.Controllers
             //}
             #endregion
 
-            return Ok();
+            return Ok(stockDetails);
         }
     }
 }
