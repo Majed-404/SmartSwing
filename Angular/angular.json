@@ -53,7 +53,9 @@
               "src/styles.scss",
               "src/assets/flaticon/flaticon.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+             ]
           },
           "configurations": {
             "production": {
@@ -196,4 +198,5 @@
     }
   },
   "defaultProject": "popina"
+
 }
