@@ -18,11 +18,10 @@ export class StocksComponent implements OnInit {
 
 
 
-  constructor(public router: Router,private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
-    debugger
-    // this.id = this.route.snapshot.params['id'];
+    
     
   }
 

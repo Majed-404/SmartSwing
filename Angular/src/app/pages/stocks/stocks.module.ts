@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Chart1Component } from './chart1/chart1.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 export const routes = [
@@ -17,7 +18,9 @@ export const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    NgxChartsModule
-  ]
+    NgxChartsModule,
+    NgApexchartsModule
+  ],
+  exports:[Chart1Component]
 })
 export class StocksModule { }

@@ -50,7 +50,7 @@
 /*style for mat-group*/
 
     .mat-tab-group{
-        font-size: small;
+        font-size: 12px !important;
         font-weight: 700;
     }
 /* Styles for tab labels */
@@ -74,6 +74,23 @@
         font-size: medium
         
     }
+
+.chart-box {
+        max-width: 650px;
+        margin: 35px auto;
+      }
+      #chart-candlestick,
+      #chart-bar {
+        max-width: 640px;
+      }
+      
+      #chart-bar {
+        margin-top: -40px;
+}
+  
+.stock-pad{
+    padding: 2rem !important;
+}
 
 
 

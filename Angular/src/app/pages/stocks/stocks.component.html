@@ -1,137 +1,148 @@
+<div fxLayout="row wrap" > 
+    <div fxFlex="100" fxFlex.gt-sm="65" class="stock-pad">
 
-
+        <mat-card class="menu-single ">
+            <div  fxLayout="row wrap" >
+                
         
-<mat-card class="menu-single ">
-    <div  fxLayout="row wrap" class="flex-wrapper">
+                <div fxFlex="100" class="px-3">
         
-
-        <div fxFlex="100" class="px-3">
-
-            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
-                <mat-tab >
-                    <ng-template mat-tab-label>
-                        <mat-icon color="primary" class="mat-icon-lg icon">info</mat-icon>
-                        GENERAL
-                        </ng-template>
-                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0" >
-                        <mat-tab label="Overviow" >
-                            <div class="full-desc">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id nulla metus. Maecenas commodo turpis dui, porttitor tincidunt enim mollis a. Curabitur eu velit mi. Nullam congue turpis id metus sollicitudin, id cursus nulla laoreet. Proin commodo eu felis at malesuada. Nulla ac facilisis justo, eget vulputate ex. Nulla nec laoreet nulla. Cras auctor leo at diam congue, quis convallis urna pulvinar. Nunc ut mi nulla. Nunc ligula massa, vulputate sed scelerisque sit amet, dapibus semper est. Sed sed blandit turpis. Vestibulum id porttitor ligula, at iaculis ligula. Pellentesque vel tellus sit amet mauris aliquet bibendum id et lorem.</p>
-                                <ul class="px-2 mt-1">
-                                    <li>Phasellus eu justo dictum, varius eros ut, posuere sapien.</li>
-                                    <li>Nulla eu erat sit amet enim lobortis rhoncus.</li>
-                                    <li>Etiam eu mauris in massa convallis ornare non id ex.</li>
-                                    <li>Nam sagittis augue at pretium pharetra.</li>
-                                    <li>Sed a sem id massa egestas porta a sit amet felis.</li>
-                                    <li>Duis aliquam urna in sapien cursus consequat.</li>
-                                </ul>
-                                <p class="mt-1">Duis eu felis ultricies urna pharetra efficitur nec non elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur posuere eu justo eget mollis. Sed semper accumsan urna vel rutrum. Nulla condimentum quis lacus ut semper. Quisque at massa pretium, porta ligula ut, rutrum elit. Pellentesque et orci sit amet dolor laoreet tempor sed eu sem. Morbi lacinia pellentesque tellus euismod eleifend.</p>
-                                <p class="mt-1">Quisque fringilla eros id ligula luctus, a gravida augue sodales. Sed eget augue ut lectus condimentum volutpat. Morbi quis nunc viverra, gravida arcu quis, varius metus. Praesent tincidunt ipsum est, quis molestie ligula efficitur ut. Nunc interdum erat eu tortor maximus suscipit. Vivamus nec laoreet dui. Nullam dignissim laoreet metus quis pretium.</p>
-                            </div>
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
+                        <mat-tab >
+                            <ng-template mat-tab-label>
+                                <mat-icon color="primary" class="mat-icon-lg icon">info</mat-icon>
+                                GENERAL
+                                </ng-template>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0" >
+                                <mat-tab label="Overviow" >
+                                    <div class="full-desc">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id nulla metus. Maecenas commodo turpis dui, porttitor tincidunt enim mollis a. Curabitur eu velit mi. Nullam congue turpis id metus sollicitudin, id cursus nulla laoreet. Proin commodo eu felis at malesuada. Nulla ac facilisis justo, eget vulputate ex. Nulla nec laoreet nulla. Cras auctor leo at diam congue, quis convallis urna pulvinar. Nunc ut mi nulla. Nunc ligula massa, vulputate sed scelerisque sit amet, dapibus semper est. Sed sed blandit turpis. Vestibulum id porttitor ligula, at iaculis ligula. Pellentesque vel tellus sit amet mauris aliquet bibendum id et lorem.</p>
+                                        <ul class="px-2 mt-1">
+                                            <li>Phasellus eu justo dictum, varius eros ut, posuere sapien.</li>
+                                            <li>Nulla eu erat sit amet enim lobortis rhoncus.</li>
+                                            <li>Etiam eu mauris in massa convallis ornare non id ex.</li>
+                                            <li>Nam sagittis augue at pretium pharetra.</li>
+                                            <li>Sed a sem id massa egestas porta a sit amet felis.</li>
+                                            <li>Duis aliquam urna in sapien cursus consequat.</li>
+                                        </ul>
+                                        <p class="mt-1">Duis eu felis ultricies urna pharetra efficitur nec non elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur posuere eu justo eget mollis. Sed semper accumsan urna vel rutrum. Nulla condimentum quis lacus ut semper. Quisque at massa pretium, porta ligula ut, rutrum elit. Pellentesque et orci sit amet dolor laoreet tempor sed eu sem. Morbi lacinia pellentesque tellus euismod eleifend.</p>
+                                        <p class="mt-1">Quisque fringilla eros id ligula luctus, a gravida augue sodales. Sed eget augue ut lectus condimentum volutpat. Morbi quis nunc viverra, gravida arcu quis, varius metus. Praesent tincidunt ipsum est, quis molestie ligula efficitur ut. Nunc interdum erat eu tortor maximus suscipit. Vivamus nec laoreet dui. Nullam dignissim laoreet metus quis pretium.</p>
+                                    </div>
+                                </mat-tab>
+                                <mat-tab label="Profile">
+                                    <div class="styled-table">
+                                        <table class="w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>الصناعة</th>
+                                                    <th>القطاع</th>
+                                                    <th>العمال</th>
+                                                    <th>نوع سوق الأسهم</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>التصنيع الكيميائي</td>
+                                                    <td>المواد الأساسية</td>
+                                                    <td>33000</td>
+                                                    <td>ORD</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="text-align: right; padding: 1rem;">
+                                        الشركة السعودية للصناعات الأساسية مساهمة سعودية يقع مقرها في المملكة العربية السعودية. تعمل مع شركاتها التابعة في صناعة وتسويق و توزيع المواد الكيميائية؛ المغذيات الزراعية و المنتجات المعدنية في الاسواق العالمية. وتمارس الشركة أعمالها في القطاعات التالية: القطاع الكيميائي ويشمل الكيماويات والبوليمرات والكيماويات والمنتجات البلاستيكية ؛ قطاع المغذيات الزراعية ويشمل منتجات الأسمدة؛ قطاع المعادن ويشمل منتجات الصلب؛ قطاع الشركات ويشمل عمليات الشركات ومراكز التكنولوجيا والابتكار وأنشطة الاستثمار وأنشطة الشركة التابعة، شركة سابك للاستثمارات الصناعية (SIIC). وتشمل شركاتها التابعة الشركة السعودية الأوروبية ، الشركة العربية للبتروكيماويات شركة فيبر رينفورس ثيرموبلاستيك وغيرها.
+                                    </p>
+                                </mat-tab>
+                                <mat-tab label="Historical Data">
+                                </mat-tab>
+                                <mat-tab label="Index Component">
+        
+                                </mat-tab>
+                                
+                            </mat-tab-group>
+                         </mat-tab>
+                       <!-- <mat-tab >
+                            <ng-template mat-tab-label>
+                                <mat-icon color="primary" class="mat-icon-lg icon">insert_chart</mat-icon>
+                                CHART
+                                </ng-template>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                                <mat-tab label="Streaming Chart">
+                                </mat-tab>
+                                <mat-tab label="Interactive Chart">
+                                    <div class="chart-box">
+                                        <app-chart1></app-chart1>
+                                        <h1>hello</h1>
+                                    </div>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </mat-tab> -->
+                       <mat-tab label=" ">
+                            <ng-template mat-tab-label>
+                                <mat-icon color="primary" class="mat-icon-lg icon">event_note</mat-icon>
+                                NEWS & ANALYSIS
+                                </ng-template>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                                <mat-tab label="Analysis Opinion"></mat-tab>
+                                <mat-tab label="News"></mat-tab>
+                            </mat-tab-group>
                         </mat-tab>
-                        <mat-tab label="Profile">
-                            <div class="styled-table">
-                                <table class="w-100">
-                                    <thead>
-                                        <tr>
-                                            <th>الصناعة</th>
-                                            <th>القطاع</th>
-                                            <th>العمال</th>
-                                            <th>نوع سوق الأسهم</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>التصنيع الكيميائي</td>
-                                            <td>المواد الأساسية</td>
-                                            <td>33000</td>
-                                            <td>ORD</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <p style="text-align: right; padding: 1rem;">
-                                الشركة السعودية للصناعات الأساسية مساهمة سعودية يقع مقرها في المملكة العربية السعودية. تعمل مع شركاتها التابعة في صناعة وتسويق و توزيع المواد الكيميائية؛ المغذيات الزراعية و المنتجات المعدنية في الاسواق العالمية. وتمارس الشركة أعمالها في القطاعات التالية: القطاع الكيميائي ويشمل الكيماويات والبوليمرات والكيماويات والمنتجات البلاستيكية ؛ قطاع المغذيات الزراعية ويشمل منتجات الأسمدة؛ قطاع المعادن ويشمل منتجات الصلب؛ قطاع الشركات ويشمل عمليات الشركات ومراكز التكنولوجيا والابتكار وأنشطة الاستثمار وأنشطة الشركة التابعة، شركة سابك للاستثمارات الصناعية (SIIC). وتشمل شركاتها التابعة الشركة السعودية الأوروبية ، الشركة العربية للبتروكيماويات شركة فيبر رينفورس ثيرموبلاستيك وغيرها.
-                            </p>
+                        <mat-tab >
+                            <ng-template mat-tab-label class="slable">
+                                <mat-icon color="primary" class="mat-icon-lg icon">attach_money</mat-icon>
+                                FINANCIAL
+                                </ng-template>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                                <mat-tab label=" Financial Summary "></mat-tab>
+                                <mat-tab label="Income Statement"></mat-tab>
+                                <mat-tab label="Balance Sheet"></mat-tab>
+                                <mat-tab label="Cash Flow"></mat-tab>
+                                <mat-tab label="Ratio"></mat-tab>
+                                <mat-tab label="dividends"></mat-tab>
+                                <mat-tab label="Earning"></mat-tab>
+                            </mat-tab-group>
                         </mat-tab>
-                        <mat-tab label="Historical Data">
-
+                        <mat-tab >
+                            <ng-template mat-tab-label>
+                                <mat-icon color="primary" class="mat-icon-lg icon">multiline_chart</mat-icon>
+                                TECHNICAL
+                                </ng-template>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                                <mat-tab label="Technical Analysis "></mat-tab>
+                                <mat-tab label="Candlestick Patterns"></mat-tab>
+                                <mat-tab label="Consensus Estimates"></mat-tab>
+                            </mat-tab-group>
                         </mat-tab>
-                        <mat-tab label="Index Component">
-
-                        </mat-tab>
-                        
-                    </mat-tab-group>
-                </mat-tab>
-                <mat-tab >
-                    <ng-template mat-tab-label>
-                        <mat-icon color="primary" class="mat-icon-lg icon">insert_chart</mat-icon>
-                        CHART
-                        </ng-template>
-                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                        <mat-tab label="Streaming Chart">
-                        </mat-tab>
-                        <mat-tab label="Interactive Chart">
-                            <app-chart1></app-chart1>
+                        <mat-tab label="Reviews">
+                            <ng-template mat-tab-label>
+                                <mat-icon color="primary" class="mat-icon-lg icon">rate_review</mat-icon>
+                                REVIEWS
+                                </ng-template>
+                            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                                <mat-tab label=""></mat-tab>
+                                <mat-tab label=""></mat-tab>
+                                <mat-tab label=""></mat-tab>
+                            </mat-tab-group>
                         </mat-tab>
                     </mat-tab-group>
-                </mat-tab>
-                <mat-tab label=" ">
-                    <ng-template mat-tab-label>
-                        <mat-icon color="primary" class="mat-icon-lg icon">event_note</mat-icon>
-                        NEWS & ANALYSIS
-                        </ng-template>
-                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                        <mat-tab label="Analysis Opinion"></mat-tab>
-                        <mat-tab label="News"></mat-tab>
-                    </mat-tab-group>
-                </mat-tab>
-                <mat-tab >
-                    <ng-template mat-tab-label class="slable">
-                        <mat-icon color="primary" class="mat-icon-lg icon">attach_money</mat-icon>
-                        FINANCIAL
-                        </ng-template>
-                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                        <mat-tab label=" Financial Summary "></mat-tab>
-                        <mat-tab label="Income Statement"></mat-tab>
-                        <mat-tab label="Balance Sheet"></mat-tab>
-                        <mat-tab label="Cash Flow"></mat-tab>
-                        <mat-tab label="Ratio"></mat-tab>
-                        <mat-tab label="dividends"></mat-tab>
-                        <mat-tab label="Earning"></mat-tab>
-                    </mat-tab-group>
-                </mat-tab>
-                <mat-tab >
-                    <ng-template mat-tab-label>
-                        <mat-icon color="primary" class="mat-icon-lg icon">multiline_chart</mat-icon>
-                        TECHNICAL
-                        </ng-template>
-                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                        <mat-tab label="Technical Analysis "></mat-tab>
-                        <mat-tab label="Candlestick Patterns"></mat-tab>
-                        <mat-tab label="Consensus Estimates"></mat-tab>
-                    </mat-tab-group>
-                </mat-tab>
-                <mat-tab label="Reviews">
-                    <ng-template mat-tab-label>
-                        <mat-icon color="primary" class="mat-icon-lg icon">rate_review</mat-icon>
-                        REVIEWS
-                        </ng-template>
-                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                        <mat-tab label=""></mat-tab>
-                        <mat-tab label=""></mat-tab>
-                        <mat-tab label=""></mat-tab>
-                    </mat-tab-group>
-                </mat-tab>
-            </mat-tab-group>
-            
-        </div> 
+                    
+                </div> 
+            </div>
+        </mat-card>
     </div>
-</mat-card>
+    <div fxFlex="100" fxFlex.gt-sm="35" class="stock-pad">
+        <div  class="chart-box">
+            <app-chart1></app-chart1>
+        </div>
+    </div>
+
+</div>
+
+
 
 <!-- <mat-drawer-container class="admin-container">
     <mat-drawer-content> 
-
         <app-chart1></app-chart1>
     </mat-drawer-content>
 </mat-drawer-container> -->
