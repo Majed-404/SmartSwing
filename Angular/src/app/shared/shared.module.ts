@@ -77,6 +77,9 @@ import { SocialIconsComponent } from './social-icons/social-icons.component';
 import { TodayMenuComponent } from './today-menu/today-menu.component';
 import { LangComponent } from './lang/lang.component';
 import { OrderDetailsDialogComponent } from './order-details-dialog/order-details-dialog.component';
+import { VisitorsMarketsComponent } from './visitors-markets/visitors-markets.component';
+import { VisitorsStocksComponent } from './visitors-stocks/visitors-stocks.component';
+import { MarketsTablesComponent } from './visitors-markets/markets-tables/markets-tables.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +110,10 @@ import { OrderDetailsDialogComponent } from './order-details-dialog/order-detail
     SocialIconsComponent,
     TodayMenuComponent,
     LangComponent,
-    OrderDetailsDialogComponent
+    OrderDetailsDialogComponent,
+    VisitorsMarketsComponent,
+    VisitorsStocksComponent,
+    MarketsTablesComponent
   ],
   imports: [
     CommonModule,
@@ -223,7 +229,8 @@ import { OrderDetailsDialogComponent } from './order-details-dialog/order-detail
     SocialIconsComponent,
     TodayMenuComponent,
     LangComponent,
-    OrderDetailsDialogComponent
+    OrderDetailsDialogComponent,
+    VisitorsMarketsComponent
   ],
   providers:[
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }

@@ -10,6 +10,8 @@ import { MenuItem } from 'src/app/app.models';
 })
 export class HomeComponent implements OnInit {  
   public slides = []; 
+  public title = "Impressive Record in Detecting Significant Trades";
+  public desc = "Improve Performance and Maximize Profits  The Best Stock Picking and Trend Identifying System";
   public specialMenuItems:Array<MenuItem> = [];
   public bestMenuItems:Array<MenuItem> = [];
   public todayMenu:MenuItem;

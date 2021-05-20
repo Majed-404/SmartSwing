@@ -19,7 +19,7 @@ export class MenuItemsCarouselComponent implements OnInit {
   ngAfterViewInit(){
     this.config = {
       observer: true,
-      slidesPerView: 4,
+      slidesPerView: 6,
       spaceBetween: 16,       
       keyboard: true,
       navigation: { nextEl: '.prop-next', prevEl: '.prop-prev'},
@@ -33,13 +33,13 @@ export class MenuItemsCarouselComponent implements OnInit {
           slidesPerView: 1
         },
         600: {
-          slidesPerView: 2
-        },
-        960: {
           slidesPerView: 3
         },
-        1280: {
+        960: {
           slidesPerView: 4
+        },
+        1280: {
+          slidesPerView: 6
         }
       }
     }

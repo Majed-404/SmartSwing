@@ -55,7 +55,8 @@ export class InfoCardsComponent implements OnInit {
     this.customers[0].series.length = 0;
   }
 
-  ngAfterViewChecked() {    
+  ngAfterViewChecked() {   
+    debugger 
     if(this.previousWidthOfResizedDiv != this.resizedDiv.nativeElement.clientWidth){
       setTimeout(() => this.orders = [...orders] ); 
       setTimeout(() => this.products = [...products] ); 

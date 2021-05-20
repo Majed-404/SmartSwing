@@ -55,7 +55,7 @@
             ],
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
-            ]
+             ]
           },
           "configurations": {
             "production": {
@@ -197,8 +197,6 @@
       }
     }
   },
-  "defaultProject": "popina",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "popina"
+
 }
