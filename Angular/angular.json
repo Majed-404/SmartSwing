@@ -53,7 +53,9 @@
               "src/styles.scss",
               "src/assets/flaticon/flaticon.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -150,7 +152,7 @@
           "options": {
             "outputPath": "dist/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json" 
+            "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
             "production": {
@@ -195,5 +197,8 @@
       }
     }
   },
-  "defaultProject": "popina"
+  "defaultProject": "popina",
+  "cli": {
+    "analytics": false
+  }
 }
