@@ -152,7 +152,7 @@
           "options": {
             "outputPath": "dist/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json" 
+            "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
             "production": {
