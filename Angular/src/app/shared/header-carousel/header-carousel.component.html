@@ -2,7 +2,9 @@
     <div *ngIf="slides.length > 1"  class="swiper-container h-100" [swiper]="config" (indexChange)="onIndexChange($event)">
         <div class="swiper-wrapper h-100">      
             <div *ngFor="let slide of slides;" class="swiper-slide">
-                <div [attr.data-background]="slide.image" class="slide-item swiper-lazy">
+                <!-- <div [attr.data-background]="slide.image" class="slide-item swiper-lazy"> -->
+                    <div [attr.data-background]="'assets/images/carousel/2.jpg'" class="slide-item swiper-lazy">
+                     
                     <div class="swiper-lazy-preloader"></div>
                 </div>
             </div>
@@ -12,8 +14,9 @@
       
         <div fxLayout="column" fxLayoutAlign="center center" class="slide-info" [dir]="(settings.rtl) ? 'rtl' : 'ltr'">
             <mat-card class="p-4">
-                <h1 class="slide-title">{{currentSlide.title}}</h1>
-                <p class="desc">{{currentSlide.desc}}</p> 
+                <!-- <h1 class="slide-title">{{currentSlide.title}}</h1>سعر سهم سابك - 2010 -->
+                <h1 class="slide-title">سعر سهم {{currentSlide.nmEnName}} - {{currentSlide.nmSymbol}}</h1>
+                <p class="desc"> اسعار اسهم {{currentSlide.nmEnName}} المدرجة بالبورصة بما في ذلك ادنى واعلى سعر, سعر الافتتاح وسعر الاغلاق. بالاضافة الى ذلك نقدم لكم اخبار الشركة المدرجة في السوق المالي. بامكانكم ايضا الاطلاع على الرسوم البيانية المختلفة المفصلة والفنية على امل ان نساعدكم في اتخاذ القرارات حيال توقعات السهم في الارتفاع او الانخفاض وفي تنبؤ حركة السهم.</p> 
                 <a routerLink="/menu" mat-raised-button color="primary" class="link">JOIN OUR 18,000+ MEMBERS NOW</a> 
             </mat-card>  
         </div> 

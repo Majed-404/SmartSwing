@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Settings, AppSettings } from 'src/app/app.settings';
 import { AppService } from 'src/app/app.service';  
 import { MenuItem } from 'src/app/app.models';
+import { VisitorMarketService } from 'src/app/shared/visitors-markets/visitor-market-.service';
+import { Stocks } from 'src/app/shared/visitors-markets/stocks.model';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,9 @@ export class HomeComponent implements OnInit {
   public todayMenu:MenuItem;
 
   public settings: Settings;
-  constructor(public appSettings:AppSettings, public appService:AppService ) {
+  
+  constructor(public appSettings:AppSettings, public appService:AppService,
+    private _VisitorMarketService:VisitorMarketService ) {
     this.settings = this.appSettings.settings;  
   }
 
@@ -29,9 +33,13 @@ export class HomeComponent implements OnInit {
   }
 
   public getSlides(){
-    this.appService.getHomeCarouselSlides().subscribe(res=>{
-      this.slides = res;
-    });
+    // this.appService.getHomeCarouselSlides().subscribe(res=>{
+    //   this.slides = res;
+    // });
+      debugger
+      this._VisitorMarketService.getVisitorStocks(2).subscribe(data => {
+       this.slides = <Stocks[]>data;
+      });
   }
  
   public getSpecialMenuItems(){

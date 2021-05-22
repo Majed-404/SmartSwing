@@ -13,8 +13,7 @@ import { VisitorMarketService } from '../visitor-market-.service';
 })
 export class MarketsTablesComponent implements OnInit {
 
-  public displayedColumns = ['nmId', 'nmSymbol', 'nmEnName', 'nmArName', 'nmMktId',
-   'nmStopFlag', 'dtNmId', 'dtDt', 'dtOpen', 'dtLow', 'dtHigh', 'dtClose', 'dtVol', 'dtMktId', 'dtValue', 'dtNvalue'];
+  public displayedColumns = ['Symbol', 'Name', 'Close', 'Volume', 'Value'];
    
   public dataSource : MatTableDataSource<Element> ;
   public stocksList: Stocks[];

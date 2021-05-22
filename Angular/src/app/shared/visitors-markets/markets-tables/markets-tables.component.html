@@ -5,26 +5,22 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="nmId">
+    <!-- <ng-container matColumnDef="nmId">
       <mat-header-cell *matHeaderCellDef> nmId </mat-header-cell>
       <mat-cell *matCellDef="let stock;"> {{stock.nmId}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="nmSymbol">
-      <mat-header-cell *matHeaderCellDef> nmSymbol </mat-header-cell>
+    <ng-container matColumnDef="Symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
       <mat-cell *matCellDef="let stock;"> {{stock.nmSymbol}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="nmEnName">
-      <mat-header-cell *matHeaderCellDef> nmEnName </mat-header-cell>
-      <mat-cell *matCellDef="let stock;"> {{stock.nmEnName}} </mat-cell>
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let stock;"> <a class="name" href="#">{{stock.nmEnName}} </a></mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="nmArName">
+    <!-- <ng-container matColumnDef="nmArName">
       <mat-header-cell *matHeaderCellDef> nmArName </mat-header-cell>
       <mat-cell *matCellDef="let stock;"> {{stock.nmArName}} </mat-cell>
     </ng-container>
@@ -32,14 +28,14 @@
     <ng-container matColumnDef="nmMktId">
       <mat-header-cell *matHeaderCellDef> nmMktId </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.nmMktId}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <ng-container matColumnDef="nmStopFlag">
+    <!-- <ng-container matColumnDef="nmStopFlag">
       <mat-header-cell *matHeaderCellDef> nmStopFlag </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.nmSymbol}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <ng-container matColumnDef="dtNmId">
+    <!-- <ng-container matColumnDef="dtNmId">
       <mat-header-cell *matHeaderCellDef> dtNmId </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtNmId}}</mat-cell>
     </ng-container>
@@ -47,9 +43,9 @@
     <ng-container matColumnDef="dtDt">
       <mat-header-cell *matHeaderCellDef> dtDt </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtDt}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <ng-container matColumnDef="dtOpen">
+    <!-- <ng-container matColumnDef="dtOpen">
       <mat-header-cell *matHeaderCellDef> dtOpen </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtOpen}}</mat-cell>
     </ng-container>
@@ -57,37 +53,37 @@
     <ng-container matColumnDef="dtLow">
       <mat-header-cell *matHeaderCellDef> dtLow </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtLow}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <ng-container matColumnDef="dtHigh">
+    <!-- <ng-container matColumnDef="dtHigh">
       <mat-header-cell *matHeaderCellDef> dtHigh </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtHigh}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <ng-container matColumnDef="dtClose">
-      <mat-header-cell *matHeaderCellDef> dtClose </mat-header-cell>
+    <ng-container matColumnDef="Close">
+      <mat-header-cell *matHeaderCellDef> Close </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtClose}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="dtVol">
-      <mat-header-cell *matHeaderCellDef> dtVol </mat-header-cell>
+    <ng-container matColumnDef="Volume">
+      <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtVol}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="dtMktId">
+    <!-- <ng-container matColumnDef="dtMktId">
       <mat-header-cell *matHeaderCellDef> dtMktId </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtMktId}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
-    <ng-container matColumnDef="dtValue">
-      <mat-header-cell *matHeaderCellDef> dtValue </mat-header-cell>
+    <ng-container matColumnDef="Value">
+      <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtValue}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="dtNvalue">
+    <!-- <ng-container matColumnDef="dtNvalue">
       <mat-header-cell *matHeaderCellDef> dtNvalue </mat-header-cell>
       <mat-cell *matCellDef="let stock;">{{stock.dtNvalue}}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

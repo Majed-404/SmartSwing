@@ -25,7 +25,7 @@ export class AppSettings {
         'red',       // red, green, blue, pink, purple, grey, orange-dark, custom
         1,           // 1 or 2  
         true,        // true = sticky, false = not sticky
-        'image',     // default, image, carousel
+        'carousel',     // default, image, carousel
         false,       // true = rtl, false = ltr 
         true,        // adminSidenavIsOpened
         true,        // adminSidenavIsPinned 
