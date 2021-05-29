@@ -5,8 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AccountService } from '../account-service.service';
-import { Stocks } from '../stocks/stockes.model';
+import { MarketsService } from '../markets.service';
+import { Stocks } from '../stocks.model';
 
 @Component({
   selector: 'app-stocks-market',
@@ -16,6 +16,7 @@ import { Stocks } from '../stocks/stockes.model';
 export class StocksMarketComponent implements OnInit {
 
   public displayedColumns = ['Symbol', 'Name', 'Close', 'Volume', 'Value'];
+  
   public dataSource : MatTableDataSource<Element> ;
   public stocksList: Stocks[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,11 +39,17 @@ export class StocksMarketComponent implements OnInit {
       this.filterData = this.listFilter ? this.performData(this.listFilter) : this.stocks;
   }
 
-  constructor(public accountService:AccountService,public router: Router,private route: ActivatedRoute) { }
+  constructor(public marketsService:MarketsService,public router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //this.id = this.route.snapshot.params['id'];
-    this.accountService.getStocksList(2).subscribe(data => {
+    this.getStocksSearch();
+    this.getStocksList();
+    
+  }
+
+  public getStocksSearch(){
+    this.marketsService.getStocksList(2).subscribe(data => {
       this.stocks=data;
       this.filterData=this.stocks;
     });
@@ -57,5 +64,19 @@ export class StocksMarketComponent implements OnInit {
   Change(id){
     this.router.navigate(["/stock",id]);
   }
+
+  public getStocksList(){
+    this.marketsService.getVisitorStocks(2).subscribe(data => {
+     this.stocksList = <Stocks[]>data;
+     this.initDataSource(this.stocksList)
+    });
+  }
+
+  public initDataSource(data:any){
+    debugger
+  this.dataSource = new MatTableDataSource(data);
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort; 
+  } 
 
 }

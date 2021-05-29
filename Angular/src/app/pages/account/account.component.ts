@@ -14,8 +14,8 @@ export class AccountComponent implements OnInit {
   @ViewChild('sidenav') sidenav: any;
   public sidenavOpen:boolean = true;
   public links = [ 
-    // { name: 'Dashboard', href: 'dashboard', icon: 'dashboard' }, 
-    { name: 'Markets', href: 'markets', icon: 'store' }, 
+    { name: 'Dashboard', href: 'dashboard', icon: 'dashboard' }, 
+    // { name: 'Markets', href: 'market', icon: 'store' }, 
     { name: 'Add Subscription', href: 'favorites', icon: 'subscriptions' }, 
     { name: 'Payment History', href: 'reservations', icon: 'history' },
     { name: 'Payment Status', href: 'orders', icon: 'payment' },  
