@@ -1,5 +1,51 @@
 <div fxLayout="row wrap" > 
-    <div fxFlex="100" fxFlex.gt-sm="60" class="stock-pad">
+
+    <div fxFlex="100" fxFlex.gt-sm="40" >
+            <div  fxLayout="row wrap" class="flex-wrapper stock-price">
+                
+                <div fxFlex="100" fxFlex.gt-sm="90" class="px-3">
+                    <h1 class="secondary-font"><span class="price">{{stockItem[0].name}}</span> Share Price </h1> 
+                    
+                    <h1  class="price py-3"> 
+                        {{stockItem[0].price | currency : 'SAR' }}  
+                    </h1> 
+                    <!-- <h1 *ngIf="menuItem.discount" class="py-3">  
+                        <span class="text-muted old-price">{{menuItem.price | currency : 'USD' : 'symbol' : '1.2-2'}}</span> 
+                        <span class="primary-color mx-2">{{ (menuItem.price - (menuItem.price * (menuItem.discount / 100))) | currency : 'USD' : 'symbol' : '1.2-2'}}</span>
+                    </h1> -->
+                    
+                    <div class="py-3"> 
+                        
+                        <p fxLayout="row" fxLayoutAlign="start center" class="mb-1">
+                            <mat-icon color="primary" class="mat-icon-sm">check_circle</mat-icon>
+                            <span class="px-1">Volume:</span> 
+                            <span class="fw-500">{{ stockItem[0].volume }}</span>
+                        </p>
+                        <p fxLayout="row" fxLayoutAlign="start center" class="mb-1">
+                            <mat-icon color="primary" class="mat-icon-sm">unpublished</mat-icon>
+                            <span class="px-1">Bid/Ask:</span> 
+                            <span class="fw-500">{{ stockItem[0].bid | number : '3.2-4'}}/{{stockItem[0].ask | number : '3.2-4'}}</span>
+                        </p>
+                        <p fxLayout="row" fxLayoutAlign="start center" class="mb-1">
+                            <mat-icon color="primary" class="mat-icon-sm">check_circle</mat-icon>
+                            <span class="px-1">Day's Range:</span> 
+                            <span class="fw-500">{{ stockItem[0].low | number : '3.2-4'}}/{{stockItem[0].high | number : '3.2-4'}}</span>
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-sm="60" >
+        <div  class="chart-box">
+            <mat-card class="p-0 chart1-gradient">
+                <app-chart1></app-chart1>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-sm="90" class="stock-pad">
 
         <mat-card class="menu-single ">
             <div  fxLayout="row wrap" >
@@ -131,11 +177,7 @@
             </div>
         </mat-card>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="40" class="stock-pad">
-        <div  class="chart-box">
-            <app-chart1></app-chart1>
-        </div>
-    </div>
+    
 
 </div>
 

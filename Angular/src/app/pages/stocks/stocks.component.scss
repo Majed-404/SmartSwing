@@ -90,8 +90,24 @@
   
 .stock-pad{
     padding: 2rem !important;
+    margin: auto;
 }
 
+.stock-price{
+    margin: 2rem;
+}
+
+.price{
+    color: green !important;
+}
+
+.chart1-gradient{
+    background: #f1ddc6 !important;
+    background: -webkit-linear-gradient(50deg,#f7f4ef,#f1ddc6) !important;
+    background: -o-linear-gradient(50deg,#f7f4ef,#f1ddc6) !important;
+    background: linear-gradient(50deg,#f7f4ef,#f1ddc6) !important;
+    color: #000 !important;
+}
 
 
 // *******************

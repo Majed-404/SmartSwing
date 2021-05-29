@@ -22,6 +22,7 @@ export class GroupsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   public groups:Group[];
+  
   constructor(public userManagemntService:UserManagemntService,
     public appService:AppService, 
     //public appUsersService: AppUsersService,
