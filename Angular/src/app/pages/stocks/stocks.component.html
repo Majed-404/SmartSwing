@@ -50,7 +50,6 @@
         <mat-card class="menu-single ">
             <div  fxLayout="row wrap" >
                 
-        
                 <div fxFlex="100" class="px-3">
         
                     <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
@@ -128,17 +127,17 @@
                             <ng-template mat-tab-label>
                                 <mat-icon color="primary" class="mat-icon-lg icon">event_note</mat-icon>
                                 NEWS & ANALYSIS
-                                </ng-template>
+                            </ng-template>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                                 <mat-tab label="Analysis Opinion"></mat-tab>
                                 <mat-tab label="News"></mat-tab>
                             </mat-tab-group>
                         </mat-tab>
                         <mat-tab >
-                            <ng-template mat-tab-label class="slable">
+                            <ng-template mat-tab-label >
                                 <mat-icon color="primary" class="mat-icon-lg icon">attach_money</mat-icon>
                                 FINANCIAL
-                                </ng-template>
+                            </ng-template>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                                 <mat-tab label=" Financial Summary "></mat-tab>
                                 <mat-tab label="Income Statement"></mat-tab>
@@ -155,16 +154,16 @@
                                 TECHNICAL
                                 </ng-template>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-                                <mat-tab label="Technical Analysis "></mat-tab>
-                                <mat-tab label="Candlestick Patterns"></mat-tab>
-                                <mat-tab label="Consensus Estimates"></mat-tab>
+                                <mat-tab label="Support/Resistance"></mat-tab>
+                                <mat-tab label="Indecators"></mat-tab>
+                                <mat-tab label="CandleStick"></mat-tab>
                             </mat-tab-group>
                         </mat-tab>
                         <mat-tab label="Reviews">
                             <ng-template mat-tab-label>
                                 <mat-icon color="primary" class="mat-icon-lg icon">rate_review</mat-icon>
                                 REVIEWS
-                                </ng-template>
+                            </ng-template>
                             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                                 <mat-tab label=""></mat-tab>
                                 <mat-tab label=""></mat-tab>
@@ -181,11 +180,4 @@
 
 </div>
 
-
-
-<!-- <mat-drawer-container class="admin-container">
-    <mat-drawer-content> 
-        <app-chart1></app-chart1>
-    </mat-drawer-content>
-</mat-drawer-container> -->
 

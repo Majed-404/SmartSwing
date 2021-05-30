@@ -1,7 +1,6 @@
 
-<div class="search-bar" fxLayout="row "  style="margin:0 15rem 2rem 15rem;">
+<div class="search-bar" fxLayout="row "  style="margin:0 auto 2rem auto;">
     <form method="get">
-       
         <ng-container>
             <input  type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
             class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
@@ -12,7 +11,101 @@
             {{option.nmSymbol}} &nbsp; &nbsp; {{option.nmEnName}}</mat-option>
         </mat-autocomplete>
         </ng-container>
-
-        
     </form>
+</div>
+
+<div class="market" fxFlex="100">
+    <div class="example-container contain-table mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+      
+          <!-- <ng-container matColumnDef="nmId">
+            <mat-header-cell *matHeaderCellDef> nmId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;"> {{stock.nmId}}</mat-cell>
+          </ng-container> -->
+      
+          <ng-container matColumnDef="Symbol">
+            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+            <mat-cell *matCellDef="let stock;"> {{stock.nmSymbol}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <!-- <a href="https://www.domainname.com/?q={{text.id}}">URL</a> -->
+            <mat-cell *matCellDef="let stock;"> <a class="name" href="/stock/{{stock.nmId}}">{{stock.nmEnName}} </a></mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="nmArName">
+            <mat-header-cell *matHeaderCellDef> nmArName </mat-header-cell>
+            <mat-cell *matCellDef="let stock;"> {{stock.nmArName}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="nmMktId">
+            <mat-header-cell *matHeaderCellDef> nmMktId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.nmMktId}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="nmStopFlag">
+            <mat-header-cell *matHeaderCellDef> nmStopFlag </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.nmSymbol}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="dtNmId">
+            <mat-header-cell *matHeaderCellDef> dtNmId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtNmId}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="dtDt">
+            <mat-header-cell *matHeaderCellDef> dtDt </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtDt}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="dtOpen">
+            <mat-header-cell *matHeaderCellDef> dtOpen </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtOpen}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="dtLow">
+            <mat-header-cell *matHeaderCellDef> dtLow </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtLow}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="dtHigh">
+            <mat-header-cell *matHeaderCellDef> dtHigh </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtHigh}}</mat-cell>
+          </ng-container> -->
+      
+          <ng-container matColumnDef="Close">
+            <mat-header-cell *matHeaderCellDef> Close </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtClose}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Volume">
+            <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtVol}}</mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="dtMktId">
+            <mat-header-cell *matHeaderCellDef> dtMktId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtMktId}}</mat-cell>
+          </ng-container> -->
+      
+          <ng-container matColumnDef="Value">
+            <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtValue}}</mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="dtNvalue">
+            <mat-header-cell *matHeaderCellDef> dtNvalue </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtNvalue}}</mat-cell>
+          </ng-container> -->
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 25, 100]"></mat-paginator>
+      </div>
+      
 </div>

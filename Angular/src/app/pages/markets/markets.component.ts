@@ -3,9 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { AccountService } from '../account-service.service';
 import { Markets } from './markets.model';
-
+import { MarketsService } from './markets.service';
 
 @Component({
   selector: 'app-markets',
@@ -21,18 +20,20 @@ export class MarketsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private router: Router,public accountService:AccountService) { }
+  constructor(private router: Router,public marketsService:MarketsService) { }
 
   ngOnInit(): void {
     this.getGroupList();
   }
+
  
+
   onPageChanged($event){
 
   }
   public getGroupList(){
     debugger
-    this.accountService.getMarketsList().subscribe(response => {
+    this.marketsService.getMarketsList().subscribe(response => {
       this.markets=<Markets[]>response;
       this.initDataSource(this.markets); 
     })
@@ -45,9 +46,8 @@ export class MarketsComponent implements OnInit {
 
   onClick(id){
     debugger
-    this.router.navigate(["/account/stocksmarket",id]);
+    this.router.navigate(["/markets/stocks-market",id]);
   }
 
+
 }
-
-

@@ -25,6 +25,7 @@ const routes: Routes = [
         { path: 'terms-conditions', loadChildren: () => import('./pages/terms-conditions/terms-conditions.module').then(m => m.TermsConditionsModule) },
         { path: 'stock', loadChildren: () => import('./pages/stocks/stocks.module').then(m => m.StocksModule) },
         { path: 'stock/:id', loadChildren: () => import('./pages/stocks/stocks.module').then(m => m.StocksModule) }, 
+        { path: 'markets', loadChildren: () => import('./pages/markets/markets.module').then(m => m.MarketsModule) }, 
     ]
   },
   { path: 'landing', loadChildren: () => import('./pages/landing/landing.module').then(m => m.LandingModule) },
