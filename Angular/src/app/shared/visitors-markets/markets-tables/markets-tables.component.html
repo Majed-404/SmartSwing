@@ -18,7 +18,7 @@
     <ng-container matColumnDef="Name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <!-- <a href="https://www.domainname.com/?q={{text.id}}">URL</a> -->
-      <mat-cell *matCellDef="let stock;"> <a class="name" href="/stock/{{stock.nmId}}">{{stock.nmEnName}} </a></mat-cell>
+      <mat-cell *matCellDef="let stock;"> <a class="name" routerLink= "/stock/{{stock.nmId}}">{{stock.nmEnName}} </a></mat-cell>
     </ng-container>
 
     <!-- <ng-container matColumnDef="nmArName">
