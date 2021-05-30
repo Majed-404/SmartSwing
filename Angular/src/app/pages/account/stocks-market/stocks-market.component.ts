@@ -46,7 +46,7 @@ export class StocksMarketComponent implements OnInit {
       stck.nmEnName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
   Change(id){
-    this.router.navigate(["/account/stocks",id]);
+    this.router.navigate(["/stock",id]);
   }
 
 }

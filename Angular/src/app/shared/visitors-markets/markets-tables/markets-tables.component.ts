@@ -32,7 +32,6 @@ export class MarketsTablesComponent implements OnInit {
   } 
 
   public getStocksList(){
-    debugger
     this._VisitorMarketService.getVisitorStocks(2).subscribe(data => {
      this.stocksList = <Stocks[]>data;
      this.initDataSource(this.stocksList)
@@ -40,7 +39,7 @@ export class MarketsTablesComponent implements OnInit {
   }
 
   public initDataSource(data:any){
-      
+      debugger
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort; 
