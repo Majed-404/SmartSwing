@@ -1,50 +1,50 @@
-.search-bar{
-    form{
-        input{
-            height: 40px;
-            border: none;
-            padding: 0;
-            border-radius: 15px;
-            outline: none;
-            color: #444;
-            width: 0;
-            overflow: hidden;
-            transition: 0.3s;
-            // padding: 0 8px;
-            width: 500px;
-            text-align: center;
-            font-size: medium;
-            background-color: azure;
-        }       
+.search-bar {
+  form {
+    input {
+      height: 40px;
+      border: none;
+      padding: 0;
+      border-radius: 15px;
+      outline: none;
+      color: #444;
+      width: 0;
+      overflow: hidden;
+      transition: 0.3s;
+      // padding: 0 8px;
+      width: 500px;
+      text-align: center;
+      font-size: medium;
+      background-color: azure;
     }
+  }
 }
 
-.market{
-    width: 1000px;
-     margin: 0 auto;
-      background-color: beige;
+.market {
+  // width: 1200px;
+  margin: 0 auto;
+  background-color: beige;
 }
 
 table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-    min-width: 100px;
-    text-align: center;
-  }
-  
-  .contain-table {
-    overflow: auto;
-  }
-  .name{
-    cursor: pointer;
-    color: rgb(0, 153, 255);
-  }
-  
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+  min-width: 100px;
+  text-align: center;
+}
+
+.contain-table {
+  overflow: auto;
+}
+.name {
+  cursor: pointer;
+  color: rgb(0, 153, 255);
+}

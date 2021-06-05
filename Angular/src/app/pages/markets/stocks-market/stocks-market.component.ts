@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -21,6 +21,8 @@ export class StocksMarketComponent implements OnInit {
   public stocksList: Stocks[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @Output() onChangeSorting: EventEmitter<any> = new EventEmitter<any>();
+
 
   public stocks : Stocks[] ;
   public filteredOptions: Observable<string[]>;
@@ -28,6 +30,9 @@ export class StocksMarketComponent implements OnInit {
   public _listFilter: string ;
   myControl = new FormControl();
   public id:number;
+
+  public sortings = ['Sort by Default', 'Popular', 'Price (Low to High)', 'Price (High to Low)'];
+  public sortDrop:any;
 
   get listFilter(): string{
     return this._listFilter;
@@ -43,6 +48,7 @@ export class StocksMarketComponent implements OnInit {
 
   ngOnInit(): void {
     //this.id = this.route.snapshot.params['id'];
+    this.sortDrop = this.sortings[0];
     this.getStocksSearch();
     this.getStocksList();
     
@@ -79,4 +85,9 @@ export class StocksMarketComponent implements OnInit {
   this.dataSource.sort = this.sort; 
   } 
 
+  public changeSorting(sort){
+    this.sortDrop = sort;
+    this.onChangeSorting.emit(sort);
+
+  }
 }

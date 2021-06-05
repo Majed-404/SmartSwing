@@ -1,112 +1,143 @@
-<div fxLayout="column" style="min-height: 700px;">
-    <div class="search-bar" fxLayout="row "  style="margin:2rem auto;">
-        <form method="get">
-            <ng-container>
-                <input  type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
-                class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
-                matInput [(ngModel)] = "listFilter" >
-    
-            <mat-autocomplete  #auto="matAutocomplete" >
-                <mat-option *ngFor="let option of filterData" [value]="option.nmEnName" (onSelectionChange)="Change(option.nmId)">
-                {{option.nmSymbol}} &nbsp; &nbsp; {{option.nmEnName}}</mat-option>
-            </mat-autocomplete>
-            </ng-container>
-        </form>
-    </div>
-    
+<div fxLayout="row wrap" fxFlex="90" style="min-height: 700px;" class="theme-container">
+  <div class="search-bar" fxLayout="row "  style="margin:2rem auto;">
+      <form method="get">
+          <ng-container>
+              <input  type="text" id="input" aria-label="Search"  [matAutocomplete]="auto"
+              class="mat-elevation-z5 " placeholder="search here"  [formControl]="myControl"
+              matInput [(ngModel)] = "listFilter" >
+  
+          <mat-autocomplete  #auto="matAutocomplete" >
+              <mat-option *ngFor="let option of filterData" [value]="option.nmEnName" (onSelectionChange)="Change(option.nmId)">
+              {{option.nmSymbol}} &nbsp; &nbsp; {{option.nmEnName}}</mat-option>
+          </mat-autocomplete>
+          </ng-container>
+      </form>
+  </div>
+
+  <div fxFlex="100" fxLayoutAlign="start center">
+    <a mat-button [matMenuTriggerFor]="sortMenu" #sortMenuTrigger="matMenuTrigger">
+        {{sortDrop}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+    </a>
+    <mat-menu #sortMenu="matMenu" xPosition="before" overlapTrigger="true">
+        <span (mouseleave)="sortMenuTrigger.closeMenu()">
+            <button mat-menu-item *ngFor="let sort of sortings" (click)="changeSorting(sort)">
+                <span>{{sortDrop}}</span>
+            </button>
+        </span>
+    </mat-menu>
+  </div>
+  <!-- <mat-card fxFlex="100" fxLayoutAlign="start center" class=" p-2 filter-row mat-elevation-z1 text-muted">
+  </mat-card> -->
+
+  <div fxLayoutAlign="start center" fxFlex="100" fxShow.gt-sm class="px-2 mb-3" >
+    <mat-button-toggle-group #group="matButtonToggleGroup" appearance="legacy" [value]="'0'" class="categories-toogle-group mt-2" >
+        <mat-button-toggle [value]="0" class="letter">
+            All Categories
+        </mat-button-toggle>
+        <mat-button-toggle [value]="1" class="letter">
+            All Categories
+        </mat-button-toggle>
+        <mat-button-toggle [value]="2" class="letter">
+            All Categories
+        </mat-button-toggle>
+        
+    </mat-button-toggle-group>
+  </div>
+      
     <div class="market" fxFlex="100">
-        <div class="example-container contain-table mat-elevation-z8">
-            <mat-table #table [dataSource]="dataSource">
-          
-              <!--- Note that these columns can be defined in any order.
-                    The actual rendered columns are set as a property on the row definition" -->
-          
-              <!-- <ng-container matColumnDef="nmId">
-                <mat-header-cell *matHeaderCellDef> nmId </mat-header-cell>
-                <mat-cell *matCellDef="let stock;"> {{stock.nmId}}</mat-cell>
-              </ng-container> -->
-          
-              <ng-container matColumnDef="Symbol">
-                <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-                <mat-cell *matCellDef="let stock;"> {{stock.nmSymbol}} </mat-cell>
-              </ng-container>
-          
-              <ng-container matColumnDef="Name">
-                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-                <!-- <a href="https://www.domainname.com/?q={{text.id}}">URL</a> -->
-                <mat-cell *matCellDef="let stock;"> <a class="name" routerLink="/stock/{{stock.nmId}}">{{stock.nmEnName}} </a></mat-cell>
-              </ng-container>
-          
-              <!-- <ng-container matColumnDef="nmArName">
-                <mat-header-cell *matHeaderCellDef> nmArName </mat-header-cell>
-                <mat-cell *matCellDef="let stock;"> {{stock.nmArName}} </mat-cell>
-              </ng-container>
-          
-              <ng-container matColumnDef="nmMktId">
-                <mat-header-cell *matHeaderCellDef> nmMktId </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.nmMktId}}</mat-cell>
-              </ng-container> -->
-          
-              <!-- <ng-container matColumnDef="nmStopFlag">
-                <mat-header-cell *matHeaderCellDef> nmStopFlag </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.nmSymbol}}</mat-cell>
-              </ng-container> -->
-          
-              <!-- <ng-container matColumnDef="dtNmId">
-                <mat-header-cell *matHeaderCellDef> dtNmId </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtNmId}}</mat-cell>
-              </ng-container>
-          
-              <ng-container matColumnDef="dtDt">
-                <mat-header-cell *matHeaderCellDef> dtDt </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtDt}}</mat-cell>
-              </ng-container> -->
-          
-              <!-- <ng-container matColumnDef="dtOpen">
-                <mat-header-cell *matHeaderCellDef> dtOpen </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtOpen}}</mat-cell>
-              </ng-container>
-          
-              <ng-container matColumnDef="dtLow">
-                <mat-header-cell *matHeaderCellDef> dtLow </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtLow}}</mat-cell>
-              </ng-container> -->
-          
-              <!-- <ng-container matColumnDef="dtHigh">
-                <mat-header-cell *matHeaderCellDef> dtHigh </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtHigh}}</mat-cell>
-              </ng-container> -->
-          
-              <ng-container matColumnDef="Close">
-                <mat-header-cell *matHeaderCellDef> Close </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtClose}}</mat-cell>
-              </ng-container>
-          
-              <ng-container matColumnDef="Volume">
-                <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtVol}}</mat-cell>
-              </ng-container>
-          
-              <!-- <ng-container matColumnDef="dtMktId">
-                <mat-header-cell *matHeaderCellDef> dtMktId </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtMktId}}</mat-cell>
-              </ng-container> -->
-          
-              <ng-container matColumnDef="Value">
-                <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtValue}}</mat-cell>
-              </ng-container>
-          
-              <!-- <ng-container matColumnDef="dtNvalue">
-                <mat-header-cell *matHeaderCellDef> dtNvalue </mat-header-cell>
-                <mat-cell *matCellDef="let stock;">{{stock.dtNvalue}}</mat-cell>
-              </ng-container> -->
-          
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <mat-paginator [pageSizeOptions]="[10, 20, 25, 100]"></mat-paginator>
-          </div>
+      <div class="contain-table mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+      
+          <!-- <ng-container matColumnDef="nmId">
+            <mat-header-cell *matHeaderCellDef> nmId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;"> {{stock.nmId}}</mat-cell>
+          </ng-container> -->
+      
+          <ng-container matColumnDef="Symbol">
+            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+            <mat-cell *matCellDef="let stock;"> {{stock.nmSymbol}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <!-- <a href="https://www.domainname.com/?q={{text.id}}">URL</a> -->
+            <mat-cell *matCellDef="let stock;"> <a class="name" routerLink="/stock/{{stock.nmId}}">{{stock.nmEnName}} </a></mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="nmArName">
+            <mat-header-cell *matHeaderCellDef> nmArName </mat-header-cell>
+            <mat-cell *matCellDef="let stock;"> {{stock.nmArName}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="nmMktId">
+            <mat-header-cell *matHeaderCellDef> nmMktId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.nmMktId}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="nmStopFlag">
+            <mat-header-cell *matHeaderCellDef> nmStopFlag </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.nmSymbol}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="dtNmId">
+            <mat-header-cell *matHeaderCellDef> dtNmId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtNmId}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="dtDt">
+            <mat-header-cell *matHeaderCellDef> dtDt </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtDt}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="dtOpen">
+            <mat-header-cell *matHeaderCellDef> dtOpen </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtOpen}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="dtLow">
+            <mat-header-cell *matHeaderCellDef> dtLow </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtLow}}</mat-cell>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="dtHigh">
+            <mat-header-cell *matHeaderCellDef> dtHigh </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtHigh}}</mat-cell>
+          </ng-container> -->
+      
+          <ng-container matColumnDef="Close">
+            <mat-header-cell *matHeaderCellDef> Close </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtClose}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Volume">
+            <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtVol}}</mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="dtMktId">
+            <mat-header-cell *matHeaderCellDef> dtMktId </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtMktId}}</mat-cell>
+          </ng-container> -->
+      
+          <ng-container matColumnDef="Value">
+            <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtValue}}</mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="dtNvalue">
+            <mat-header-cell *matHeaderCellDef> dtNvalue </mat-header-cell>
+            <mat-cell *matCellDef="let stock;">{{stock.dtNvalue}}</mat-cell>
+          </ng-container> -->
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 25, 100]"></mat-paginator>
+      </div>
           
     </div>
+  
 </div>
